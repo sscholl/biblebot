@@ -2,7 +2,7 @@
   {
     "id": "elberfelder",
     "language": "German",
-    "name": "Elberfelder_(1871)",
+    "name": "Elberfelder (1871)",
     "shortcuts": [
       "elb1871",
       "elberfelder1871"
@@ -12,7 +12,7 @@
   {
     "id": "elberfelder1905",
     "language": "German",
-    "name": "Elberfelder_(1905)",
+    "name": "Elberfelder (1905)",
     "shortcuts": [
       "elb",
       "elb1905",
@@ -24,7 +24,7 @@
   {
     "id": "luther1545",
     "language": "German",
-    "name": "Luther_(1545)",
+    "name": "Luther (1545)",
     "shortcuts": [
       "luther1545"
     ],
@@ -33,7 +33,7 @@
   {
     "id": "luther1912",
     "language": "German",
-    "name": "Luther_(1912)",
+    "name": "Luther (1912)",
     "shortcuts": [
       "lut",
       "lut12",
@@ -44,7 +44,7 @@
   {
     "id": "schlachter",
     "language": "German",
-    "name": "Schlachter_(1951)",
+    "name": "Schlachter (1951)",
     "shortcuts": [
       "schl",
       "schlachter"
@@ -54,7 +54,7 @@
   {
     "id": "byzantine",
     "language": "Greek",
-    "name": "NT_Byzantine_Majority_Text_(2000)",
+    "name": "NT Byzantine Majority Text (2000)",
     "shortcuts": [
       "byzantine",
       "text"

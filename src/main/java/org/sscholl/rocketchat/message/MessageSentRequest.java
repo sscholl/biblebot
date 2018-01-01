@@ -18,7 +18,7 @@ import java.util.Map;
         "text",
         "alias"
 })
-public class MessageSent {
+public class MessageSentRequest {
 
     @JsonProperty("channel_id")
     private String channelId;
@@ -131,7 +131,7 @@ public class MessageSent {
 
     @Override
     public String toString() {
-        return "MessageSent{" +
+        return "MessageSentRequest{" +
                 "channelId='" + channelId + '\'' +
                 ", channelName='" + channelName + '\'' +
                 ", messageId='" + messageId + '\'' +

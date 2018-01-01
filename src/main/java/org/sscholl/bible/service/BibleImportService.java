@@ -70,7 +70,7 @@ public class BibleImportService {
     }
 
     private void loadBible(Bible bible) {
-        bible.setFileName("bibles/" + bible.getLanguage() + "__" + bible.getName() + "__" + bible.getId() + "__" + bible.getDirection() + ".txt");
+        bible.setFileName("bibles/" + bible.getLanguage() + "__" + bible.getName().replace(" ", "_") + "__" + bible.getId() + "__" + bible.getDirection() + ".txt");
 
         String line;
         String cvsSplitBy = "\\|\\|";
@@ -114,7 +114,7 @@ public class BibleImportService {
                 Verse verse = chapter.getOrCreateVerse(verseNumber);
                 verse.setBook(bookNumber);
 
-                // set testamenr
+                // set testament
                 if (Objects.equals(testament, "O")) {
                     verse.setTestament(Testament.OT);
                 } else if (Objects.equals(testament, "N")) {

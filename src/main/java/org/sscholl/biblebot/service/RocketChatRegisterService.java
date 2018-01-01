@@ -21,6 +21,7 @@ import java.net.Socket;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * This component will register the integration to Rocket.Chat after the application context is loaded and the
@@ -34,17 +35,17 @@ public class RocketChatRegisterService implements ApplicationListener<Applicatio
     private static final Logger LOGGER = LoggerFactory.getLogger(RocketChatRegisterService.class);
 
     @Value("${biblebot.integration.host:localhost}")
-    private String integrationHost;
+    private String integrationHost = "localhost";
     @Value("${biblebot.integration.port:8081}")
-    private int integrationPort;
+    private int integrationPort = 8080;
     @Value("${biblebot.integration.name:biblebot}")
-    private String integrationName;
+    private String integrationName = "biblebot";
     @Value("${biblebot.api.host:localhost}")
-    private String apiHost;
+    private String apiHost = "localhost";
     @Value("${biblebot.api.port:8080}")
-    private int apiPort;
+    private int apiPort = 8080;
     @Value("${biblebot.api.path:/api/v1}")
-    private String apiBasePath = "";
+    private String apiBasePath = "/api/v1";
 
     private Client client;
     private WebTarget webTarget = null;
@@ -73,7 +74,8 @@ public class RocketChatRegisterService implements ApplicationListener<Applicatio
 
         if (waitForApiHost() && waitAndLoginToApi()) {
             IntegrationsResponse integrationsResponse = getIntegrationsResponse(loginResponse);
-            if (integrationsResponse.getIntegrations().stream().noneMatch(i -> i.getName().equals(integrationName))) {
+            if (integrationsResponse.getIntegrations().stream()
+                    .noneMatch(i -> i.getName() != null && i.getName().equals(integrationName))) {
                 getIntegrationCreateResponse(loginResponse);
             } else {
                 LOGGER.info("integration " + integrationName + " already existing.");
@@ -199,6 +201,8 @@ public class RocketChatRegisterService implements ApplicationListener<Applicatio
         integrationCreateRequest.setName(integrationName);
         integrationCreateRequest.setChannel("all_public_channels,all_private_groups,all_direct_messages");
         integrationCreateRequest.setUsername("rocket.cat");
+        integrationCreateRequest.setToken(UUID.randomUUID().toString().replace("-", ""));
+        integrationCreateRequest.setEmoji(":book:");
         integrationCreateRequest.setUrls(new ArrayList<>());
         integrationCreateRequest.getUrls().add("http://" + integrationHost + ":" + integrationPort + "/chat");
         integrationCreateRequest.setScriptEnabled(false);

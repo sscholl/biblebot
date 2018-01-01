@@ -131,25 +131,32 @@ public class QueryParserService {
                         LOG.debug("[RESULT] found verseNumberStart " + verseNumberStart);
                         LOG.debug("[RESULT] found verseNumberEnd " + verseNumberEnd);
 
-                        Passage passage = new Passage();
-                        //TODO: passage.setTitle()
-                        passage.setQuery(matcher.group());
-                        passage.setBible(bible);
-                        passage.setBook(book);
-                        passage.setChapter(chapter);
+                        List<Verse> verses = new LinkedList<>();
                         for (int i = verseNumberStart; i <= verseNumberEnd; i++) {
                             Verse verse = chapter.getVerse(i);
+
                             if (verse != null) {
-                                passage.getVerses().add(chapter.getVerse(i));
+                                verses.add(chapter.getVerse(i));
                             } else {
                                 LOG.error("Verse " + i + " not found. Input query: " + query);
                             }
                         }
-                        passages.add(passage);
+
+                        if (!verses.isEmpty()) {
+                            Passage passage = new Passage();
+                            passage.setTitle(book.getGermanName() + chapter.getId());
+                            passage.setQuery(matcher.group());
+                            passage.setBible(bible);
+                            passage.setBook(book);
+                            passage.setChapter(chapter);
+                            passage.getVerses().addAll(verses);
+                            passages.add(passage);
+                        }
                     }
                 }
             }
         }
+        LOG.debug("generate passages: " + passages);
         return passages;
     }
 }

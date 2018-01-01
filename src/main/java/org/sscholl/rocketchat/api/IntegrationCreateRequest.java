@@ -32,6 +32,10 @@ public class IntegrationCreateRequest {
     private String channel;
     @JsonProperty("username")
     private String username;
+    @JsonProperty("token")
+    private String token;
+    @JsonProperty("emoji")
+    private String emoji;
     @JsonProperty("urls")
     private List<String> urls = null;
     @JsonProperty("scriptEnabled")
@@ -99,6 +103,26 @@ public class IntegrationCreateRequest {
         this.username = username;
     }
 
+    @JsonProperty("token")
+    public String getToken() {
+        return token;
+    }
+
+    @JsonProperty("token")
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    @JsonProperty("emoji")
+    public String getEmoji() {
+        return emoji;
+    }
+
+    @JsonProperty("emoji")
+    public void setEmoji(String emoji) {
+        this.emoji = emoji;
+    }
+
     @JsonProperty("urls")
     public List<String> getUrls() {
         return urls;
@@ -138,6 +162,8 @@ public class IntegrationCreateRequest {
                 ", name='" + name + '\'' +
                 ", channel='" + channel + '\'' +
                 ", username='" + username + '\'' +
+                ", token='" + token + '\'' +
+                ", emoji='" + emoji + '\'' +
                 ", urls=" + urls +
                 ", scriptEnabled=" + scriptEnabled +
                 ", additionalProperties=" + additionalProperties +

@@ -13,6 +13,7 @@ import java.util.Set;
 public class Book {
     private int id;
     private String name;
+    private String germanName;
     private Testament testament;
     private boolean numbered;
     private int number;
@@ -38,6 +39,14 @@ public class Book {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getGermanName() {
+        return germanName;
+    }
+
+    public void setGermanName(String germanName) {
+        this.germanName = germanName;
     }
 
     public Testament getTestament() {
@@ -117,6 +126,7 @@ public class Book {
         return "Book{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", germanName='" + germanName + '\'' +
                 ", testament=" + testament +
                 ", numbered=" + numbered +
                 ", number=" + number +
