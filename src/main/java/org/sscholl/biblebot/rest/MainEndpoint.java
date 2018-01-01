@@ -1,4 +1,4 @@
-package org.sscholl.slackbible.rest;
+package org.sscholl.biblebot.rest;
 
 import org.springframework.stereotype.Component;
 

@@ -1,0 +1,42 @@
+version: '3'
+
+# this docker-compose file is build only for test purposes
+
+services:
+  rocketchat:
+    image: rocket.chat
+    restart: unless-stopped
+    #    volumes:
+    #  - ./uploads:/app/uploads
+    environment:
+      - ADMIN_PASS=Mypa55
+      - PORT=8080
+      - ROOT_URL=http://localhost:8080
+      - MONGO_URL=mongodb://mongo:27017/rocketchat
+    depends_on:
+      - mongo
+    links:
+      - mongo
+    ports:
+      - 127.0.0.1:8080:8080
+
+  mongo:
+    image: mongo
+    restart: unless-stopped
+    volumes:
+     - /data/db
+     - /dump
+    command: mongod --smallfiles --oplogSize 128
+
+  biblebot:
+    build: .
+    environment:
+      - BIBLEBOT_INTEGRATION_HOST=biblebot
+      - BIBLEBOT_INTEGRATION_PORT=8081
+      - BIBLEBOT_API_HOST=rocketchat
+      - BIBLEBOT_API_PORT=8080
+    links:
+      - rocketchat
+
+    ports:
+      - 127.0.0.1:8081:8081

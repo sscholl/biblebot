@@ -1,2 +1,2 @@
-# slack-bible
-Slack bot for printing bible passages. Written in Java with Spring
+# biblebot
+Chat REST integration for printing bible passages. Written in Java with Spring.

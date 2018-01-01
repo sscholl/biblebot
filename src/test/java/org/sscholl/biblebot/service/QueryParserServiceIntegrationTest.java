@@ -1,4 +1,4 @@
-package org.sscholl.slackbible.service;
+package org.sscholl.biblebot.service;
 
 import org.apache.log4j.Logger;
 import org.junit.Test;
@@ -8,7 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.sscholl.bible.model.Bible;
 import org.sscholl.bible.model.Passage;
-import org.sscholl.slackbible.SlackBibleApplication;
+import org.sscholl.biblebot.Application;
 
 import java.util.List;
 import java.util.regex.Matcher;
@@ -21,7 +21,7 @@ import static org.hamcrest.Matchers.*;
  * Created by simon on 02.10.2017.
  */
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = {SlackBibleApplication.class})
+@ContextConfiguration(classes = {Application.class})
 public class QueryParserServiceIntegrationTest {
 
     Logger LOG = Logger.getLogger(QueryParserServiceIntegrationTest.class);
@@ -32,7 +32,7 @@ public class QueryParserServiceIntegrationTest {
     private String query = "asdj LUT asdsjlans dsdbyzantinefsdf lut12df ps 1 asjkldn aal psalm ps psalms lsd Elberfelder1905 lasd l 1. John 1,4 asdk nakknas  l 5 Mose 5:3-22. JALB SJdba kd fsf a.orn  #asd3 df #hjj7 5 alöks Johannes asssdfd 4:2 djöak sa sk ";
 
     @Test
-    public void getRegexBible() throws Exception {
+    public void getRegexBible() {
         // when
         Pattern regex = queryParserService.getRegexBible();
         LOG.debug("Regex: " + regex);
@@ -42,7 +42,7 @@ public class QueryParserServiceIntegrationTest {
     }
 
     @Test
-    public void getRegexPassages() throws Exception {
+    public void getRegexPassages() {
         // when
         Pattern regex = queryParserService.getRegexPassages();
         LOG.debug("Regex: " + regex);
@@ -124,7 +124,7 @@ public class QueryParserServiceIntegrationTest {
     }
 
     @Test
-    public void process() throws Exception {
+    public void process() {
         //when
         List<Passage> passages = queryParserService.process(query);
 

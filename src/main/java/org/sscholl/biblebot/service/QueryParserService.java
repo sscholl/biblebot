@@ -1,4 +1,4 @@
-package org.sscholl.slackbible.service;
+package org.sscholl.biblebot.service;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +7,7 @@ import org.sscholl.bible.model.*;
 import org.sscholl.bible.service.BibleRepository;
 import org.sscholl.bible.service.BookRepository;
 
+import javax.annotation.PostConstruct;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -34,6 +35,7 @@ public class QueryParserService {
 
     private Pattern regexPassages;
 
+    @PostConstruct
     public Pattern getRegexBible() {
         if (regexBibles == null) {
             Set<String> shortcutsBible = bibleRepository.getBibles()
@@ -47,6 +49,7 @@ public class QueryParserService {
         return regexBibles;
     }
 
+    @PostConstruct
     public Pattern getRegexPassages() {
         if (regexPassages == null) {
             Set<String> shortcutsBooks = bibleRepository.findBible(bibleRepository.getDefaultBible())

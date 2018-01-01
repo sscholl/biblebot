@@ -27,12 +27,15 @@ public class BibleEndpoint {
         StringBuilder response = new StringBuilder();
 
         Bible bible = bibleRepository.findBible(bibleId);
+        if (bible != null) {
+            response.append(bible.toString()).append("<br/><br/>");
+            for (Book book : bible.getBooks()) {
+                response.append(book.toString()).append("<br/>");
+            }
 
-        response.append(bible.toString()).append("<br/><br/>");
-        for (Book book : bible.getBooks()) {
-            response.append(book.toString()).append("<br/>");
+            return response.toString();
+        } else {
+            return "no bible set";
         }
-
-        return response.toString();
     }
 }

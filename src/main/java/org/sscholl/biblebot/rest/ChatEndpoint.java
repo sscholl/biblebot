@@ -1,47 +1,40 @@
-package org.sscholl.slackbible.rest;
+package org.sscholl.biblebot.rest;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.sscholl.bible.model.Book;
 import org.sscholl.bible.model.Passage;
-import org.sscholl.bible.service.BibleRepository;
-import org.sscholl.slackbible.service.QueryParserService;
+import org.sscholl.biblebot.service.QueryParserService;
+import org.sscholl.rocketchat.message.MessageSent;
 
-import javax.ws.rs.*;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 
 @Component
-@Path("/search")
-public class SearchEndpoint {
+@Path("/chat")
+public class ChatEndpoint {
 
-    @Autowired
-    private BibleRepository bibleRepository;
+    private static final Logger LOGGER = LoggerFactory.getLogger(ChatEndpoint.class);
 
     @Autowired
     private QueryParserService queryParserService;
 
-    @GET
-    @Path("/{query}")
-    @Produces(MediaType.TEXT_HTML + ";charset=utf-8")
-    public String get(@PathParam("query") String query) {
-        StringBuilder response = new StringBuilder();
-        for (Passage passage : queryParserService.process(query)) {
-            response.append(passage.toString()).append("<br/><br/>");
-        }
-        return response.toString();
-    }
-
     @POST
-    @Path("/slack/")
+    @Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
     @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
-    public String slack(@FormParam("body.text") String query) {
+    public String post(MessageSent messageSent) {
+        LOGGER.debug("messageSent", messageSent);
         StringBuilder response = new StringBuilder();
-        List<Passage> passages = queryParserService.process(query);
-        if (passages.size() <= 1) {
+        List<Passage> passages = queryParserService.process(messageSent.getText());
+        if (passages.size() >= 1) {
             JSONObject json = new JSONObject();
             json.put("username", "Bible");
             json.put("text", "Bible passages by translation " + passages.get(0).getBible().getName());
@@ -62,21 +55,6 @@ public class SearchEndpoint {
             response.append(json.toString());
         } else {
             response.append("{}");
-        }
-        return response.toString();
-    }
-
-
-    @GET
-    @Path("/keywords")
-    @Produces(MediaType.TEXT_PLAIN + ";charset=utf-8")
-    public String keywords() {
-        StringBuilder response = new StringBuilder();
-        response.append("b:,bible:,");
-        for (Book book : bibleRepository.findBible(bibleRepository.getDefaultBible()).getBooks()) {
-            for (String shortcut : book.getShortcuts()) {
-                response.append(shortcut).append(",");
-            }
         }
         return response.toString();
     }
