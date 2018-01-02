@@ -10,7 +10,7 @@
                     <snapshots>
                         <enabled>false</enabled>
                     </snapshots>
-                    <id>bintray-rocketchat-RocketChat-SDK</id>
+                    <key>bintray-rocketchat-RocketChat-SDK</key>
                     <name>bintray</name>
                     <url>https://dl.bintray.com/rocketchat/RocketChat-SDK</url>
                 </repository>
@@ -20,12 +20,12 @@
                     <snapshots>
                         <enabled>false</enabled>
                     </snapshots>
-                    <id>bintray-rocketchat-RocketChat-SDK</id>
+                    <key>bintray-rocketchat-RocketChat-SDK</key>
                     <name>bintray-plugins</name>
                     <url>https://dl.bintray.com/rocketchat/RocketChat-SDK</url>
                 </pluginRepository>
             </pluginRepositories>
-            <id>bintray</id>
+            <key>bintray</key>
         </profile>
     </profiles>
     <activeProfiles>

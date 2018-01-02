@@ -1,2 +1,2 @@
 # biblebot
-Chat REST integration for printing bible passages. Written in Java with Spring.
+Chat REST integration for printing bible passageDTOS. Written in Java with Spring.

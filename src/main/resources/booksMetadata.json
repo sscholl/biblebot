@@ -54,7 +54,7 @@
       "johannes"
     ]
   },
-  "numeredAdd": [
+  "numberedAdd": [
     "X",
     "X.",
     "X ",
@@ -62,7 +62,7 @@
   ],
   "books": [
     {
-      "id": "1",
+      "number": "1",
       "book_name": "Genesis",
       "book_ref": "Ge",
       "shortcuts": [
@@ -70,13 +70,13 @@
         "ge",
         "gn"
       ],
-      "number": 1,
+      "numberedNumber": 1,
       "isNumbered": true,
       "numberedName": "mose",
       "testament": "O"
     },
     {
-      "id": "2",
+      "number": "2",
       "book_name": "Exodus",
       "book_ref": "Ex",
       "shortcuts": [
@@ -84,13 +84,13 @@
         "ex",
         "exod"
       ],
-      "number": 2,
+      "numberedNumber": 2,
       "isNumbered": true,
       "numberedName": "mose",
       "testament": "O"
     },
     {
-      "id": "3",
+      "number": "3",
       "book_name": "Leviticus",
       "book_ref": "Le",
       "shortcuts": [
@@ -99,13 +99,13 @@
         "lv",
         "levitikus"
       ],
-      "number": 3,
+      "numberedNumber": 3,
       "isNumbered": true,
       "numberedName": "mose",
       "testament": "O"
     },
     {
-      "id": "4",
+      "number": "4",
       "book_name": "Numbers",
       "book_ref": "Nu",
       "shortcuts": [
@@ -115,26 +115,26 @@
         "nb",
         "numeri"
       ],
-      "number": 4,
+      "numberedNumber": 4,
       "isNumbered": true,
       "numberedName": "mose",
       "testament": "O"
     },
     {
-      "id": "5",
+      "number": "5",
       "book_name": "Deuteronomy",
       "book_ref": "De",
       "shortcuts": [
         "deut",
         "dt"
       ],
-      "number": 5,
+      "numberedNumber": 5,
       "isNumbered": true,
       "numberedName": "mose",
       "testament": "O"
     },
     {
-      "id": "6",
+      "number": "6",
       "book_name": "Joshua",
       "book_ref": "Jos",
       "shortcuts": [
@@ -147,7 +147,7 @@
       "testament": "O"
     },
     {
-      "id": "7",
+      "number": "7",
       "book_name": "Judges",
       "book_ref": "Ju",
       "shortcuts": [
@@ -164,7 +164,7 @@
       "testament": "O"
     },
     {
-      "id": "8",
+      "number": "8",
       "book_name": "Ruth",
       "book_ref": "Ru",
       "shortcuts": [
@@ -176,67 +176,67 @@
       "testament": "O"
     },
     {
-      "id": "9",
+      "number": "9",
       "book_name": "1 Samuel",
       "book_ref": "1 S",
       "shortcuts": [],
-      "number": 1,
+      "numberedNumber": 1,
       "isNumbered": true,
       "numberedName": "samuel",
       "testament": "O"
     },
     {
-      "id": "10",
+      "number": "10",
       "book_name": "2 Samuel",
       "book_ref": "2 S",
       "shortcuts": [],
-      "number": 2,
+      "numberedNumber": 2,
       "isNumbered": true,
       "numberedName": "samuel",
       "testament": "O"
     },
     {
-      "id": "11",
+      "number": "11",
       "book_name": "1 Kings",
       "book_ref": "1 K",
       "shortcuts": [],
-      "number": 1,
+      "numberedNumber": 1,
       "isNumbered": true,
       "numberedName": "kings",
       "testament": "O"
     },
     {
-      "id": "12",
+      "number": "12",
       "book_name": "2 Kings",
       "book_ref": "2 K",
       "shortcuts": [],
-      "number": 2,
+      "numberedNumber": 2,
       "isNumbered": true,
       "numberedName": "kings",
       "testament": "O"
     },
     {
-      "id": "13",
+      "number": "13",
       "book_name": "1 Chronicles",
       "book_ref": "1 Chr",
       "shortcuts": [],
-      "number": 1,
+      "numberedNumber": 1,
       "isNumbered": true,
       "numberedName": "chronicles",
       "testament": "O"
     },
     {
-      "id": "14",
+      "number": "14",
       "book_name": "2 Chronicles",
       "book_ref": "2 Chr",
       "shortcuts": [],
-      "number": 2,
+      "numberedNumber": 2,
       "isNumbered": true,
       "numberedName": "chronicles",
       "testament": "O"
     },
     {
-      "id": "15",
+      "number": "15",
       "book_name": "Ezra",
       "book_ref": "Ezr",
       "shortcuts": [
@@ -249,7 +249,7 @@
       "testament": "O"
     },
     {
-      "id": "16",
+      "number": "16",
       "book_name": "Nehemiah",
       "book_ref": "Ne",
       "shortcuts": [
@@ -262,7 +262,7 @@
       "testament": "O"
     },
     {
-      "id": "17",
+      "number": "17",
       "book_name": "Esther",
       "book_ref": "Est",
       "shortcuts": [
@@ -274,7 +274,7 @@
       "testament": "O"
     },
     {
-      "id": "18",
+      "number": "18",
       "book_name": "Job",
       "book_ref": "Jb",
       "shortcuts": [
@@ -287,7 +287,7 @@
       "testament": "O"
     },
     {
-      "id": "19",
+      "number": "19",
       "book_name": "Psalms",
       "book_ref": "Ps",
       "shortcuts": [
@@ -306,7 +306,7 @@
       "testament": "O"
     },
     {
-      "id": "20",
+      "number": "20",
       "book_name": "Proverbs",
       "book_ref": "Pr",
       "shortcuts": [
@@ -323,7 +323,7 @@
       "testament": "O"
     },
     {
-      "id": "21",
+      "number": "21",
       "book_name": "Ecclesiastes",
       "book_ref": "Ec",
       "shortcuts": [
@@ -343,7 +343,7 @@
       "testament": "O"
     },
     {
-      "id": "22",
+      "number": "22",
       "book_name": "Song of Solomon",
       "book_ref": "Song",
       "shortcuts": [
@@ -365,7 +365,7 @@
       "testament": "O"
     },
     {
-      "id": "23",
+      "number": "23",
       "book_name": "Isaiah",
       "book_ref": "Is",
       "shortcuts": [
@@ -379,7 +379,7 @@
       "testament": "O"
     },
     {
-      "id": "24",
+      "number": "24",
       "book_name": "Jeremiah",
       "book_ref": "Je",
       "shortcuts": [
@@ -393,7 +393,7 @@
       "testament": "O"
     },
     {
-      "id": "25",
+      "number": "25",
       "book_name": "Lamentations",
       "book_ref": "La",
       "shortcuts": [
@@ -408,7 +408,7 @@
       "testament": "O"
     },
     {
-      "id": "26",
+      "number": "26",
       "book_name": "Ezekiel",
       "book_ref": "Ez",
       "shortcuts": [
@@ -427,7 +427,7 @@
       "testament": "O"
     },
     {
-      "id": "27",
+      "number": "27",
       "book_name": "Daniel",
       "book_ref": "Da",
       "shortcuts": [
@@ -439,7 +439,7 @@
       "testament": "O"
     },
     {
-      "id": "28",
+      "number": "28",
       "book_name": "Hosea",
       "book_ref": "Ho",
       "shortcuts": [
@@ -451,7 +451,7 @@
       "testament": "O"
     },
     {
-      "id": "29",
+      "number": "29",
       "book_name": "Joel",
       "book_ref": "Joel",
       "shortcuts": [
@@ -463,7 +463,7 @@
       "testament": "O"
     },
     {
-      "id": "30",
+      "number": "30",
       "book_name": "Amos",
       "book_ref": "Am",
       "shortcuts": [
@@ -473,7 +473,7 @@
       "testament": "O"
     },
     {
-      "id": "31",
+      "number": "31",
       "book_name": "Obadiah",
       "book_ref": "Obad",
       "shortcuts": [
@@ -487,7 +487,7 @@
       "testament": "O"
     },
     {
-      "id": "32",
+      "number": "32",
       "book_name": "Jonah",
       "book_ref": "Jona",
       "shortcuts": [
@@ -500,7 +500,7 @@
       "testament": "O"
     },
     {
-      "id": "33",
+      "number": "33",
       "book_name": "Micah",
       "book_ref": "Mi",
       "shortcuts": [
@@ -513,7 +513,7 @@
       "testament": "O"
     },
     {
-      "id": "34",
+      "number": "34",
       "book_name": "Nahum",
       "book_ref": "Na",
       "shortcuts": [
@@ -524,7 +524,7 @@
       "testament": "O"
     },
     {
-      "id": "35",
+      "number": "35",
       "book_name": "Habakkuk",
       "book_ref": "Ha",
       "shortcuts": [
@@ -536,7 +536,7 @@
       "testament": "O"
     },
     {
-      "id": "36",
+      "number": "36",
       "book_name": "Zephaniah",
       "book_ref": "Zeph",
       "shortcuts": [
@@ -552,7 +552,7 @@
       "testament": "O"
     },
     {
-      "id": "37",
+      "number": "37",
       "book_name": "Haggai",
       "book_ref": "Hagg",
       "shortcuts": [
@@ -564,7 +564,7 @@
       "testament": "O"
     },
     {
-      "id": "38",
+      "number": "38",
       "book_name": "Zechariah",
       "book_ref": "Zech",
       "shortcuts": [
@@ -579,7 +579,7 @@
       "testament": "O"
     },
     {
-      "id": "39",
+      "number": "39",
       "book_name": "Malachi",
       "book_ref": "Ma",
       "shortcuts": [
@@ -593,7 +593,7 @@
       "testament": "O"
     },
     {
-      "id": "40",
+      "number": "40",
       "book_name": "Matthew",
       "book_ref": "Mt",
       "shortcuts": [
@@ -606,7 +606,7 @@
       "testament": "N"
     },
     {
-      "id": "41",
+      "number": "41",
       "book_name": "Mark",
       "book_ref": "Mak",
       "shortcuts": [
@@ -621,7 +621,7 @@
       "testament": "N"
     },
     {
-      "id": "42",
+      "number": "42",
       "book_name": "Luke",
       "book_ref": "Lk",
       "shortcuts": [
@@ -633,7 +633,7 @@
       "testament": "N"
     },
     {
-      "id": "43",
+      "number": "43",
       "book_name": "John",
       "book_ref": "Jn",
       "shortcuts": [
@@ -647,7 +647,7 @@
       "testament": "N"
     },
     {
-      "id": "44",
+      "number": "44",
       "book_name": "Acts",
       "book_ref": "Ac",
       "shortcuts": [
@@ -662,7 +662,7 @@
       "testament": "N"
     },
     {
-      "id": "45",
+      "number": "45",
       "book_name": "Romans",
       "book_ref": "Ro",
       "shortcuts": [
@@ -677,27 +677,27 @@
       "testament": "N"
     },
     {
-      "id": "46",
+      "number": "46",
       "book_name": "1 Corinthians",
       "book_ref": "1 Co",
       "shortcuts": [],
-      "number": 1,
+      "numberedNumber": 1,
       "isNumbered": true,
       "numberedName": "corinthians",
       "testament": "N"
     },
     {
-      "id": "47",
+      "number": "47",
       "book_name": "2 Corinthians",
       "book_ref": "2 Co",
       "shortcuts": [],
-      "number": 2,
+      "numberedNumber": 2,
       "isNumbered": true,
       "numberedName": "corinthians",
       "testament": "N"
     },
     {
-      "id": "48",
+      "number": "48",
       "book_name": "Galatians",
       "book_ref": "Ga",
       "shortcuts": [
@@ -709,7 +709,7 @@
       "testament": "N"
     },
     {
-      "id": "49",
+      "number": "49",
       "book_name": "Ephesians",
       "book_ref": "Ep",
       "shortcuts": [
@@ -721,7 +721,7 @@
       "testament": "N"
     },
     {
-      "id": "50",
+      "number": "50",
       "book_name": "Philippians",
       "book_ref": "Phl",
       "shortcuts": [
@@ -734,7 +734,7 @@
       "testament": "N"
     },
     {
-      "id": "51",
+      "number": "51",
       "book_name": "Colossians",
       "book_ref": "Co",
       "shortcuts": [
@@ -748,47 +748,47 @@
       "testament": "N"
     },
     {
-      "id": "52",
+      "number": "52",
       "book_name": "1 Thessalonians",
       "book_ref": "1 Th",
       "shortcuts": [],
-      "number": 1,
+      "numberedNumber": 1,
       "isNumbered": true,
       "numberedName": "thessalonians",
       "testament": "N"
     },
     {
-      "id": "53",
+      "number": "53",
       "book_name": "2 Thessalonians",
       "book_ref": "2 Th",
       "shortcuts": [],
-      "number": 2,
+      "numberedNumber": 2,
       "isNumbered": true,
       "numberedName": "thessalonians",
       "testament": "N"
     },
     {
-      "id": "54",
+      "number": "54",
       "book_name": "1 Timothy",
       "book_ref": "1 Ti",
       "shortcuts": [],
-      "number": 1,
+      "numberedNumber": 1,
       "isNumbered": true,
       "numberedName": "timothy",
       "testament": "N"
     },
     {
-      "id": "55",
+      "number": "55",
       "book_name": "2 Timothy",
       "book_ref": "2 Ti",
       "shortcuts": [],
-      "number": 2,
+      "numberedNumber": 2,
       "isNumbered": true,
       "numberedName": "timothy",
       "testament": "N"
     },
     {
-      "id": "56",
+      "number": "56",
       "book_name": "Titus",
       "book_ref": "Tit",
       "shortcuts": [
@@ -799,7 +799,7 @@
       "testament": "N"
     },
     {
-      "id": "57",
+      "number": "57",
       "book_name": "Philemon",
       "book_ref": "Phm",
       "shortcuts": [
@@ -812,7 +812,7 @@
       "testament": "N"
     },
     {
-      "id": "58",
+      "number": "58",
       "book_name": "Hebrews",
       "book_ref": "He",
       "shortcuts": [
@@ -824,7 +824,7 @@
       "testament": "N"
     },
     {
-      "id": "59",
+      "number": "59",
       "book_name": "James",
       "book_ref": "Ja",
       "shortcuts": [
@@ -837,57 +837,57 @@
       "testament": "N"
     },
     {
-      "id": "60",
+      "number": "60",
       "book_name": "1 Peter",
       "book_ref": "1 Pe",
       "shortcuts": [],
-      "number": 1,
+      "numberedNumber": 1,
       "isNumbered": true,
       "numberedName": "peter",
       "testament": "N"
     },
     {
-      "id": "61",
+      "number": "61",
       "book_name": "2 Peter",
       "book_ref": "2 Pe",
       "shortcuts": [],
-      "number": 2,
+      "numberedNumber": 2,
       "isNumbered": true,
       "numberedName": "peter",
       "testament": "N"
     },
     {
-      "id": "62",
+      "number": "62",
       "book_name": "1 John",
       "book_ref": "1 Jhn",
       "shortcuts": [],
-      "number": 1,
+      "numberedNumber": 1,
       "isNumbered": true,
       "numberedName": "john",
       "testament": "N"
     },
     {
-      "id": "63",
+      "number": "63",
       "book_name": "2 John",
       "book_ref": "2 Jhn",
       "shortcuts": [],
-      "number": 2,
+      "numberedNumber": 2,
       "isNumbered": true,
       "numberedName": "john",
       "testament": "N"
     },
     {
-      "id": "64",
+      "number": "64",
       "book_name": "3 John",
       "book_ref": "3 Jhn",
       "shortcuts": [],
-      "number": 3,
+      "numberedNumber": 3,
       "isNumbered": true,
       "numberedName": "john",
       "testament": "N"
     },
     {
-      "id": "65",
+      "number": "65",
       "book_name": "Jude",
       "book_ref": "Jude",
       "shortcuts": [
@@ -898,7 +898,7 @@
       "testament": "N"
     },
     {
-      "id": "66",
+      "number": "66",
       "book_name": "Revelation",
       "book_ref": "Re",
       "shortcuts": [

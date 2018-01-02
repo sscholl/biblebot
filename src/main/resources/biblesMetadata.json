@@ -1,6 +1,6 @@
 [
   {
-    "id": "elberfelder",
+    "key": "elberfelder",
     "language": "German",
     "name": "Elberfelder (1871)",
     "shortcuts": [
@@ -10,7 +10,7 @@
     "direction": "LTR"
   },
   {
-    "id": "elberfelder1905",
+    "key": "elberfelder1905",
     "language": "German",
     "name": "Elberfelder (1905)",
     "shortcuts": [
@@ -22,7 +22,7 @@
     "direction": "LTR"
   },
   {
-    "id": "luther1545",
+    "key": "luther1545",
     "language": "German",
     "name": "Luther (1545)",
     "shortcuts": [
@@ -31,7 +31,7 @@
     "direction": "LTR"
   },
   {
-    "id": "luther1912",
+    "key": "luther1912",
     "language": "German",
     "name": "Luther (1912)",
     "shortcuts": [
@@ -42,7 +42,7 @@
     "direction": "LTR"
   },
   {
-    "id": "schlachter",
+    "key": "schlachter",
     "language": "German",
     "name": "Schlachter (1951)",
     "shortcuts": [
@@ -52,7 +52,7 @@
     "direction": "LTR"
   },
   {
-    "id": "byzantine",
+    "key": "byzantine",
     "language": "Greek",
     "name": "NT Byzantine Majority Text (2000)",
     "shortcuts": [
