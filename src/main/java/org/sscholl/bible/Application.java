@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.ApplicationContext;
 
-@SpringBootApplication(scanBasePackages = {"org.sscholl.bible.common", "org.sscholl.bible.rest", "org.sscholl.bible.biblebot", "org.sscholl.bible.biblereadingplan"})
+@SpringBootApplication(scanBasePackages = {"org.sscholl.bible.common", "org.sscholl.bible.rest", "org.sscholl.bible.biblebot", "org.sscholl.bible.biblereadingplan", "org.sscholl.bible.adapter",})
 public class Application extends SpringBootServletInitializer {
 
     public static void main(String[] args) {

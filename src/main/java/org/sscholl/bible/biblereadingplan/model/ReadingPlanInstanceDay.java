@@ -15,6 +15,9 @@ public class ReadingPlanInstanceDay {
     @JoinColumn(name = "readingPlanInstanceId")
     private ReadingPlanInstance readingPlanInstance;
 
+    @OneToOne
+    private ReadingPlanDay day;
+
     public Integer getId() {
         return id;
     }
@@ -29,5 +32,13 @@ public class ReadingPlanInstanceDay {
 
     public void setReadingPlanInstance(ReadingPlanInstance readingPlanInstance) {
         this.readingPlanInstance = readingPlanInstance;
+    }
+
+    public ReadingPlanDay getDay() {
+        return day;
+    }
+
+    public void setDay(ReadingPlanDay day) {
+        this.day = day;
     }
 }

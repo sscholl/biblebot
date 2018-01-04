@@ -1,12 +1,10 @@
-package org.sscholl.bible.biblebot.service;
+package org.sscholl.bible.adapter.rocketchat.service;
 
 import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.client.ClientProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 import org.sscholl.rocketchat.api.*;
 
@@ -20,32 +18,22 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.UUID;
 
-/**
- * This component will register the integration to Rocket.Chat after the application context is loaded and the
- * Rocket.Chat API is reachable. It waits 300-600 seconds for the Rocket.Chat to come up.
- *
- * @author Simon Scholl
- */
 @Component
-public class RocketChatRegisterService implements ApplicationListener<ApplicationReadyEvent> {
+public class RocketChatService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(RocketChatRegisterService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(RocketChatService.class);
 
-    @Value("${biblebot.integration.host:localhost}")
-    private String integrationHost = "localhost";
-    @Value("${biblebot.integration.port:8081}")
-    private int integrationPort = 8080;
-    @Value("${biblebot.integration.name:biblebot}")
-    private String integrationName = "biblebot";
     @Value("${biblebot.api.host:localhost}")
     private String apiHost = "localhost";
     @Value("${biblebot.api.port:8080}")
     private int apiPort = 8080;
     @Value("${biblebot.api.path:/api/v1}")
     private String apiBasePath = "/api/v1";
+    @Value("${biblebot.api.path:admin}")
+    private String apiUsername = "admin";
+    @Value("${biblebot.api.path:/api/v1}")
+    private String apiPassword = "/api/v1";
 
     private Client client;
     private WebTarget webTarget = null;
@@ -54,7 +42,7 @@ public class RocketChatRegisterService implements ApplicationListener<Applicatio
     @PostConstruct
     public void setUp() {
         ClientConfig configuration = new ClientConfig();
-        configuration.property(ClientProperties.CONNECT_TIMEOUT, 300000);
+        configuration.property(ClientProperties.CONNECT_TIMEOUT, 10000);
         configuration.property(ClientProperties.READ_TIMEOUT, 1000);
         client = ClientBuilder.newClient();
         try {
@@ -64,26 +52,7 @@ public class RocketChatRegisterService implements ApplicationListener<Applicatio
         }
     }
 
-    /**
-     * This event is executed as late as conceivably possible to indicate that
-     * the application is ready to service requests.
-     */
-    @Override
-    public void onApplicationEvent(final ApplicationReadyEvent event) {
-        LOGGER.info("register integration at " + apiHost + ":" + apiPort);
-
-        if (waitForApiHost() && waitAndLoginToApi()) {
-            IntegrationsResponse integrationsResponse = getIntegrationsResponse(loginResponse);
-            if (integrationsResponse.getIntegrations().stream()
-                    .noneMatch(i -> i.getName() != null && i.getName().equals(integrationName))) {
-                getIntegrationCreateResponse(loginResponse);
-            } else {
-                LOGGER.info("integration " + integrationName + " already existing.");
-            }
-        }
-    }
-
-    private boolean waitForApiHost() {
+    public boolean waitForApiHost() {
         LOGGER.info("wait 60 sec for " + apiHost + ":" + apiPort + " to come up");
         for (int i = 0; i < 60; i++) {
             try (Socket socket = new Socket()) {
@@ -103,11 +72,11 @@ public class RocketChatRegisterService implements ApplicationListener<Applicatio
         return false;
     }
 
-    private boolean waitAndLoginToApi() {
+    public boolean waitAndLoginToApi() {
         LOGGER.info("wait 300 sec for REST API " + webTarget.getUri().toString() + " to come up");
         for (int i = 0; i < 300; i++) {
             try {
-                loginResponse = getLoginResponse();
+                loginResponse = getLoginResponse(apiUsername, apiPassword);
                 LOGGER.info("logged in.");
                 return true;
             } catch (ProcessingException e) {
@@ -133,19 +102,23 @@ public class RocketChatRegisterService implements ApplicationListener<Applicatio
      * }
      * }
      *
+     * @param apiUsername username that is used to log in
+     * @param apiPassword password
      * @return json object
      */
-    private LoginResponse getLoginResponse() throws ProcessingException {
+    public LoginResponse getLoginResponse(String apiUsername, String apiPassword) throws ProcessingException {
         WebTarget loginWebTarget = webTarget.path("login");
         Invocation.Builder invocationBuilder = loginWebTarget.request(MediaType.APPLICATION_JSON);
         LoginRequest login = new LoginRequest();
-        login.setUsername("admin");
-        login.setPassword("Mypa55");
+        login.setUsername(apiUsername);
+        login.setPassword(apiPassword);
+
         Response response = invocationBuilder.post(Entity.json(login));
         LOGGER.debug("Response      : " + response.toString());
-        if (response.getStatus() != 200) {
+        if (response.getStatusInfo() != Response.Status.OK) {
             throw new RuntimeException("Failed : HTTP error code: " + response.getStatus());
         }
+
         LoginResponse loginResponse = response.readEntity(LoginResponse.class);
         LOGGER.debug("Response Data : " + loginResponse);
         if (!loginResponse.getStatus().equals("success")) {
@@ -160,19 +133,17 @@ public class RocketChatRegisterService implements ApplicationListener<Applicatio
      * -H "Content-type: application/json" \
      * http://localhost:8080/api/v1/integrations.list
      *
-     * @param loginResponse json object
      * @return json object
      */
-    private IntegrationsResponse getIntegrationsResponse(LoginResponse loginResponse) {
-        WebTarget integrationsWebTarget = webTarget.path("integrations.list");
-        Invocation.Builder invocationBuilder = integrationsWebTarget.request(MediaType.APPLICATION_JSON);
-        invocationBuilder.header("X-Auth-Token", loginResponse.getData().getAuthToken());
-        invocationBuilder.header("X-User-Id", loginResponse.getData().getUserId());
+    public IntegrationsResponse getIntegrationsResponse() {
+        Invocation.Builder invocationBuilder = getInvocationBuilder(webTarget.path("integrations.list"));
+
         Response response = invocationBuilder.get();
         LOGGER.debug("Response      : " + response.toString());
-        if (response.getStatus() != 200) {
+        if (response.getStatusInfo() != Response.Status.OK) {
             throw new RuntimeException("Failed : HTTP error code : " + response.getStatus());
         }
+
         IntegrationsResponse integrationsResponse = response.readEntity(IntegrationsResponse.class);
         LOGGER.debug("Response Data : " + integrationsResponse);
         return integrationsResponse;
@@ -185,38 +156,51 @@ public class RocketChatRegisterService implements ApplicationListener<Applicatio
      * http://localhost:8080/api/v1/integrations.create \
      * -d '{ "type": "webhook-outgoing", "event": "sendMessage", "enabled": true, "name": "biblebot", "channel": "all_public_channels,all_private_groups,all_direct_messages", "username": "rocket.cat", "urls": ["http://biblebot:8081/chat"], "scriptEnabled": false }'
      *
-     * @param loginResponse json object
+     * @param integrationCreateRequest json object
      * @return json object
      */
-    private IntegrationCreateResponse getIntegrationCreateResponse(LoginResponse loginResponse) {
-        WebTarget integrationCreateWebTarget = webTarget.path("integrations.create");
-        Invocation.Builder invocationBuilder = integrationCreateWebTarget.request(MediaType.APPLICATION_JSON);
-        invocationBuilder.header("X-Auth-Token", loginResponse.getData().getAuthToken());
-        invocationBuilder.header("X-User-Id", loginResponse.getData().getUserId());
+    public IntegrationCreateResponse getIntegrationCreateResponse(IntegrationCreateRequest integrationCreateRequest) {
+        Invocation.Builder invocationBuilder = getInvocationBuilder(webTarget.path("integrations.create"));
 
-        IntegrationCreateRequest integrationCreateRequest = new IntegrationCreateRequest();
-        integrationCreateRequest.setType("webhook-outgoing");
-        integrationCreateRequest.setEvent("sendMessage");
-        integrationCreateRequest.setEnabled(true);
-        integrationCreateRequest.setName(integrationName);
-        integrationCreateRequest.setChannel("all_public_channels,all_private_groups,all_direct_messages");
-        integrationCreateRequest.setUsername("rocket.cat");
-        integrationCreateRequest.setToken(UUID.randomUUID().toString().replace("-", ""));
-        integrationCreateRequest.setEmoji(":book:");
-        integrationCreateRequest.setUrls(new ArrayList<>());
-        integrationCreateRequest.getUrls().add("http://" + integrationHost + ":" + integrationPort + "/chat");
-        integrationCreateRequest.setScriptEnabled(false);
         Response response = invocationBuilder.post(Entity.json(integrationCreateRequest));
         LOGGER.debug("Response      : " + response.toString());
-        if (response.getStatus() != 200) {
+        if (response.getStatusInfo() != Response.Status.OK) {
             throw new RuntimeException("Failed : HTTP error code : " + response.getStatus());
         }
+
         IntegrationCreateResponse integrationCreateResponse = response.readEntity(IntegrationCreateResponse.class);
         LOGGER.debug("Response Data : " + integrationCreateResponse);
         if (!integrationCreateResponse.getSuccess()) {
             throw new RuntimeException("Failed : can't create integration: " + integrationCreateResponse.getError());
         }
         return integrationCreateResponse;
+    }
+
+    public String getApiHost() {
+        return apiHost;
+    }
+
+    public int getApiPort() {
+        return apiPort;
+    }
+
+    public String getApiBasePath() {
+        return apiBasePath;
+    }
+
+    public String getApiUsername() {
+        return apiUsername;
+    }
+
+    public LoginResponse getLoginResponse() {
+        return loginResponse;
+    }
+
+    private Invocation.Builder getInvocationBuilder(WebTarget integrationCreateWebTarget) {
+        Invocation.Builder invocationBuilder = integrationCreateWebTarget.request(MediaType.APPLICATION_JSON);
+        invocationBuilder.header("X-Auth-Token", loginResponse.getData().getAuthToken());
+        invocationBuilder.header("X-User-Id", loginResponse.getData().getUserId());
+        return invocationBuilder;
     }
 
 }

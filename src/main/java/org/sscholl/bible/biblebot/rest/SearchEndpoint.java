@@ -1,4 +1,4 @@
-package org.sscholl.bible.common.rest;
+package org.sscholl.bible.biblebot.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

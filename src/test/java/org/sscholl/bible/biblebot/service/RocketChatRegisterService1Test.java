@@ -1,14 +1,11 @@
 package org.sscholl.bible.biblebot.service;
 
-import org.junit.Test;
-
 public class RocketChatRegisterService1Test {
 
-    RocketChatRegisterService service = new RocketChatRegisterService();
+    private static RocketChatRegisterBiblebotService service = new RocketChatRegisterBiblebotService();
 
-    @Test
-    public void onApplicationEvent() {
-        service.setUp();
+    public static void main(String[] args) {
+        service.rocketChatService.setUp();
         service.onApplicationEvent(null);
     }
 }
