@@ -3,13 +3,8 @@ package org.sscholl.bible.biblebot.service;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.sscholl.bible.common.model.Bible;
-import org.sscholl.bible.common.model.Book;
-import org.sscholl.bible.common.model.Chapter;
-import org.sscholl.bible.common.model.Verse;
-import org.sscholl.bible.common.model.dto.PassageDTO;
+import org.sscholl.bible.common.model.dto.*;
 import org.sscholl.bible.common.service.BibleCsvRepository;
-import org.sscholl.bible.common.service.BookCsvRepository;
 
 import javax.annotation.PostConstruct;
 import java.util.HashSet;
@@ -27,13 +22,10 @@ import java.util.stream.Stream;
 @Component
 public class QueryParserService {
 
-    Logger LOG = Logger.getLogger(QueryParserService.class);
+    private static Logger LOGGER = Logger.getLogger(QueryParserService.class);
 
     @Autowired
     private BibleCsvRepository bibleCsvRepository;
-
-    @Autowired
-    private BookCsvRepository bookCsvRepository;
 
     private Pattern regexBibles;
 
@@ -42,9 +34,9 @@ public class QueryParserService {
     @PostConstruct
     public Pattern getRegexBible() {
         if (regexBibles == null) {
-            Set<String> shortcutsBible = bibleCsvRepository.getBibles()
+            Set<String> shortcutsBible = bibleCsvRepository.getBibleDTOS()
                     .stream()
-                    .map(Bible::getShortcuts)
+                    .map(BibleDTO::getShortcuts)
                     .reduce((strings, strings2) -> Stream.concat(strings.stream(), strings2.stream()).collect(Collectors.toSet()))
                     .orElse(new HashSet<>());
 
@@ -59,7 +51,7 @@ public class QueryParserService {
             Set<String> shortcutsBooks = bibleCsvRepository.findBible(bibleCsvRepository.getDefaultBible())
                     .getBooks()
                     .stream()
-                    .map(Book::getShortcuts)
+                    .map(BookDTO::getShortcuts)
                     .reduce((strings, strings2) -> Stream.concat(strings.stream(), strings2.stream()).collect(Collectors.toSet()))
                     .orElse(new HashSet<>());
 
@@ -78,81 +70,81 @@ public class QueryParserService {
         return getRegexPassages().matcher(query.toLowerCase());
     }
 
-    public Bible findBible(String query) {
-        Bible bible = null;
+    public BibleDTO findBible(String query) {
+        BibleDTO bibleDTO = null;
         Matcher matcher = findBibleMatches(query);
 
         if (matcher.find()) {
-            bible = bibleCsvRepository.findBible(matcher.group(1));
-            LOG.debug("[RESULT] found bible " + bible);
+            bibleDTO = bibleCsvRepository.findBible(matcher.group(1));
+            LOGGER.debug("[RESULT] found bibleDTO " + bibleDTO);
         }
-        return bible;
+        return bibleDTO;
     }
 
     public List<PassageDTO> process(String query) {
         List<PassageDTO> passageDTOS = new LinkedList<>();
-        LOG.info("Searching in String: " + query);
+        LOGGER.info("Searching in String: " + query);
 
-        Bible bible = findBible(query);
-        if (bible == null) {
-            bible = bibleCsvRepository.findBible(bibleCsvRepository.getDefaultBible());
+        BibleDTO bibleDTO = findBible(query);
+        if (bibleDTO == null) {
+            bibleDTO = bibleCsvRepository.findBible(bibleCsvRepository.getDefaultBible());
         }
-        LOG.debug("Using bible " + bible.getName());
+        LOGGER.debug("Using bibleDTO " + bibleDTO.getName());
 
         Matcher matcher = findPassagesMatches(query);
         while (matcher.find()) {
 
             // input debug print
-            LOG.debug("regex result: " + matcher.group() + " with " + matcher.groupCount() + " groups.");
+            LOGGER.debug("regex result: " + matcher.group() + " with " + matcher.groupCount() + " groups.");
             for (int i = 0; i <= matcher.groupCount(); i++) {
-                LOG.debug("------------- " + matcher.group(i));
+                LOGGER.debug("------------- " + matcher.group(i));
             }
 
             if (matcher.groupCount() == 5) {
-                Book book = bookCsvRepository.findBook(bible, matcher.group(2));
-                LOG.debug("[RESULT] found book " + book + " by input " + matcher.group(2));
+                BookDTO bookDTO = bibleCsvRepository.findBook(bibleDTO, matcher.group(2));
+                LOGGER.debug("[RESULT] found bookDTO " + bookDTO + " by input " + matcher.group(2));
 
-                if (book != null) {
+                if (bookDTO != null) {
                     int chapterNumber = Integer.parseInt(matcher.group(3));
-                    Chapter chapter = book.getChapter(chapterNumber);
-                    LOG.debug("[RESULT] found chapter " + chapter + " by input " + chapterNumber);
+                    ChapterDTO chapterDTO = bookDTO.getChapter(chapterNumber);
+                    LOGGER.debug("[RESULT] found chapterDTO " + chapterDTO + " by input " + chapterNumber);
 
-                    if (chapter != null) {
-                        // default is all verses of one chapter. e.g.: Ps 1
+                    if (chapterDTO != null) {
+                        // default is all vers of one chapterDTO. e.g.: Ps 1
                         int verseNumberStart = 1;
-                        int verseNumberEnd = chapter.getVerses().size();
+                        int verseNumberEnd = chapterDTO.getVerses().size();
                         if (matcher.group(4) != null) {
                             verseNumberStart = Integer.parseInt(matcher.group(4));
                             if (matcher.group(5) != null) {
-                                // multiple verses. e.g.: Ps 1:4-6 (maximal last verse of chapter and always smaller than verseNumberStart)
-                                verseNumberEnd = Integer.min(chapter.getVerses().size(), Integer.parseInt(matcher.group(5)));
+                                // multiple vers. e.g.: Ps 1:4-6 (maximal last verse of chapterDTO and always smaller than verseNumberStart)
+                                verseNumberEnd = Integer.min(chapterDTO.getVerses().size(), Integer.parseInt(matcher.group(5)));
                                 verseNumberEnd = Integer.max(verseNumberStart, verseNumberEnd);
                             } else {
                                 // only one verse. e.g.: Ps 1:1
                                 verseNumberEnd = verseNumberStart;
                             }
                         }
-                        LOG.debug("[RESULT] found verseNumberStart " + verseNumberStart);
-                        LOG.debug("[RESULT] found verseNumberEnd " + verseNumberEnd);
+                        LOGGER.debug("[RESULT] found verseNumberStart " + verseNumberStart);
+                        LOGGER.debug("[RESULT] found verseNumberEnd " + verseNumberEnd);
 
-                        List<Verse> verses = new LinkedList<>();
+                        List<VerseDTO> verses = new LinkedList<>();
                         for (int i = verseNumberStart; i <= verseNumberEnd; i++) {
-                            Verse verse = chapter.getVerse(i);
+                            VerseDTO verseDTO = chapterDTO.getVerse(i);
 
-                            if (verse != null) {
-                                verses.add(chapter.getVerse(i));
+                            if (verseDTO != null) {
+                                verses.add(chapterDTO.getVerse(i));
                             } else {
-                                LOG.error("Verse " + i + " not found. Input query: " + query);
+                                LOGGER.error("VerseDTO " + i + " not found. Input query: " + query);
                             }
                         }
 
                         if (!verses.isEmpty()) {
                             PassageDTO passageDTO = new PassageDTO();
-                            passageDTO.setTitle(book.getGermanName() + chapter.getNumber());
+                            passageDTO.setTitle(bookDTO.getGermanName() + " " + chapterDTO.getNumber());
                             passageDTO.setQuery(matcher.group());
-                            passageDTO.setBible(bible);
-                            passageDTO.setBook(book);
-                            passageDTO.setChapter(chapter);
+                            passageDTO.setBibleDTO(bibleDTO);
+                            passageDTO.setBookDTO(bookDTO);
+                            passageDTO.setChapterDTO(chapterDTO);
                             passageDTO.getVerses().addAll(verses);
                             passageDTOS.add(passageDTO);
                         }
@@ -160,7 +152,7 @@ public class QueryParserService {
                 }
             }
         }
-        LOG.debug("generate passageDTOS: " + passageDTOS);
+        LOGGER.debug("generate passageDTOS: " + passageDTOS);
         return passageDTOS;
     }
 }

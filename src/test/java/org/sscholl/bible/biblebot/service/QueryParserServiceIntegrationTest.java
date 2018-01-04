@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.sscholl.bible.Application;
-import org.sscholl.bible.common.model.Bible;
+import org.sscholl.bible.common.model.dto.BibleDTO;
 import org.sscholl.bible.common.model.dto.PassageDTO;
 
 import java.util.List;
@@ -57,9 +57,9 @@ public class QueryParserServiceIntegrationTest {
         Matcher matcher = queryParserService.findBibleMatches(query);
 
 //        while (matcher.find()) {
-//            LOG.debug("regex result: " + matcher.group() + " with " + matcher.groupCount() + " groups.");
+//            LOGGER.debug("regex result: " + matcher.group() + " with " + matcher.groupCount() + " groups.");
 //            for (int i = 1; i <= matcher.groupCount(); i++) {
-//                LOG.debug("------------- " + matcher.group(i));
+//                LOGGER.debug("------------- " + matcher.group(i));
 //            }
 //        }
 
@@ -79,9 +79,9 @@ public class QueryParserServiceIntegrationTest {
         Matcher matcher = queryParserService.findPassagesMatches(query);
 
 //        while (matcher.find()) {
-//            LOG.debug("regex result: " + matcher.group() + " with " + matcher.groupCount() + " groups.");
+//            LOGGER.debug("regex result: " + matcher.group() + " with " + matcher.groupCount() + " groups.");
 //            for (int i = 1; i <= matcher.groupCount(); i++) {
-//                LOG.debug("------------- " + matcher.group(i));
+//                LOGGER.debug("------------- " + matcher.group(i));
 //            }
 //        }
 
@@ -116,11 +116,11 @@ public class QueryParserServiceIntegrationTest {
     @Test
     public void findBible() {
         // when
-        Bible bible = queryParserService.findBible(query);
+        BibleDTO bibleDTO = queryParserService.findBible(query);
 
         // then
-        assertThat("No bible found.", bible, notNullValue());
-        assertThat("Wrong bible found.", bible.getName(), equalTo("Luther_(1912)"));
+        assertThat("No bibleDTO found.", bibleDTO, notNullValue());
+        assertThat("Wrong bibleDTO found.", bibleDTO.getName(), equalTo("Luther (1912)"));
     }
 
     @Test
@@ -130,17 +130,17 @@ public class QueryParserServiceIntegrationTest {
 
         // then
         assertThat("Passages result incorrect of " + passageDTOS.toString(), passageDTOS.size(), is(3));
-        assertThat("Passages result incorrect of " + passageDTOS.get(0), passageDTOS.get(0).getBible().getName(), equalTo("Luther_(1912)"));
-        assertThat("Passages result incorrect of " + passageDTOS.get(0), passageDTOS.get(0).getBook().getName(), equalTo("Psalms"));
-        assertThat("Passages result incorrect of " + passageDTOS.get(0), passageDTOS.get(0).getChapter().getNumber(), is(1));
+        assertThat("Passages result incorrect of " + passageDTOS.get(0), passageDTOS.get(0).getBibleDTO().getName(), equalTo("Luther (1912)"));
+        assertThat("Passages result incorrect of " + passageDTOS.get(0), passageDTOS.get(0).getBookDTO().getName(), equalTo("Psalms"));
+        assertThat("Passages result incorrect of " + passageDTOS.get(0), passageDTOS.get(0).getChapterDTO().getNumber(), is(1));
         assertThat("Passages result incorrect of " + passageDTOS.get(0), passageDTOS.get(0).getVerses().size(), is(6));
-        assertThat("Passages result incorrect of " + passageDTOS.get(1), passageDTOS.get(1).getBible().getName(), equalTo("Luther_(1912)"));
-        assertThat("Passages result incorrect of " + passageDTOS.get(1), passageDTOS.get(1).getBook().getName(), equalTo("1 John"));
-        assertThat("Passages result incorrect of " + passageDTOS.get(1), passageDTOS.get(1).getChapter().getNumber(), is(1));
+        assertThat("Passages result incorrect of " + passageDTOS.get(1), passageDTOS.get(1).getBibleDTO().getName(), equalTo("Luther (1912)"));
+        assertThat("Passages result incorrect of " + passageDTOS.get(1), passageDTOS.get(1).getBookDTO().getName(), equalTo("1 John"));
+        assertThat("Passages result incorrect of " + passageDTOS.get(1), passageDTOS.get(1).getChapterDTO().getNumber(), is(1));
         assertThat("Passages result incorrect of " + passageDTOS.get(1), passageDTOS.get(1).getVerses().size(), is(1));
-        assertThat("Passages result incorrect of " + passageDTOS.get(2), passageDTOS.get(2).getBible().getName(), equalTo("Luther_(1912)"));
-        assertThat("Passages result incorrect of " + passageDTOS.get(2), passageDTOS.get(2).getBook().getName(), equalTo("Deuteronomy"));
-        assertThat("Passages result incorrect of " + passageDTOS.get(2), passageDTOS.get(2).getChapter().getNumber(), is(5));
+        assertThat("Passages result incorrect of " + passageDTOS.get(2), passageDTOS.get(2).getBibleDTO().getName(), equalTo("Luther (1912)"));
+        assertThat("Passages result incorrect of " + passageDTOS.get(2), passageDTOS.get(2).getBookDTO().getName(), equalTo("Deuteronomy"));
+        assertThat("Passages result incorrect of " + passageDTOS.get(2), passageDTOS.get(2).getChapterDTO().getNumber(), is(5));
         assertThat("Passages result incorrect of " + passageDTOS.get(2), passageDTOS.get(2).getVerses().size(), is(20));
     }
 

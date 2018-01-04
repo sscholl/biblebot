@@ -1,40 +1,30 @@
-package org.sscholl.bible.common.model;
+package org.sscholl.bible.common.model.dto;
 
 import org.sscholl.bible.common.model.enums.Testament;
 
-import javax.persistence.*;
 import java.util.*;
 
 /**
  * Created by Simon on 01.10.2017.
  */
-//@Entity
-//@Table
-public class Book {
+public class BookDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private int number;
-    @ManyToOne
-    @JoinColumn(name = "bibleId")
-    private Bible bible;
+    private BibleDTO bibleDTO;
     private String name;
     private String germanName;
     private Testament testament;
     private boolean numbered;
     private int numberedNumber;
     private String shortcut;
-    @ElementCollection
     private Set<String> shortcuts = new HashSet<>();
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "book")
-    @MapKey(name = "number")
-    private Map<Integer, Chapter> chapters = new HashMap<>();
+    private Map<Integer, ChapterDTO> chapters = new HashMap<>();
 
-    public Book() {
+    public BookDTO() {
     }
 
-    public Book(Integer number) {
+    public BookDTO(Integer number) {
         this.number = number;
     }
 
@@ -46,12 +36,12 @@ public class Book {
         this.id = id;
     }
 
-    public Bible getBible() {
-        return bible;
+    public BibleDTO getBibleDTO() {
+        return bibleDTO;
     }
 
-    public void setBible(Bible bible) {
-        this.bible = bible;
+    public void setBibleDTO(BibleDTO bibleDTO) {
+        this.bibleDTO = bibleDTO;
     }
 
     public int getNumber() {
@@ -118,18 +108,18 @@ public class Book {
         this.shortcuts = shortcuts;
     }
 
-    public Collection<Chapter> getChapters() {
+    public Collection<ChapterDTO> getChapters() {
         return chapters.values();
     }
 
-    public Chapter getChapter(int number) {
+    public ChapterDTO getChapter(int number) {
         return chapters.get(number);
     }
 
-    public Chapter getOrCreateChapter(int number) {
-        Chapter obj = getChapter(number);
+    public ChapterDTO getOrCreateChapter(int number) {
+        ChapterDTO obj = getChapter(number);
         if (obj == null) {
-            obj = new Chapter(number);
+            obj = new ChapterDTO(number);
             chapters.put(number, obj);
         }
         return obj;
@@ -140,9 +130,9 @@ public class Book {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Book book = (Book) o;
+        BookDTO bookDTO = (BookDTO) o;
 
-        return number == book.number;
+        return number == bookDTO.number;
     }
 
     @Override
@@ -152,7 +142,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" +
+        return "BookDTO{" +
                 "number=" + number +
                 ", name='" + name + '\'' +
                 ", germanName='" + germanName + '\'' +

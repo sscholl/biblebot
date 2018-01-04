@@ -65,7 +65,7 @@ public class ReadingPlanDay {
         return passages;
     }
 
-    public void setPassageDTOS(List<Passage> passage) {
+    public void setPassages(List<Passage> passages) {
         this.passages = passages;
     }
 

@@ -9,7 +9,7 @@ services:
     #    volumes:
     #  - ./uploads:/app/uploads
     environment:
-      - ADMIN_PASS=Mypa55
+      - ADMIN_PASS=password
       - PORT=8080
       - ROOT_URL=http://localhost:8080
       - MONGO_URL=mongodb://mongo:27017/rocketchat
@@ -31,10 +31,13 @@ services:
   biblebot:
     build: .
     environment:
+      - BIBLEBOT_INTEGRATION_ACTIVE=true
       - BIBLEBOT_INTEGRATION_HOST=biblebot
       - BIBLEBOT_INTEGRATION_PORT=8081
       - BIBLEBOT_API_HOST=rocketchat
       - BIBLEBOT_API_PORT=8080
+      - BIBLEBOT_API_USER=admin
+      - BIBLEBOT_API_PASSWORD=password
     links:
       - rocketchat
 

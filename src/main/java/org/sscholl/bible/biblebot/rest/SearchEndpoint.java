@@ -3,7 +3,7 @@ package org.sscholl.bible.biblebot.rest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.sscholl.bible.biblebot.service.QueryParserService;
-import org.sscholl.bible.common.model.Book;
+import org.sscholl.bible.common.model.dto.BookDTO;
 import org.sscholl.bible.common.model.dto.PassageDTO;
 import org.sscholl.bible.common.service.BibleCsvRepository;
 
@@ -41,8 +41,8 @@ public class SearchEndpoint {
     public String keywords() {
         StringBuilder response = new StringBuilder();
         response.append("b:,bible:,");
-        for (Book book : bibleCsvRepository.findBible(bibleCsvRepository.getDefaultBible()).getBooks()) {
-            for (String shortcut : book.getShortcuts()) {
+        for (BookDTO bookDTO : bibleCsvRepository.findBible(bibleCsvRepository.getDefaultBible()).getBooks()) {
+            for (String shortcut : bookDTO.getShortcuts()) {
                 response.append(shortcut).append(",");
             }
         }

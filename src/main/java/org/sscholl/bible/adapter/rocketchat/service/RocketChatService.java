@@ -30,10 +30,10 @@ public class RocketChatService {
     private int apiPort = 8080;
     @Value("${biblebot.api.path:/api/v1}")
     private String apiBasePath = "/api/v1";
-    @Value("${biblebot.api.path:admin}")
-    private String apiUsername = "admin";
-    @Value("${biblebot.api.path:/api/v1}")
-    private String apiPassword = "/api/v1";
+    @Value("${biblebot.api.user:admin}")
+    private String apiUser = "admin";
+    @Value("${biblebot.api.password:password}")
+    private String apiPassword = "password";
 
     private Client client;
     private WebTarget webTarget = null;
@@ -76,7 +76,7 @@ public class RocketChatService {
         LOGGER.info("wait 300 sec for REST API " + webTarget.getUri().toString() + " to come up");
         for (int i = 0; i < 300; i++) {
             try {
-                loginResponse = getLoginResponse(apiUsername, apiPassword);
+                loginResponse = login(apiUser, apiPassword);
                 LOGGER.info("logged in.");
                 return true;
             } catch (ProcessingException e) {
@@ -93,7 +93,7 @@ public class RocketChatService {
     }
 
     /**
-     * curl http://localhost:8080/api/v1/login -d "username=admin&password=Mypa55"
+     * curl http://localhost:8080/api/v1/login -d "username=admin&password=password"
      * {
      * "status": "success",
      * "data": {
@@ -106,7 +106,7 @@ public class RocketChatService {
      * @param apiPassword password
      * @return json object
      */
-    public LoginResponse getLoginResponse(String apiUsername, String apiPassword) throws ProcessingException {
+    public LoginResponse login(String apiUsername, String apiPassword) throws ProcessingException {
         WebTarget loginWebTarget = webTarget.path("login");
         Invocation.Builder invocationBuilder = loginWebTarget.request(MediaType.APPLICATION_JSON);
         LoginRequest login = new LoginRequest();
@@ -115,7 +115,7 @@ public class RocketChatService {
 
         Response response = invocationBuilder.post(Entity.json(login));
         LOGGER.debug("Response      : " + response.toString());
-        if (response.getStatusInfo() != Response.Status.OK) {
+        if (Response.Status.OK.equals(response.getStatusInfo())) {
             throw new RuntimeException("Failed : HTTP error code: " + response.getStatus());
         }
 
@@ -128,6 +128,30 @@ public class RocketChatService {
     }
 
     /**
+     * curl -H "X-Auth-Token: $TOKEN" -H "X-User-Id: $USER" $HOST/api/v1/chat.postMessage \
+     * -d '{ "channel": "#general", "text": "This is a test!" }' -H "Content-type:application/json"
+     *
+     * @param postMessageRequest json object
+     * @return json object
+     */
+    public PostMessageResponse postMessage(PostMessageRequest postMessageRequest) {
+        Invocation.Builder invocationBuilder = getInvocationBuilder(webTarget.path("chat.postMessage"));
+
+        Response response = invocationBuilder.post(Entity.json(postMessageRequest));
+        LOGGER.debug("Response      : " + response.toString());
+        if (Response.Status.OK.equals(response.getStatusInfo())) {
+            throw new RuntimeException("Failed : HTTP error code : " + response.getStatus());
+        }
+
+        PostMessageResponse postMessageResponse = response.readEntity(PostMessageResponse.class);
+        LOGGER.debug("Response Data : " + postMessageResponse);
+        if (!postMessageResponse.getSuccess()) {
+            throw new RuntimeException("Failed : can't post message: " + postMessageResponse.getMessage());
+        }
+        return postMessageResponse;
+    }
+
+    /**
      * curl -H "X-Auth-Token: m7d8tRN-L1oOdj9L-m_poiEIjbYMSYb5fDALn1nX0Pr" \
      * -H "X-User-Id: yudMoQc6dvNx5PmTb" \
      * -H "Content-type: application/json" \
@@ -135,12 +159,12 @@ public class RocketChatService {
      *
      * @return json object
      */
-    public IntegrationsResponse getIntegrationsResponse() {
+    public IntegrationsResponse listIntegrations() {
         Invocation.Builder invocationBuilder = getInvocationBuilder(webTarget.path("integrations.list"));
 
         Response response = invocationBuilder.get();
         LOGGER.debug("Response      : " + response.toString());
-        if (response.getStatusInfo() != Response.Status.OK) {
+        if (Response.Status.OK.equals(response.getStatusInfo())) {
             throw new RuntimeException("Failed : HTTP error code : " + response.getStatus());
         }
 
@@ -159,12 +183,12 @@ public class RocketChatService {
      * @param integrationCreateRequest json object
      * @return json object
      */
-    public IntegrationCreateResponse getIntegrationCreateResponse(IntegrationCreateRequest integrationCreateRequest) {
+    public IntegrationCreateResponse postMessage(IntegrationCreateRequest integrationCreateRequest) {
         Invocation.Builder invocationBuilder = getInvocationBuilder(webTarget.path("integrations.create"));
 
         Response response = invocationBuilder.post(Entity.json(integrationCreateRequest));
         LOGGER.debug("Response      : " + response.toString());
-        if (response.getStatusInfo() != Response.Status.OK) {
+        if (Response.Status.OK.equals(response.getStatusInfo())) {
             throw new RuntimeException("Failed : HTTP error code : " + response.getStatus());
         }
 
@@ -188,12 +212,8 @@ public class RocketChatService {
         return apiBasePath;
     }
 
-    public String getApiUsername() {
-        return apiUsername;
-    }
-
-    public LoginResponse getLoginResponse() {
-        return loginResponse;
+    public String getApiUser() {
+        return apiUser;
     }
 
     private Invocation.Builder getInvocationBuilder(WebTarget integrationCreateWebTarget) {

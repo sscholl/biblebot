@@ -1,31 +1,19 @@
-package org.sscholl.bible.common.model;
-
-import javax.persistence.*;
+package org.sscholl.bible.common.model.dto;
 
 /**
  * Created by Simon on 01.10.2017.
  */
-//@Entity
-//@Table
-public class Verse {
+public class VerseDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     private Integer number;
-
-    @ManyToOne
-    @JoinColumn(name = "chapterId")
-    private Chapter chapter;
-
-    @Lob
+    private ChapterDTO chapterDTO;
     private String text;
 
-    public Verse() {
+    public VerseDTO() {
     }
 
-    public Verse(int number) {
+    public VerseDTO(int number) {
         this.number = number;
     }
 
@@ -46,12 +34,12 @@ public class Verse {
         this.number = number;
     }
 
-    public Chapter getChapter() {
-        return chapter;
+    public ChapterDTO getChapterDTO() {
+        return chapterDTO;
     }
 
-    public void setChapter(Chapter chapter) {
-        this.chapter = chapter;
+    public void setChapterDTO(ChapterDTO chapterDTO) {
+        this.chapterDTO = chapterDTO;
     }
 
     public String getText() {
@@ -67,9 +55,9 @@ public class Verse {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Verse verse = (Verse) o;
+        VerseDTO verseDTO = (VerseDTO) o;
 
-        return number == verse.number;
+        return number == verseDTO.number;
     }
 
     @Override
@@ -79,9 +67,9 @@ public class Verse {
 
     @Override
     public String toString() {
-        return "Verse{" +
+        return "VerseDTO{" +
                 "number=" + number +
-                ", chapter=" + chapter +
+                ", chapterDTO=" + chapterDTO +
                 ", text='" + text + '\'' +
                 '}';
     }

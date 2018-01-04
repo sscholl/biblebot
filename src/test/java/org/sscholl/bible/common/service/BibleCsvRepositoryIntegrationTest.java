@@ -23,7 +23,7 @@ public class BibleCsvRepositoryIntegrationTest {
 
     @Test
     public void getBibles() {
-        assertThat("bibleRepository should load bibles automatically", bibleCsvRepository.getBibles().size(), is(6));
+        assertThat("bibleRepository should load bibles automatically", bibleCsvRepository.getBibleDTOS().size(), is(6));
     }
 
     @Test
@@ -33,7 +33,7 @@ public class BibleCsvRepositoryIntegrationTest {
 
     @Test
     public void findBible() {
-        assertThat("bibleRepository should load bibles automatically", bibleCsvRepository.findBible(bibleCsvRepository.getDefaultBible()).getName(), equalTo("Elberfelder_(1905)"));
+        assertThat("bibleRepository should load bibles automatically", bibleCsvRepository.findBible(bibleCsvRepository.getDefaultBible()).getName(), equalTo("Elberfelder (1905)"));
     }
 
 }

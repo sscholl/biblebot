@@ -10,6 +10,7 @@ public class ReadingPlanInstanceDay {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private Boolean isPosted;
 
     @ManyToOne
     @JoinColumn(name = "readingPlanInstanceId")
@@ -40,5 +41,13 @@ public class ReadingPlanInstanceDay {
 
     public void setDay(ReadingPlanDay day) {
         this.day = day;
+    }
+
+    public Boolean getPosted() {
+        return isPosted;
+    }
+
+    public void setPosted(Boolean posted) {
+        isPosted = posted;
     }
 }

@@ -3,7 +3,8 @@ package org.sscholl.bible.common.service;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.sscholl.bible.common.model.Bible;
+import org.sscholl.bible.common.model.dto.BibleDTO;
+import org.sscholl.bible.common.model.dto.BookDTO;
 
 import javax.annotation.PostConstruct;
 import java.util.Set;
@@ -14,35 +15,50 @@ import java.util.Set;
 @Component
 public class BibleCsvRepository {
 
-    Logger LOG = Logger.getLogger(BibleCsvRepository.class);
+    private static Logger LOGGER = Logger.getLogger(BibleCsvRepository.class);
 
     @Autowired
     private BibleImportService bibleImportService;
 
-    private Set<Bible> bibles;
+    private Set<BibleDTO> bibleDTOS;
 
     @PostConstruct
-    public Set<Bible> getBibles() {
-        if (bibles == null) {
-            setBibles(bibleImportService.loadBibleConfig());
+    public Set<BibleDTO> getBibleDTOS() {
+        if (bibleDTOS == null) {
+            setBibleDTOS(bibleImportService.loadBibleConfig());
         }
-        return bibles;
+        return bibleDTOS;
     }
 
-    public void setBibles(Set<Bible> bibles) {
-        this.bibles = bibles;
+    public void setBibleDTOS(Set<BibleDTO> bibleDTOS) {
+        this.bibleDTOS = bibleDTOS;
     }
 
     public String getDefaultBible() {
         return "elb";
     }
 
-    public Bible findBible(String idOrShortcut) {
-        return getBibles()
+    public BibleDTO findBible(String idOrShortcut) {
+        return getBibleDTOS()
                 .stream()
                 .filter(b -> b.getKey().equals(idOrShortcut) || b.getShortcuts().contains(idOrShortcut.toLowerCase()))
                 .findFirst()
                 .orElse(null);
     }
 
+    public BookDTO findBook(BibleDTO bibleDTO, String idOrShortcut) {
+        return bibleDTO.getBooks()
+                .stream()
+                .filter(b -> String.valueOf(b.getNumber()).equals(idOrShortcut) || b.getShortcuts().contains(idOrShortcut.toLowerCase()))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public BibleImportService getBibleImportService() {
+        return bibleImportService;
+    }
+
+    public void setBibleImportService(BibleImportService bibleImportService) {
+        this.bibleImportService = bibleImportService;
+    }
 }

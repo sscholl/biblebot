@@ -2,12 +2,11 @@ package org.sscholl.bible.common.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.sscholl.bible.common.model.Bible;
-import org.sscholl.bible.common.model.Book;
-import org.sscholl.bible.common.model.Chapter;
-import org.sscholl.bible.common.model.Verse;
+import org.sscholl.bible.common.model.dto.BibleDTO;
+import org.sscholl.bible.common.model.dto.BookDTO;
+import org.sscholl.bible.common.model.dto.ChapterDTO;
+import org.sscholl.bible.common.model.dto.VerseDTO;
 import org.sscholl.bible.common.service.BibleCsvRepository;
-import org.sscholl.bible.common.service.BookCsvRepository;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -23,21 +22,18 @@ public class VerseEndpoint {
     @Autowired
     private BibleCsvRepository bibleCsvRepository;
 
-    @Autowired
-    private BookCsvRepository bookCsvRepository;
-
     @GET
     @Path("/{verseId}")
     @Produces(MediaType.TEXT_PLAIN + ";charset=utf-8")
     public String get(@PathParam("bibleId") String bibleId, @PathParam("bookId") String bookId, @PathParam("chapterId") String chapterId, @PathParam("chapterId") String verseId) {
         StringBuilder response = new StringBuilder();
 
-        Bible bible = bibleCsvRepository.findBible(bibleId);
-        Book book = bookCsvRepository.findBook(bible, bookId);
-        Chapter chapter = book.getChapter(Integer.parseInt(chapterId));
-        Verse verse = chapter.getVerse(Integer.parseInt(chapterId));
+        BibleDTO bibleDTO = bibleCsvRepository.findBible(bibleId);
+        BookDTO bookDTO = bibleCsvRepository.findBook(bibleDTO, bookId);
+        ChapterDTO chapterDTO = bookDTO.getChapter(Integer.parseInt(chapterId));
+        VerseDTO verseDTO = chapterDTO.getVerse(Integer.parseInt(chapterId));
 
-        response.append(verse.toString());
+        response.append(verseDTO.toString());
 
         return response.toString();
     }
@@ -46,11 +42,11 @@ public class VerseEndpoint {
     @Path("/{verseId}/text")
     @Produces(MediaType.TEXT_PLAIN + ";charset=utf-8")
     public String getText(@PathParam("bibleId") String bibleId, @PathParam("bookId") String bookId, @PathParam("chapterId") String chapterId, @PathParam("chapterId") String verseId) {
-        Bible bible = bibleCsvRepository.findBible(bibleId);
-        Book book = bible.getBook(Integer.parseInt(bookId));
-        Chapter chapter = book.getChapter(Integer.parseInt(chapterId));
-        Verse verse = chapter.getVerse(Integer.parseInt(chapterId));
+        BibleDTO bibleDTO = bibleCsvRepository.findBible(bibleId);
+        BookDTO bookDTO = bibleDTO.getBook(Integer.parseInt(bookId));
+        ChapterDTO chapterDTO = bookDTO.getChapter(Integer.parseInt(chapterId));
+        VerseDTO verseDTO = chapterDTO.getVerse(Integer.parseInt(chapterId));
 
-        return verse.getText();
+        return verseDTO.getText();
     }
 }

@@ -6,8 +6,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Component;
-import org.sscholl.bible.common.model.Bible;
-import org.sscholl.bible.common.model.Book;
+import org.sscholl.bible.common.model.dto.BibleDTO;
+import org.sscholl.bible.common.model.dto.BookDTO;
 import org.sscholl.bible.common.model.enums.Testament;
 
 import java.io.IOException;
@@ -22,7 +22,7 @@ public class BookImportService {
     private JSONObject metadata;
     private JSONObject germanNames;
 
-    public void loadBookConfig(Bible bible) throws JSONException {
+    public void loadBookConfig(BibleDTO bibleDTO) throws JSONException {
         getMetadata();
         getGermanNames();
         JSONObject numberedShortcuts = metadata.getJSONObject("numberedShortcuts");
@@ -32,43 +32,43 @@ public class BookImportService {
             JSONObject object = books.getJSONObject(i);
             int number = Integer.parseInt(object.getString("number"));
 
-            Book book = bible.getOrCreateBook(number);
-            if (book != null) {
-                book.setName(object.getString("book_name"));
-                book.setGermanName(germanNames.getString(book.getName()));
+            BookDTO bookDTO = bibleDTO.getOrCreateBook(number);
+            if (bookDTO != null) {
+                bookDTO.setName(object.getString("book_name"));
+                bookDTO.setGermanName(germanNames.getString(bookDTO.getName()));
 
                 String testament = object.getString("testament");
                 if (Objects.equals(testament, "O")) {
-                    book.setTestament(Testament.OT);
+                    bookDTO.setTestament(Testament.OT);
                 } else if (Objects.equals(testament, "N")) {
-                    book.setTestament(Testament.NT);
+                    bookDTO.setTestament(Testament.NT);
                 } else {
                     throw new IllegalArgumentException("testament:" + testament + " is not valid.");
                 }
 
-                book.setShortcut(object.getString("book_ref"));
+                bookDTO.setShortcut(object.getString("book_ref"));
                 JSONArray shortcuts = object.getJSONArray("shortcuts");
                 for (int j = 0; j < shortcuts.length(); j++) {
-                    book.getShortcuts().add(shortcuts.getString(j));
+                    bookDTO.getShortcuts().add(shortcuts.getString(j));
                 }
 
                 if (object.getBoolean("isNumbered")) {
-                    book.setNumbered(true);
-                    book.setNumberedNumber(object.getInt("numberedNumber"));
+                    bookDTO.setNumbered(true);
+                    bookDTO.setNumberedNumber(object.getInt("numberedNumber"));
 
                     // adding numbered shortcuts
                     for (int j = 0; j < numberedAdd.length(); j++) {
                         String numberedPrefix = numberedAdd.getString(j);
                         String numberedName = object.getString("numberedName");
-                        book.getShortcuts().add(numberedPrefix.replace("X", String.valueOf(book.getNumberedNumber())) + numberedName);
+                        bookDTO.getShortcuts().add(numberedPrefix.replace("X", String.valueOf(bookDTO.getNumberedNumber())) + numberedName);
 
                         JSONArray myNumberedShortcuts = numberedShortcuts.getJSONArray(numberedName);
                         for (int jj = 0; jj < myNumberedShortcuts.length(); jj++) {
-                            book.getShortcuts().add(numberedPrefix.replace("X", String.valueOf(book.getNumberedNumber())) + myNumberedShortcuts.getString(jj));
+                            bookDTO.getShortcuts().add(numberedPrefix.replace("X", String.valueOf(bookDTO.getNumberedNumber())) + myNumberedShortcuts.getString(jj));
                         }
                     }
                 } else {
-                    book.setNumbered(false);
+                    bookDTO.setNumbered(false);
                 }
             }
         }

@@ -1,10 +1,5 @@
 package org.sscholl.bible.common.model.dto;
 
-import org.sscholl.bible.common.model.Bible;
-import org.sscholl.bible.common.model.Book;
-import org.sscholl.bible.common.model.Chapter;
-import org.sscholl.bible.common.model.Verse;
-
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,10 +11,10 @@ public class PassageDTO {
     private Integer id;
     private String title;
     private String query;
-    private Bible bible;
-    private Book book;
-    private Chapter chapter;
-    private List<Verse> verses = new LinkedList<>();
+    private BibleDTO bibleDTO;
+    private BookDTO bookDTO;
+    private ChapterDTO chapterDTO;
+    private List<VerseDTO> verses = new LinkedList<>();
 
     public Integer getId() {
         return id;
@@ -45,31 +40,31 @@ public class PassageDTO {
         this.query = query;
     }
 
-    public Bible getBible() {
-        return bible;
+    public BibleDTO getBibleDTO() {
+        return bibleDTO;
     }
 
-    public void setBible(Bible bible) {
-        this.bible = bible;
+    public void setBibleDTO(BibleDTO bibleDTO) {
+        this.bibleDTO = bibleDTO;
     }
 
-    public Book getBook() {
-        return book;
+    public BookDTO getBookDTO() {
+        return bookDTO;
     }
 
-    public void setBook(Book book) {
-        this.book = book;
+    public void setBookDTO(BookDTO bookDTO) {
+        this.bookDTO = bookDTO;
     }
 
-    public Chapter getChapter() {
-        return chapter;
+    public ChapterDTO getChapterDTO() {
+        return chapterDTO;
     }
 
-    public void setChapter(Chapter chapter) {
-        this.chapter = chapter;
+    public void setChapterDTO(ChapterDTO chapterDTO) {
+        this.chapterDTO = chapterDTO;
     }
 
-    public List<Verse> getVerses() {
+    public List<VerseDTO> getVerses() {
         return verses;
     }
 
@@ -78,9 +73,9 @@ public class PassageDTO {
         return "PassageDTO{" +
                 "title='" + title + '\'' +
                 ", query='" + query + '\'' +
-                ", bibleName=" + bible.getName() +
-                ", bookName=" + book.getName() +
-                ", chapter=" + chapter +
+                ", bibleName=" + bibleDTO.getName() +
+                ", bookName=" + bookDTO.getName() +
+                ", chapterDTO=" + chapterDTO +
                 ", verses=" + verses +
                 '}';
     }

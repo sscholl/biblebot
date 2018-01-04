@@ -6,9 +6,9 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.sscholl.bible.common.model.Bible;
-import org.sscholl.bible.common.model.Book;
-import org.sscholl.bible.common.model.Chapter;
+import org.sscholl.bible.common.model.dto.BibleDTO;
+import org.sscholl.bible.common.model.dto.BookDTO;
+import org.sscholl.bible.common.model.dto.ChapterDTO;
 
 import java.util.Set;
 
@@ -32,23 +32,23 @@ public class BibleImportServiceTest {
 
     @Test
     public void loadBibleConfig() {
-        Set<Bible> bibles = bibleImportService.loadBibleConfig();
-        Assert.assertEquals(6, bibles.size());
-        for (Bible bible : bibles) {
-            System.out.println(bible);
+        Set<BibleDTO> bibleDTOS = bibleImportService.loadBibleConfig();
+        Assert.assertEquals(6, bibleDTOS.size());
+        for (BibleDTO bibleDTO : bibleDTOS) {
+            System.out.println(bibleDTO);
             int chaptersCount = 0;
             int versesCount = 0;
-            for (Book book : bible.getBooks()) {
-                chaptersCount += book.getChapters().size();
-                for (Chapter chapter : book.getChapters()) {
-                    versesCount += chapter.getVerses().size();
+            for (BookDTO bookDTO : bibleDTO.getBooks()) {
+                chaptersCount += bookDTO.getChapters().size();
+                for (ChapterDTO chapterDTO : bookDTO.getChapters()) {
+                    versesCount += chapterDTO.getVerses().size();
                 }
             }
             System.out.println("chaptersCount: " + chaptersCount + ", versesCount:" + versesCount);
-            assertThat("a bible needs to have books", bible.getBooks().size(), greaterThan(0));
-            assertThat("a bible needs to have chapters", chaptersCount, greaterThan(0));
-            assertThat("a bible needs to have verses", versesCount, greaterThan(0));
+            assertThat("a bibleDTO needs to have books", bibleDTO.getBooks().size(), greaterThan(0));
+            assertThat("a bibleDTO needs to have chapters", chaptersCount, greaterThan(0));
+            assertThat("a bibleDTO needs to have verses", versesCount, greaterThan(0));
         }
-        verify(bookImportService, times(bibles.size())).loadBookConfig(any());
+        verify(bookImportService, times(bibleDTOS.size())).loadBookConfig(any());
     }
 }

@@ -1,0 +1,74 @@
+{
+  "ts": 1515101276217,
+  "channel": "#general",
+  "message": {
+    "alias": "Gruggy",
+    "msg": "Sample message",
+    "attachments": [
+      {
+        "color": "#ff0000",
+        "text": "Yay for gruggy!",
+        "ts": "2016-12-09T16:53:06.761Z",
+        "thumb_url": "http://res.guggy.com/logo_128.png",
+        "message_link": "https://google.com",
+        "collapsed": false,
+        "author_name": "Bradley Hilton",
+        "author_link": "https://rocket.chat/",
+        "author_icon": "https://avatars.githubusercontent.com/u/850391?v=3",
+        "title": "Attachment Example",
+        "title_link": "https://youtube.com",
+        "title_link_download": "https://rocket.chat/download",
+        "image_url": "http://res.guggy.com/logo_128.png",
+        "audio_url": "http://www.w3schools.com/tags/horse.mp3",
+        "video_url": "http://www.w3schools.com/tags/movie.mp4",
+        "fields": [
+          {
+            "short": true,
+            "title": "Test",
+            "value": "Testing out something or other"
+          },
+          {
+            "short": true,
+            "title": "Another Test",
+            "value": "[Link](https://google.com/) something and this and that."
+          }
+        ]
+      }
+    ],
+    "parseUrls": false,
+    "groupable": false,
+    "avatar": "http://res.guggy.com/logo_128.png",
+    "ts": "2018-01-04T21:27:56.207Z",
+    "u": {
+      "_id": "zntec7hj4NSHkyRNv",
+      "username": "admin",
+      "name": "Administrator"
+    },
+    "rid": "GENERAL",
+    "mentions": [],
+    "channels": [],
+    "_updatedAt": "2018-01-04T21:27:56.209Z",
+    "_id": "YuDHbaYMEdeWrA42L"
+  },
+  "success": true
+}
+
+{
+  "ts": 1481748965123576L,
+  "channel": "general",
+  "message": {
+    "alias": "",
+    "msg": "This is a test!",
+    "parseUrls": true,
+    "groupable": false,
+    "ts": "2016-12-14T20:56:05.117Z",
+    "u": {
+      "_id": "y65tAmHs93aDChMWu",
+      "username": "graywolf336"
+    },
+    "rid": "GENERAL",
+    "_updatedAt": "2016-12-14T20:56:05.119Z",
+    "_id": "jC9chsFddTvsbFQG7"
+  },
+  "success": true
+}

@@ -25,6 +25,8 @@ public class ChatEndpoint {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ChatEndpoint.class);
 
+    private final String botAlias = "Bible";
+
     @Autowired
     private QueryParserService queryParserService;
 
@@ -33,6 +35,12 @@ public class ChatEndpoint {
     @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
     public MessageSentResponse post(MessageSentRequest messageSentRequest) {
         LOGGER.debug("messageSentRequest" + messageSentRequest);
+
+        if (botAlias.equals(messageSentRequest.getAlias())) {
+            LOGGER.debug("Not processing this message, because was sent by myself.");
+            return null;
+        }
+
         List<PassageDTO> passageDTOS = queryParserService.process(messageSentRequest.getText());
 
         MessageSentResponse response = null;
@@ -40,8 +48,8 @@ public class ChatEndpoint {
             LOGGER.debug("passageDTOS found: " + passageDTOS);
 
             response = new MessageSentResponse();
-            response.setUsername("Bible");
-            //response.setText("Bible passageDTOS by translation " + passageDTOS.get(0).getBible().getName());
+            response.setUsername(botAlias);
+            //response.setText("Bible passage by translation " + passageDTOS.get(0).getBibleDTO().getName());
             response.setText("");
             response.setResponseType("in_channel");
             response.setAttachments(new ArrayList<>());
@@ -49,14 +57,16 @@ public class ChatEndpoint {
                 Attachment attachment = new Attachment();
                 attachment.setTitle(passageDTO.getTitle());
                 attachment.setText(
-                        passageDTO.getVerses().stream().map(verse -> "*" + verse.getNumber() + "* " + verse.getText()).reduce((s, s2) -> s + " " + s2).orElse("")
+                        passageDTO.getVerses().stream()
+                                .map(verse -> "*" + verse.getNumber() + "* " + verse.getText())
+                                .reduce((s, s2) -> s + " " + s2).orElse("")
                                 + "\n\n"
-                                + "_" + passageDTO.getBible().getName() + "_"
+                                + "_" + passageDTO.getBibleDTO().getName() + "_"
                 );
                 attachment.setTitleLink("https://www.bibleserver.com/text/NGU/" + passageDTO.getQuery());
                 //TODO: attachment.setFallback(attachment.getTitle() + ": " + attachment.getText());
                 attachment.setColor("good");
-                attachment.setFooter(passageDTO.getBible().getName());
+                attachment.setFooter(passageDTO.getBibleDTO().getName());
                 attachment.setMrkdwnIn(new ArrayList<>());
                 attachment.getMrkdwnIn().add("text");
                 attachment.getMrkdwnIn().add("pretext");

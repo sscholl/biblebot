@@ -10,10 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
-import org.sscholl.bible.common.model.Bible;
-import org.sscholl.bible.common.model.Book;
-import org.sscholl.bible.common.model.Chapter;
-import org.sscholl.bible.common.model.Verse;
+import org.sscholl.bible.common.model.dto.BibleDTO;
+import org.sscholl.bible.common.model.dto.BookDTO;
+import org.sscholl.bible.common.model.dto.ChapterDTO;
+import org.sscholl.bible.common.model.dto.VerseDTO;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -44,9 +44,9 @@ public class BibleImportService {
 //    @Autowired
 //    private VerseRespository verseRespository;
 
-    public Set<Bible> loadBibleConfig() {
+    public Set<BibleDTO> loadBibleConfig() {
         LOG.debug("loadBibleConfig");
-        Set<Bible> bibles = new HashSet<>();
+        Set<BibleDTO> bibleDTOS = new HashSet<>();
         String json = null;
         try {
             json = Resources.toString(Resources.getResource("biblesMetadata.json"), Charsets.UTF_8);
@@ -61,74 +61,74 @@ public class BibleImportService {
             for (int i = 0; i < array.length(); i++) {
                 object = array.getJSONObject(i);
 //                if (bibleRepository.countAllByKey(object.getString("key")) < 1) {
-                Bible bible = new Bible();
-                bible.setKey(object.getString("key"));
-                bible.setName(object.getString("name"));
-                bible.setLanguage(object.getString("language"));
-                bible.setDirection(object.getString("direction"));
+                BibleDTO bibleDTO = new BibleDTO();
+                bibleDTO.setKey(object.getString("key"));
+                bibleDTO.setName(object.getString("name"));
+                bibleDTO.setLanguage(object.getString("language"));
+                bibleDTO.setDirection(object.getString("direction"));
                 JSONArray shortcuts = object.getJSONArray("shortcuts");
                 for (int j = 0; j < shortcuts.length(); j++) {
-                    bible.getShortcuts().add(shortcuts.getString(j));
+                    bibleDTO.getShortcuts().add(shortcuts.getString(j));
                 }
-                bible.setFileName("bibles/" + bible.getLanguage() + "__" + bible.getName().replace(" ", "_") + "__" + bible.getKey() + "__" + bible.getDirection() + ".txt");
+                bibleDTO.setFileName("bibles/" + bibleDTO.getLanguage() + "__" + bibleDTO.getName().replace(" ", "_") + "__" + bibleDTO.getKey() + "__" + bibleDTO.getDirection() + ".txt");
 
-                bibles.add(bible);
-//                    LOG.debug(bible);
-//                    bibleRepository.save(bible);
+                bibleDTOS.add(bibleDTO);
+//                    LOG.debug(bibleDTO);
+//                    bibleRepository.save(bibleDTO);
 
-                bookImportService.loadBookConfig(bible);
+                bookImportService.loadBookConfig(bibleDTO);
 
-                for (Book book : bible.getBooks()) {
-                    book.setBible(bible);
-//                        LOG.debug(book);
-//                        bookRepository.save(book);
+                for (BookDTO bookDTO : bibleDTO.getBooks()) {
+                    bookDTO.setBibleDTO(bibleDTO);
+//                        LOG.debug(bookDTO);
+//                        bookRepository.save(bookDTO);
                 }
 
-                loadBible(bible);
+                loadBible(bibleDTO);
 //                }
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
-//        for (Bible bible : bibles) {
+//        for (BibleDTO bible : bibleDTOS) {
 //            bibleRepository.save(bible);
-//            for (Book book : bible.getBooks()) {
+//            for (BookDTO book : bible.getBooks()) {
 //                bookRepository.save(book);
-//                for (Chapter chapter : book.getChapters()) {
+//                for (ChapterDTO chapter : book.getChapters()) {
 //                    chapterRepository.save(chapter);
-//                    verseRespository.save(chapter.getVerses());
+//                    verseRespository.save(chapter.getVers());
 //                }
 //            }
 //        }
 
-        return bibles;
+        return bibleDTOS;
     }
 
-    private void loadBible(Bible bible) {
+    private void loadBible(BibleDTO bibleDTO) {
         String line;
         String cvsSplitBy = "\\|\\|";
 
-        try (BufferedReader br = new BufferedReader(new FileReader(new ClassPathResource(bible.getFileName()).getFile()))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(new ClassPathResource(bibleDTO.getFileName()).getFile()))) {
             while ((line = br.readLine()) != null) {
                 // use comma as separator
                 String[] lineContent = line.split(cvsSplitBy);
 
                 Assert.isTrue(lineContent.length == 3 || lineContent.length == 4, "lineContent has wrong length for input line: " + line);
 
-                // Book e.g. 42N or 03O
+                // BookDTO e.g. 42N or 03O
                 Assert.hasLength(lineContent[0], "lineContent[0] is empty");
                 int bookNumber = Integer.parseInt(lineContent[0].substring(0, 2));
                 String testament = lineContent[0].substring(2, 3);
 
-                // Chapter
+                // ChapterDTO
                 Assert.hasLength(lineContent[1], "lineContent[1] is empty");
                 int chapterNumber = Integer.parseInt(lineContent[1]);
 
-                // Verse
+                // VerseDTO
                 Assert.hasLength(lineContent[2], "lineContent[2] is empty");
                 int verseNumber = Integer.parseInt(lineContent[2]);
 
-                // Verse text
+                // VerseDTO text
                 String text;
                 if (lineContent.length == 3) {
                     text = "";
@@ -137,23 +137,30 @@ public class BibleImportService {
                     text = lineContent[3];
                 }
 
-                // Create Book object
-                Book book = bible.getOrCreateBook(bookNumber);
+                // Create BookDTO object
+                BookDTO bookDTO = bibleDTO.getOrCreateBook(bookNumber);
 
-                // Create Chapter object
-                Chapter chapter = book.getOrCreateChapter(chapterNumber);
+                // Create ChapterDTO object
+                ChapterDTO chapterDTO = bookDTO.getOrCreateChapter(chapterNumber);
 
-                // Create Verse object
-                Verse verse = chapter.getOrCreateVerse(verseNumber);
+                // Create VerseDTO object
+                VerseDTO verseDTO = chapterDTO.getOrCreateVerse(verseNumber);
 
-                verse.setChapter(chapter);
-                verse.setText(text);
+                verseDTO.setChapterDTO(chapterDTO);
+                verseDTO.setText(text);
 
-                verse.setChapter(chapter);
+                verseDTO.setChapterDTO(chapterDTO);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    public BookImportService getBookImportService() {
+        return bookImportService;
+    }
+
+    public void setBookImportService(BookImportService bookImportService) {
+        this.bookImportService = bookImportService;
+    }
 }

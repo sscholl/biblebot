@@ -2,8 +2,8 @@ package org.sscholl.bible.common.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.sscholl.bible.common.model.Bible;
-import org.sscholl.bible.common.model.Book;
+import org.sscholl.bible.common.model.dto.BibleDTO;
+import org.sscholl.bible.common.model.dto.BookDTO;
 import org.sscholl.bible.common.service.BibleCsvRepository;
 
 import javax.ws.rs.GET;
@@ -26,16 +26,16 @@ public class BibleEndpoint {
     public String get(@PathParam("bibleId") String bibleId) {
         StringBuilder response = new StringBuilder();
 
-        Bible bible = bibleCsvRepository.findBible(bibleId);
-        if (bible != null) {
-            response.append(bible.toString()).append("<br/><br/>");
-            for (Book book : bible.getBooks()) {
-                response.append(book.toString()).append("<br/>");
+        BibleDTO bibleDTO = bibleCsvRepository.findBible(bibleId);
+        if (bibleDTO != null) {
+            response.append(bibleDTO.toString()).append("<br/><br/>");
+            for (BookDTO bookDTO : bibleDTO.getBooks()) {
+                response.append(bookDTO.toString()).append("<br/>");
             }
 
             return response.toString();
         } else {
-            return "no bible set";
+            return "no bibleDTO set";
         }
     }
 }

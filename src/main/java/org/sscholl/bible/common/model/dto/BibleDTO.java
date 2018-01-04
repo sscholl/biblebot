@@ -1,30 +1,22 @@
-package org.sscholl.bible.common.model;
+package org.sscholl.bible.common.model.dto;
 
-import javax.persistence.*;
 import java.util.*;
 
 /**
  * Created by Simon on 01.10.2017.
  */
-//@Entity
-//@Table
-public class Bible {
+public class BibleDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String key;
     private String name;
     private String language;
     private String direction;
     private String fileName;
-    @ElementCollection
     private Set<String> shortcuts = new HashSet<>();
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "bible")
-    @MapKey(name = "number")
-    private Map<Integer, Book> books = new HashMap<>();
+    private Map<Integer, BookDTO> books = new HashMap<>();
 
-    public Bible() {
+    public BibleDTO() {
     }
 
     public Integer getId() {
@@ -83,18 +75,18 @@ public class Bible {
         this.shortcuts = shortcuts;
     }
 
-    public Collection<Book> getBooks() {
+    public Collection<BookDTO> getBooks() {
         return books.values();
     }
 
-    public Book getBook(int number) {
+    public BookDTO getBook(int number) {
         return books.get(number);
     }
 
-    public Book getOrCreateBook(int number) {
-        Book obj = getBook(number);
+    public BookDTO getOrCreateBook(int number) {
+        BookDTO obj = getBook(number);
         if (obj == null) {
-            obj = new Book(number);
+            obj = new BookDTO(number);
             books.put(number, obj);
         }
         return obj;
@@ -102,7 +94,7 @@ public class Bible {
 
     @Override
     public String toString() {
-        return "Bible{" +
+        return "BibleDTO{" +
                 "id='" + id + '\'' +
                 ", key='" + key + '\'' +
                 ", name='" + name + '\'' +

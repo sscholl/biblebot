@@ -17,6 +17,8 @@ public class ReadingPlanInstance {
 
     private Date startTime;
 
+    private String channel;
+
     /**
      * Ordered list of all days that will be processed by
      */
@@ -45,5 +47,13 @@ public class ReadingPlanInstance {
 
     public void setDays(List<ReadingPlanInstanceDay> days) {
         this.days = days;
+    }
+
+    public String getChannel() {
+        return channel;
+    }
+
+    public void setChannel(String channel) {
+        this.channel = channel;
     }
 }

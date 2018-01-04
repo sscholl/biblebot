@@ -15,9 +15,11 @@ public class ReadingPlan {
     private Integer id;
 
     /**
-     * e.g.: Complete Bible - 2 Year Plan
+     * e.g.: Complete BibleDTO - 2 Year Plan
      */
     private String name;
+
+    private String bibleKey;
 
     /**
      * Ordered list of all days that will be processed by
@@ -47,5 +49,13 @@ public class ReadingPlan {
 
     public void setDays(List<ReadingPlanDay> days) {
         this.days = days;
+    }
+
+    public String getBibleKey() {
+        return bibleKey;
+    }
+
+    public void setBibleKey(String bibleKey) {
+        this.bibleKey = bibleKey;
     }
 }

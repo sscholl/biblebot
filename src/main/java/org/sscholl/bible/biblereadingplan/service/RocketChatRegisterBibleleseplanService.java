@@ -39,7 +39,7 @@ public class RocketChatRegisterBibleleseplanService implements ApplicationListen
         LOGGER.info("register integration at " + rocketChatService.getApiHost() + ":" + rocketChatService.getApiPort());
 
         if (rocketChatService.waitForApiHost() && rocketChatService.waitAndLoginToApi()) {
-            IntegrationsResponse integrationsResponse = rocketChatService.getIntegrationsResponse();
+            IntegrationsResponse integrationsResponse = rocketChatService.listIntegrations();
             if (integrationsResponse.getIntegrations().stream()
                     .noneMatch(i -> i.getName() != null && i.getName().equals(integrationName))) {
                 IntegrationCreateRequest integrationCreateRequest = new IntegrationCreateRequest();
@@ -49,7 +49,7 @@ public class RocketChatRegisterBibleleseplanService implements ApplicationListen
                 integrationCreateRequest.setUsername("rocket.cat");
                 integrationCreateRequest.setEmoji(":book:");
                 integrationCreateRequest.setScriptEnabled(false);
-                rocketChatService.getIntegrationCreateResponse(integrationCreateRequest);
+                rocketChatService.postMessage(integrationCreateRequest);
             } else {
                 LOGGER.info("integration " + integrationName + " already existing.");
             }

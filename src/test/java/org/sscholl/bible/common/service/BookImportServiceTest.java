@@ -1,8 +1,8 @@
 package org.sscholl.bible.common.service;
 
 import org.junit.Test;
-import org.sscholl.bible.common.model.Bible;
-import org.sscholl.bible.common.model.Book;
+import org.sscholl.bible.common.model.dto.BibleDTO;
+import org.sscholl.bible.common.model.dto.BookDTO;
 
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
@@ -16,16 +16,16 @@ public class BookImportServiceTest {
 
     @Test
     public void loadBookConfig() {
-        Bible bible = new Bible();
+        BibleDTO bibleDTO = new BibleDTO();
 
-        bookImportService.loadBookConfig(bible);
+        bookImportService.loadBookConfig(bibleDTO);
 
-        for (Book book : bible.getBooks()) {
-            assertThat("issue found for book " + book, book.getNumber(), notNullValue());
-            assertThat("issue found for book " + book, book.getName(), notNullValue());
-            assertThat("issue found for book " + book, book.getGermanName(), notNullValue());
-            assertThat("issue found for book " + book, book.getTestament(), notNullValue());
-            System.out.println(book);
+        for (BookDTO bookDTO : bibleDTO.getBooks()) {
+            assertThat("issue found for bookDTO " + bookDTO, bookDTO.getNumber(), notNullValue());
+            assertThat("issue found for bookDTO " + bookDTO, bookDTO.getName(), notNullValue());
+            assertThat("issue found for bookDTO " + bookDTO, bookDTO.getGermanName(), notNullValue());
+            assertThat("issue found for bookDTO " + bookDTO, bookDTO.getTestament(), notNullValue());
+            System.out.println(bookDTO);
         }
     }
 
