@@ -9,7 +9,7 @@ import java.util.List;
  */
 @Entity
 @Table
-public class ReadingPlanInstance {
+public class PlanInstance {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,8 +28,8 @@ public class ReadingPlanInstance {
     /**
      * Ordered list of all days that will be processed.
      */
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "readingPlanInstance")
-    private List<ReadingPlanInstanceDay> days;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "planInstance")
+    private List<PlanInstanceDay> days;
 
     public Plan getPlan() {
         return plan;
@@ -47,11 +47,11 @@ public class ReadingPlanInstance {
         this.startDate = startDate;
     }
 
-    public List<ReadingPlanInstanceDay> getDays() {
+    public List<PlanInstanceDay> getDays() {
         return days;
     }
 
-    public void setDays(List<ReadingPlanInstanceDay> days) {
+    public void setDays(List<PlanInstanceDay> days) {
         this.days = days;
     }
 

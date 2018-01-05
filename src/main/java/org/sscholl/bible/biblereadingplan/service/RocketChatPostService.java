@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.sscholl.bible.adapter.rocketchat.service.RocketChatService;
 import org.sscholl.bible.biblereadingplan.model.Passage;
-import org.sscholl.bible.biblereadingplan.model.ReadingPlanDay;
-import org.sscholl.bible.biblereadingplan.model.ReadingPlanInstanceDay;
+import org.sscholl.bible.biblereadingplan.model.PlanDay;
+import org.sscholl.bible.biblereadingplan.model.PlanInstanceDay;
 import org.sscholl.bible.common.model.dto.BibleDTO;
 import org.sscholl.bible.common.model.dto.BookDTO;
 import org.sscholl.bible.common.model.dto.ChapterDTO;
@@ -31,11 +31,11 @@ public class RocketChatPostService {
     @Autowired
     private BibleCsvRepository bibleCsvRepository;
 
-    public boolean post(ReadingPlanInstanceDay instanceDay) {
-        ReadingPlanDay day = instanceDay.getDay();
+    public boolean post(PlanInstanceDay instanceDay) {
+        PlanDay day = instanceDay.getDay();
 
         PostMessageRequest postMessageRequest = new PostMessageRequest();
-        postMessageRequest.setChannel(instanceDay.getReadingPlanInstance().getChannel());
+        postMessageRequest.setChannel(instanceDay.getPlanInstance().getChannel());
         postMessageRequest.setAlias(day.getPlan().getName());
         postMessageRequest.setEmoji(":book:");
         postMessageRequest.setText(day.getText());

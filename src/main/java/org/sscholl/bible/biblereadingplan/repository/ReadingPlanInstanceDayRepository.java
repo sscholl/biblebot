@@ -1,7 +1,7 @@
 package org.sscholl.bible.biblereadingplan.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.sscholl.bible.biblereadingplan.model.ReadingPlanInstanceDay;
+import org.sscholl.bible.biblereadingplan.model.PlanInstanceDay;
 
 import java.util.Collection;
 import java.util.Date;
@@ -9,12 +9,12 @@ import java.util.Date;
 /**
  * Created by Simon
  */
-public interface ReadingPlanInstanceDayRepository extends JpaRepository<ReadingPlanInstanceDay, Integer> {
+public interface ReadingPlanInstanceDayRepository extends JpaRepository<PlanInstanceDay, Integer> {
 
-    Collection<ReadingPlanInstanceDay> findAllByIsPostedIsFalse();
+    Collection<PlanInstanceDay> findAllByIsPostedIsFalse();
 
-    Collection<ReadingPlanInstanceDay> findAllByIsPostedIsFalseAndScheduledDateBefore(Date beforeDate);
+    Collection<PlanInstanceDay> findAllByIsPostedIsFalseAndScheduledDateBefore(Date beforeDate);
 
-    Collection<ReadingPlanInstanceDay> findAllByIsPostedIsFalseAndScheduledDateBeforeOrderByScheduledDateAsc(Date beforeDate);
+    Collection<PlanInstanceDay> findAllByIsPostedIsFalseAndScheduledDateBeforeOrderByScheduledDateAsc(Date beforeDate);
 
 }

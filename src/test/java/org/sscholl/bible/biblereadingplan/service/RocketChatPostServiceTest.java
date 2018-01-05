@@ -2,7 +2,7 @@ package org.sscholl.bible.biblereadingplan.service;
 
 import org.sscholl.bible.adapter.rocketchat.service.RocketChatService;
 import org.sscholl.bible.biblereadingplan.TestData;
-import org.sscholl.bible.biblereadingplan.model.ReadingPlanInstanceDay;
+import org.sscholl.bible.biblereadingplan.model.PlanInstanceDay;
 import org.sscholl.bible.common.service.BibleCsvRepository;
 import org.sscholl.bible.common.service.BibleImportService;
 import org.sscholl.bible.common.service.BookImportService;
@@ -25,7 +25,7 @@ public class RocketChatPostServiceTest {
         // given
         TestData.createAll();
 
-        for (ReadingPlanInstanceDay instanceDay : TestData.getPlanInstance().getDays()) {
+        for (PlanInstanceDay instanceDay : TestData.getPlanInstance().getDays()) {
             // when
             service.post(instanceDay);
 

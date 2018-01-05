@@ -8,7 +8,7 @@ import java.util.Date;
  */
 @Entity
 @Table
-public class ReadingPlanInstanceDay {
+public class PlanInstanceDay {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,15 +16,15 @@ public class ReadingPlanInstanceDay {
 
     private Boolean isPosted;
     /**
-     * depends on readingPlanInstance date and number of day. Set on update of readingPlanInstance.
+     * depends on planInstance date and number of day. Set on update of planInstance.
      */
     private Date scheduledDate;
 
     @ManyToOne
-    private ReadingPlanInstance readingPlanInstance;
+    private PlanInstance planInstance;
 
     @OneToOne
-    private ReadingPlanDay day;
+    private PlanDay day;
 
     public Integer getId() {
         return id;
@@ -34,19 +34,19 @@ public class ReadingPlanInstanceDay {
         this.id = id;
     }
 
-    public ReadingPlanInstance getReadingPlanInstance() {
-        return readingPlanInstance;
+    public PlanInstance getPlanInstance() {
+        return planInstance;
     }
 
-    public void setReadingPlanInstance(ReadingPlanInstance readingPlanInstance) {
-        this.readingPlanInstance = readingPlanInstance;
+    public void setPlanInstance(PlanInstance planInstance) {
+        this.planInstance = planInstance;
     }
 
-    public ReadingPlanDay getDay() {
+    public PlanDay getDay() {
         return day;
     }
 
-    public void setDay(ReadingPlanDay day) {
+    public void setDay(PlanDay day) {
         this.day = day;
     }
 
@@ -68,11 +68,11 @@ public class ReadingPlanInstanceDay {
 
     @Override
     public String toString() {
-        return "ReadingPlanInstanceDay{" +
+        return "PlanInstanceDay{" +
                 "id=" + id +
                 ", isPosted=" + isPosted +
                 ", scheduledDate=" + scheduledDate +
-                ", readingPlanInstance=" + readingPlanInstance +
+                ", planInstance=" + planInstance +
                 ", day=" + day +
                 '}';
     }

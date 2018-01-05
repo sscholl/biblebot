@@ -25,7 +25,7 @@ public class Plan {
      * Ordered list of all days that will be processed by
      */
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "plan")
-    private List<ReadingPlanDay> days;
+    private List<PlanDay> days;
 
     public Integer getId() {
         return id;
@@ -43,11 +43,11 @@ public class Plan {
         this.name = name;
     }
 
-    public List<ReadingPlanDay> getDays() {
+    public List<PlanDay> getDays() {
         return days;
     }
 
-    public void setDays(List<ReadingPlanDay> days) {
+    public void setDays(List<PlanDay> days) {
         this.days = days;
     }
 

@@ -8,7 +8,7 @@ import java.util.LinkedList;
 public class TestData {
 
     static Plan plan;
-    static ReadingPlanInstance planInstance;
+    static PlanInstance planInstance;
 
     public static void createAll() {
         createPlan();
@@ -19,11 +19,11 @@ public class TestData {
 
     public static void createPlanInstanceDays() {
         //set up instanceDay
-        for (ReadingPlanDay day : plan.getDays()) {
-            ReadingPlanInstanceDay instanceDay = new ReadingPlanInstanceDay();
+        for (PlanDay day : plan.getDays()) {
+            PlanInstanceDay instanceDay = new PlanInstanceDay();
             instanceDay.setPosted(false);
             instanceDay.setDay(day);
-            instanceDay.setReadingPlanInstance(planInstance);
+            instanceDay.setPlanInstance(planInstance);
             instanceDay.setScheduledDate(new Date());
             planInstance.getDays().add(instanceDay);
         }
@@ -31,14 +31,14 @@ public class TestData {
 
     public static void createPlanInstance() {
         // set up planInstance
-        planInstance = new ReadingPlanInstance();
+        planInstance = new PlanInstance();
         planInstance.setChannel("#general");
         planInstance.setPlan(plan);
         planInstance.setDays(new LinkedList<>());
         planInstance.setStartDate(new Date());
     }
 
-    public static ReadingPlanDay createDays() {
+    public static PlanDay createDays() {
         // set up day
         Passage passage = new Passage();
         passage.setTitle("Mose 1:1-4");
@@ -48,7 +48,7 @@ public class TestData {
         passage.setVerseStart(1);
         passage.setVerseEnd(4);
 
-        ReadingPlanDay day = new ReadingPlanDay();
+        PlanDay day = new PlanDay();
         day.setFree(false);
         day.setText("Heute lesen wir 1. Mose 1");
 
@@ -76,11 +76,11 @@ public class TestData {
         TestData.plan = plan;
     }
 
-    public static ReadingPlanInstance getPlanInstance() {
+    public static PlanInstance getPlanInstance() {
         return planInstance;
     }
 
-    public static void setPlanInstance(ReadingPlanInstance planInstance) {
+    public static void setPlanInstance(PlanInstance planInstance) {
         TestData.planInstance = planInstance;
     }
 }

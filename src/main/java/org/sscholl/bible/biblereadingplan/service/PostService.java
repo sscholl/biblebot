@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import org.sscholl.bible.biblereadingplan.model.ReadingPlanInstanceDay;
+import org.sscholl.bible.biblereadingplan.model.PlanInstanceDay;
 import org.sscholl.bible.biblereadingplan.repository.ReadingPlanInstanceDayRepository;
 
 import java.util.Date;
@@ -27,7 +27,7 @@ public class PostService {
     //@Scheduled(cron = "0 /5 * * * ?")
     @Scheduled(cron = "*/10 * * * * *")
     public void process() {
-        for (ReadingPlanInstanceDay day : readingPlanInstanceDayRepository
+        for (PlanInstanceDay day : readingPlanInstanceDayRepository
                 .findAllByIsPostedIsFalseAndScheduledDateBeforeOrderByScheduledDateAsc(new Date())) {
             if (rocketChatPostService.post(day)) {
                 day.setPosted(true);

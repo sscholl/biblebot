@@ -8,8 +8,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.sscholl.bible.biblereadingplan.TestApplicationContext;
 import org.sscholl.bible.biblereadingplan.TestData;
-import org.sscholl.bible.biblereadingplan.model.ReadingPlanDay;
-import org.sscholl.bible.biblereadingplan.model.ReadingPlanInstanceDay;
+import org.sscholl.bible.biblereadingplan.model.PlanDay;
+import org.sscholl.bible.biblereadingplan.model.PlanInstanceDay;
 
 import java.util.Date;
 
@@ -36,11 +36,11 @@ public class PlanInstanceDayRepositoryTest {
 
         // when
         planRepository.saveAndFlush(TestData.getPlan());
-        for (ReadingPlanDay day : TestData.getPlan().getDays()) {
+        for (PlanDay day : TestData.getPlan().getDays()) {
             planDayRepository.saveAndFlush(day);
         }
         planInstanceRepository.saveAndFlush(TestData.getPlanInstance());
-        for (ReadingPlanInstanceDay instanceDay : TestData.getPlanInstance().getDays()) {
+        for (PlanInstanceDay instanceDay : TestData.getPlanInstance().getDays()) {
             planInstanceDayRepository.saveAndFlush(instanceDay);
         }
     }
@@ -48,7 +48,7 @@ public class PlanInstanceDayRepositoryTest {
     @Test
     public void findAllByIsPostedIsFalse() {
         //then
-        for (ReadingPlanInstanceDay instanceDay : planInstanceDayRepository.findAllByIsPostedIsFalse()) {
+        for (PlanInstanceDay instanceDay : planInstanceDayRepository.findAllByIsPostedIsFalse()) {
             System.out.println(instanceDay);
         }
     }
@@ -57,7 +57,7 @@ public class PlanInstanceDayRepositoryTest {
     public void findAllByIsPostedIsFalseAndScheduledDateBefore() {
 
         //then
-        for (ReadingPlanInstanceDay instanceDay : planInstanceDayRepository.
+        for (PlanInstanceDay instanceDay : planInstanceDayRepository.
                 findAllByIsPostedIsFalseAndScheduledDateBefore(new Date())) {
             System.out.println(instanceDay);
         }
@@ -66,7 +66,7 @@ public class PlanInstanceDayRepositoryTest {
     @Test
     public void findAllByIsPostedIsFalseAndScheduledDateBeforeOrderByScheduledDateAsc() {
         //then
-        for (ReadingPlanInstanceDay instanceDay : planInstanceDayRepository
+        for (PlanInstanceDay instanceDay : planInstanceDayRepository
                 .findAllByIsPostedIsFalseAndScheduledDateBeforeOrderByScheduledDateAsc(new Date())) {
             System.out.println(instanceDay);
         }

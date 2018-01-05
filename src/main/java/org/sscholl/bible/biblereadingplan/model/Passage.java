@@ -21,7 +21,7 @@ public class Passage {
     private int verseEnd;
 
     @ManyToOne
-    private ReadingPlanDay day;
+    private PlanDay day;
 
     public Integer getId() {
         return id;
@@ -79,11 +79,11 @@ public class Passage {
         this.verseEnd = verseEnd;
     }
 
-    public ReadingPlanDay getDay() {
+    public PlanDay getDay() {
         return day;
     }
 
-    public void setDay(ReadingPlanDay day) {
+    public void setDay(PlanDay day) {
         this.day = day;
     }
 
