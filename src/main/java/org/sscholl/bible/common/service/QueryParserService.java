@@ -1,10 +1,9 @@
-package org.sscholl.bible.biblebot.service;
+package org.sscholl.bible.common.service;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.sscholl.bible.common.model.dto.*;
-import org.sscholl.bible.common.service.BibleCsvRepository;
 
 import javax.annotation.PostConstruct;
 import java.util.HashSet;

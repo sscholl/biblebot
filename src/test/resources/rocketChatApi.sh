@@ -11,6 +11,9 @@ curl -H "X-Auth-Token: $TOKEN" -H "X-User-Id: $USER" $HOST/api/v1/me
 curl -H "X-Auth-Token: $TOKEN" -H "X-User-Id: $USER" $HOST/api/v1/chat.postMessage \
      -d '{ "channel": "#general", "text": "This is a test!" }' -H "Content-type:application/json"
 
+curl -H "X-Auth-Token: $TOKEN" -H "X-User-Id: $USER" $HOST/api/v1/channels.list
+curl -H "X-Auth-Token: $TOKEN" -H "X-User-Id: $USER" $HOST/api/v1/groups.list
+
 curl -H "X-Auth-Token: $TOKEN" -H "X-User-Id: $USER" $HOST/api/v1/integrations.list -H "Content-type: application/json"
 
 curl -H "X-Auth-Token: $TOKEN" -H "X-User-Id: $USER" $HOST/api/v1/integrations.create \

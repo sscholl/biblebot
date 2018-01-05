@@ -1,0 +1,303 @@
+{
+  "groups": [
+    {
+      "_id": "oqP3ZgmgtG5QuK9EA",
+      "name": "admin-logs",
+      "t": "p",
+      "msgs": 200,
+      "u": {
+        "_id": "y6q3zuFr4WBffmZTh",
+        "username": "simon.scholl"
+      },
+      "customFields": {},
+      "ts": "2017-03-30T07:10:33.743Z",
+      "ro": true,
+      "sysMes": true,
+      "_updatedAt": "2018-01-01T18:06:10.129Z",
+      "lm": "2018-01-01T18:06:10.126Z",
+      "username": "simon.scholl"
+    },
+    {
+      "_id": "EfbcJXmPTWmTcxapv",
+      "name": "diakonat-it",
+      "t": "p",
+      "msgs": 124,
+      "u": {
+        "_id": "y6q3zuFr4WBffmZTh",
+        "username": "simon.scholl"
+      },
+      "customFields": {},
+      "ts": "2017-04-04T20:53:32.067Z",
+      "ro": false,
+      "sysMes": true,
+      "_updatedAt": "2018-01-02T10:44:36.257Z",
+      "lm": "2018-01-02T10:44:36.247Z",
+      "topic": "Allgemeiner Kanal des Diakonats für IT",
+      "description": "Teams: #diakonat-it-website    #diakonat-it-churchtools    #diakonat-it-services    #diakonat-it-support",
+      "username": "lukas.mittermeier"
+    },
+    {
+      "_id": "KE2GP4HTgsHftqFQT",
+      "name": "diakonat-it-a001",
+      "fname": "diakonat-it-a001",
+      "t": "p",
+      "msgs": 26,
+      "u": {
+        "_id": "y6q3zuFr4WBffmZTh",
+        "username": "simon.scholl"
+      },
+      "customFields": {},
+      "ts": "2017-12-06T23:17:02.632Z",
+      "ro": false,
+      "sysMes": true,
+      "_updatedAt": "2017-12-27T16:31:09.847Z",
+      "lm": "2017-12-27T16:31:09.837Z",
+      "topic": "Änderungen am System a001.fegbonn.de"
+    },
+    {
+      "_id": "B95SQnfyQonAfZkBQ",
+      "name": "diakonat-it-a002",
+      "fname": "diakonat-it-a002",
+      "t": "p",
+      "msgs": 8,
+      "u": {
+        "_id": "y6q3zuFr4WBffmZTh",
+        "username": "simon.scholl"
+      },
+      "customFields": {},
+      "ts": "2017-12-06T23:23:09.333Z",
+      "ro": false,
+      "sysMes": true,
+      "_updatedAt": "2017-12-27T16:31:12.607Z",
+      "topic": "Änderungen am System a002.fegbonn.de",
+      "lm": "2017-12-27T16:31:12.601Z"
+    },
+    {
+      "_id": "GzYy7yokJfHAS7JpE",
+      "name": "diakonat-it-bibellesen",
+      "fname": "diakonat-it-bibellesen",
+      "t": "p",
+      "msgs": 26,
+      "u": {
+        "_id": "y6q3zuFr4WBffmZTh",
+        "username": "simon.scholl"
+      },
+      "customFields": {},
+      "ts": "2017-12-03T15:17:38.611Z",
+      "ro": false,
+      "sysMes": true,
+      "_updatedAt": "2017-12-28T18:47:46.554Z",
+      "lm": "2017-12-28T18:47:46.525Z",
+      "topic": "Gemeinde-Bibellese-Projekt 2018",
+      "announcement": "Kurzfristige Einführung einer Diskussionsplattform für das Gemeinde-Bibellese-Projekt 2018",
+      "username": "christoph.bode"
+    },
+    {
+      "_id": "9E9QdzW8PApiTxaPs",
+      "name": "diakonat-it-docker",
+      "t": "p",
+      "msgs": 34,
+      "u": {
+        "_id": "y6q3zuFr4WBffmZTh",
+        "username": "simon.scholl"
+      },
+      "customFields": {},
+      "ts": "2017-06-28T20:46:04.657Z",
+      "ro": false,
+      "sysMes": true,
+      "_updatedAt": "2017-12-30T19:52:13.548Z",
+      "lm": "2017-12-30T19:52:13.525Z",
+      "username": "lukas.mittermeier"
+    },
+    {
+      "_id": "4iNjcPc2DQQ3TdpXx",
+      "name": "diakonat-it-infopoint",
+      "t": "p",
+      "msgs": 52,
+      "u": {
+        "_id": "y6q3zuFr4WBffmZTh",
+        "username": "simon.scholl"
+      },
+      "customFields": {},
+      "ts": "2017-07-10T07:42:17.827Z",
+      "ro": false,
+      "sysMes": true,
+      "_updatedAt": "2017-12-03T20:27:23.338Z",
+      "lm": "2017-12-03T20:27:23.326Z"
+    },
+    {
+      "_id": "PTfkkqLRKEDNJwaGZ",
+      "name": "diakonat-it-issues",
+      "t": "p",
+      "msgs": 858,
+      "u": {
+        "_id": "y6q3zuFr4WBffmZTh",
+        "username": "simon.scholl"
+      },
+      "customFields": {},
+      "ts": "2017-03-30T08:50:09.442Z",
+      "ro": true,
+      "sysMes": true,
+      "_updatedAt": "2017-12-31T13:26:30.528Z",
+      "lm": "2017-12-31T13:26:30.521Z",
+      "fname": "diakonat-it-issues",
+      "muted": [
+        "leonard.mandtler",
+        "joshua.kim",
+        "felix.beck",
+        "daniel.schroeder",
+        "lukas.mittermeier",
+        "jost.voelker",
+        "rocket.cat"
+      ],
+      "reactWhenReadOnly": true,
+      "username": "lukas.mittermeier"
+    },
+    {
+      "_id": "zZdbkmJcogEKQAf6b",
+      "name": "diakonat-it-issues-cloud",
+      "fname": "diakonat-it-issues-cloud",
+      "t": "p",
+      "msgs": 71,
+      "u": {
+        "_id": "y6q3zuFr4WBffmZTh",
+        "username": "simon.scholl"
+      },
+      "customFields": {},
+      "ts": "2017-10-20T07:37:05.246Z",
+      "ro": true,
+      "sysMes": false,
+      "_updatedAt": "2017-12-08T14:32:21.556Z",
+      "muted": [
+        "lukas.mittermeier"
+      ],
+      "reactWhenReadOnly": true,
+      "lm": "2017-12-08T14:32:21.545Z"
+    },
+    {
+      "_id": "mgojtTawA5TW97zBT",
+      "name": "diakonat-it-serverbestellung",
+      "fname": "diakonat-it-serverbestellung",
+      "t": "p",
+      "msgs": 24,
+      "u": {
+        "_id": "y6q3zuFr4WBffmZTh",
+        "username": "simon.scholl"
+      },
+      "customFields": {},
+      "ts": "2017-12-05T15:53:05.157Z",
+      "ro": false,
+      "sysMes": true,
+      "_updatedAt": "2017-12-08T15:39:49.371Z",
+      "lm": "2017-12-08T15:39:49.361Z"
+    },
+    {
+      "_id": "vi5QoeCDvNsYhTAiH",
+      "name": "diakonat-it-support",
+      "t": "p",
+      "msgs": 179,
+      "u": {
+        "_id": "y6q3zuFr4WBffmZTh",
+        "username": "simon.scholl"
+      },
+      "customFields": {},
+      "ts": "2017-04-24T14:32:37.481Z",
+      "ro": false,
+      "sysMes": true,
+      "_updatedAt": "2017-12-31T13:52:48.575Z",
+      "lm": "2017-12-31T13:52:48.570Z",
+      "username": "felix.isaak"
+    },
+    {
+      "_id": "42J9xR3ZWmBWvFHGu",
+      "name": "diakonat-it-website-predigtdienst",
+      "t": "p",
+      "msgs": 8,
+      "u": {
+        "_id": "bHnk8hRmgynzmKHFo",
+        "username": "daniel.schroeder"
+      },
+      "customFields": {},
+      "ts": "2017-07-15T08:59:52.084Z",
+      "ro": false,
+      "sysMes": true,
+      "_updatedAt": "2017-12-29T10:55:08.139Z",
+      "lm": "2017-07-15T09:07:44.916Z",
+      "fname": "diakonat-it-website-predigtdienst"
+    },
+    {
+      "_id": "yTWcrC2sm68NCxBWG",
+      "name": "hoerpel-scholl",
+      "t": "p",
+      "msgs": 2,
+      "u": {
+        "_id": "y6q3zuFr4WBffmZTh",
+        "username": "simon.scholl"
+      },
+      "customFields": {},
+      "ts": "2017-07-02T20:46:26.779Z",
+      "ro": false,
+      "sysMes": true,
+      "_updatedAt": "2017-12-06T12:03:08.091Z",
+      "lm": "2017-07-03T21:27:46.739Z"
+    },
+    {
+      "_id": "ygYLm9dPJyb5esLPu",
+      "name": "test-bibelleseplan",
+      "fname": "test-bibelleseplan",
+      "t": "p",
+      "msgs": 34,
+      "u": {
+        "_id": "y6q3zuFr4WBffmZTh",
+        "username": "simon.scholl"
+      },
+      "customFields": {},
+      "ts": "2017-12-12T14:56:49.407Z",
+      "ro": true,
+      "sysMes": false,
+      "_updatedAt": "2018-01-01T14:26:17.342Z",
+      "muted": [
+        "rocket.cat",
+        "andreas.fehler",
+        "deborah.scholl",
+        "joern.lang",
+        "jost.voelker",
+        "leonard.mandtler",
+        "christoph.bode",
+        "eugen.auschew",
+        "test3.user",
+        "test1.user"
+      ],
+      "lm": "2018-01-01T13:51:20.774Z",
+      "reactWhenReadOnly": true,
+      "topic": "Bibelleseplan 2018/2019",
+      "announcement": "Das hier ist der Prototyp, wie ein Bibelleseplan aussehen könnte. ",
+      "description": "Hier wird jeden Tag die tägliche Bibelstelle gesendet.",
+      "username": "leonard.mandtler"
+    },
+    {
+      "_id": "bRRdhcAZikvJgtBzC",
+      "name": "test-bibelleseplan-diskussion",
+      "fname": "test-bibelleseplan-diskussion",
+      "t": "p",
+      "msgs": 50,
+      "u": {
+        "_id": "y6q3zuFr4WBffmZTh",
+        "username": "simon.scholl"
+      },
+      "customFields": {},
+      "ts": "2017-12-12T14:57:21.934Z",
+      "ro": false,
+      "sysMes": true,
+      "_updatedAt": "2018-01-01T14:31:30.501Z",
+      "lm": "2018-01-01T13:57:18.815Z",
+      "announcement": "Das hier ist der Prototyp, wie eine gemeindeweite Diskussionsplattform aussehen könnte.",
+      "username": "lukas.mittermeier"
+    }
+  ],
+  "offset": 0,
+  "count": 15,
+  "total": 15,
+  "success": true,
+  "developerWarning": "[WARNING]: The \"usernames\" field has been removed for performance reasons. Please use the \"*.members\" endpoint to get a list of members/users in a room."
+}

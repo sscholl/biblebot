@@ -1,4 +1,4 @@
-package org.sscholl.bible.common.model;
+package org.sscholl.bible.biblereadingplan.model;
 
 import javax.persistence.*;
 
@@ -19,6 +19,9 @@ public class Passage {
     private int chapterNumber;
     private int verseStart;
     private int verseEnd;
+
+    @ManyToOne
+    private ReadingPlanDay day;
 
     public Integer getId() {
         return id;
@@ -74,6 +77,14 @@ public class Passage {
 
     public void setVerseEnd(int verseEnd) {
         this.verseEnd = verseEnd;
+    }
+
+    public ReadingPlanDay getDay() {
+        return day;
+    }
+
+    public void setDay(ReadingPlanDay day) {
+        this.day = day;
     }
 
     @Override

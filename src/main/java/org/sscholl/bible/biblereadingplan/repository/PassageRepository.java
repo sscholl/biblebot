@@ -1,7 +1,7 @@
-package org.sscholl.bible.common.repository;
+package org.sscholl.bible.biblereadingplan.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.sscholl.bible.common.model.Passage;
+import org.sscholl.bible.biblereadingplan.model.Passage;
 
 /**
  * Created by Simon

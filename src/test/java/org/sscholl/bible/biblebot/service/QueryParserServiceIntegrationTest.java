@@ -9,6 +9,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.sscholl.bible.Application;
 import org.sscholl.bible.common.model.dto.BibleDTO;
 import org.sscholl.bible.common.model.dto.PassageDTO;
+import org.sscholl.bible.common.service.QueryParserService;
 
 import java.util.List;
 import java.util.regex.Matcher;

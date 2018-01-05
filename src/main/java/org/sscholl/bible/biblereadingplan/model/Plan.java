@@ -8,7 +8,7 @@ import java.util.List;
  */
 @Entity
 @Table
-public class ReadingPlan {
+public class Plan {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +24,7 @@ public class ReadingPlan {
     /**
      * Ordered list of all days that will be processed by
      */
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "readingPlan")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "plan")
     private List<ReadingPlanDay> days;
 
     public Integer getId() {
@@ -58,4 +58,5 @@ public class ReadingPlan {
     public void setBibleKey(String bibleKey) {
         this.bibleKey = bibleKey;
     }
+
 }

@@ -1,12 +1,13 @@
 package org.sscholl.bible.biblereadingplan.service;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.sscholl.bible.adapter.rocketchat.service.RocketChatService;
+import org.sscholl.bible.biblereadingplan.model.Passage;
 import org.sscholl.bible.biblereadingplan.model.ReadingPlanDay;
 import org.sscholl.bible.biblereadingplan.model.ReadingPlanInstanceDay;
-import org.sscholl.bible.common.model.Passage;
 import org.sscholl.bible.common.model.dto.BibleDTO;
 import org.sscholl.bible.common.model.dto.BookDTO;
 import org.sscholl.bible.common.model.dto.ChapterDTO;
@@ -22,7 +23,7 @@ import java.util.List;
 @Component
 public class RocketChatPostService {
 
-    private static Logger LOGGER = Logger.getLogger(RocketChatPostService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(RocketChatPostService.class);
 
     @Autowired
     private RocketChatService rocketChatService;
@@ -30,12 +31,12 @@ public class RocketChatPostService {
     @Autowired
     private BibleCsvRepository bibleCsvRepository;
 
-    void post(ReadingPlanInstanceDay instanceDay) {
+    public boolean post(ReadingPlanInstanceDay instanceDay) {
         ReadingPlanDay day = instanceDay.getDay();
 
         PostMessageRequest postMessageRequest = new PostMessageRequest();
         postMessageRequest.setChannel(instanceDay.getReadingPlanInstance().getChannel());
-        postMessageRequest.setAlias(day.getReadingPlan().getName());
+        postMessageRequest.setAlias(day.getPlan().getName());
         postMessageRequest.setEmoji(":book:");
         postMessageRequest.setText(day.getText());
         postMessageRequest.setAttachments(new LinkedList<>());
@@ -79,11 +80,14 @@ public class RocketChatPostService {
             LOGGER.debug("postMessageResponse " + postMessageResponse.toString());
 
             if (postMessageResponse.getSuccess()) {
-                instanceDay.setPosted(true);
+                return true;
+            } else {
+                LOGGER.error("Could not post message: " + postMessageResponse.getMessage());
             }
         } else {
             LOGGER.error("RocketChat not available");
         }
+        return false;
     }
 
     public RocketChatService getRocketChatService() {

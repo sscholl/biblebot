@@ -1,0 +1,245 @@
+{
+  "channels": [
+    {
+      "_id": "zYddGkSYyp5WJxsaP",
+      "name": "allgemein",
+      "t": "c",
+      "msgs": 735,
+      "u": {
+        "_id": "y6q3zuFr4WBffmZTh",
+        "username": "simon.scholl"
+      },
+      "customFields": {},
+      "ts": "2017-03-30T08:08:45.140Z",
+      "ro": false,
+      "sysMes": true,
+      "_updatedAt": "2018-01-02T10:46:33.063Z",
+      "lm": "2018-01-02T10:46:33.058Z",
+      "default": true,
+      "description": "Der Kanal #allgemein ist der Standard-Kanal des Chats. Aktuell werden hier generelle Themen insbesondere zum Chat selbst besprochen.",
+      "username": "frank.arbeiter"
+    },
+    {
+      "_id": "nKStodrQ8Zris9wJm",
+      "name": "bibelleseplan",
+      "fname": "bibelleseplan",
+      "t": "c",
+      "msgs": 4,
+      "u": {
+        "_id": "27uFoJGk6eqENX9bD",
+        "username": "winfried.ebner"
+      },
+      "customFields": {},
+      "ts": "2018-01-01T14:28:07.296Z",
+      "ro": false,
+      "sysMes": true,
+      "_updatedAt": "2018-01-02T07:46:51.834Z",
+      "username": "simon.scholl",
+      "topic": "Bibel lesen in 2018 und 2019 // nur lesender Zugriff"
+    },
+    {
+      "_id": "TE9wwDdMeoKPbgNhu",
+      "name": "bibelleseplan-diskussion",
+      "fname": "bibelleseplan-diskussion",
+      "t": "c",
+      "msgs": 4,
+      "u": {
+        "_id": "27uFoJGk6eqENX9bD",
+        "username": "winfried.ebner"
+      },
+      "customFields": {},
+      "ts": "2018-01-01T14:25:34.933Z",
+      "ro": false,
+      "sysMes": true,
+      "_updatedAt": "2018-01-01T14:32:46.039Z",
+      "username": "simon.scholl",
+      "topic": "Hier wollen wir über die aktuellen Bibelstellen diskutieren."
+    },
+    {
+      "_id": "s5beaZ8AscSvSzctS",
+      "name": "gruppe-band-vonherzengerzen",
+      "fname": "gruppe-band-vonherzengerzen",
+      "t": "c",
+      "msgs": 19,
+      "u": {
+        "_id": "27uFoJGk6eqENX9bD",
+        "username": "winfried.ebner"
+      },
+      "customFields": {},
+      "ts": "2017-12-08T18:44:09.568Z",
+      "ro": false,
+      "sysMes": false,
+      "_updatedAt": "2018-01-01T15:14:22.112Z",
+      "lm": "2018-01-01T15:14:22.087Z",
+      "username": "simon.scholl"
+    },
+    {
+      "_id": "eE3LBvNedGLBQdMRY",
+      "name": "gruppe-feierabend",
+      "t": "c",
+      "msgs": 2,
+      "u": {
+        "_id": "y6q3zuFr4WBffmZTh",
+        "username": "simon.scholl"
+      },
+      "customFields": {},
+      "ts": "2017-04-04T21:12:07.291Z",
+      "ro": false,
+      "sysMes": true,
+      "_updatedAt": "2017-12-03T17:41:27.317Z",
+      "username": "simon.scholl"
+    },
+    {
+      "_id": "evCgi9ZCjef2k3QyZ",
+      "name": "gruppe-impuls",
+      "t": "c",
+      "msgs": 0,
+      "u": {
+        "_id": "y6q3zuFr4WBffmZTh",
+        "username": "simon.scholl"
+      },
+      "customFields": {},
+      "ts": "2017-04-04T21:11:51.404Z",
+      "ro": false,
+      "sysMes": true,
+      "_updatedAt": "2017-12-03T17:41:27.317Z",
+      "username": "leonard.mandtler"
+    },
+    {
+      "_id": "xnG8jEKqhgzPyEDca",
+      "name": "gruppe-k5leitertraining",
+      "fname": "gruppe-k5leitertraining",
+      "t": "c",
+      "msgs": 9,
+      "u": {
+        "_id": "27uFoJGk6eqENX9bD",
+        "username": "winfried.ebner"
+      },
+      "customFields": {},
+      "ts": "2017-11-25T13:34:07.695Z",
+      "ro": false,
+      "sysMes": false,
+      "_updatedAt": "2018-01-03T20:43:40.277Z",
+      "reactWhenReadOnly": true,
+      "topic": "Leiterforum 24.02.2018",
+      "announcement": "Was wünscht Du Dir für das Leiterforum am 24.02.18?",
+      "lm": "2018-01-03T20:43:40.271Z",
+      "username": "frank.arbeiter"
+    },
+    {
+      "_id": "jTTDjFmBzbWm8jGCH",
+      "name": "gruppe-refresh",
+      "t": "c",
+      "msgs": 0,
+      "u": {
+        "_id": "y6q3zuFr4WBffmZTh",
+        "username": "simon.scholl"
+      },
+      "customFields": {},
+      "ts": "2017-04-04T21:11:57.626Z",
+      "ro": false,
+      "sysMes": true,
+      "_updatedAt": "2017-12-03T17:41:27.317Z",
+      "username": "simon.scholl"
+    },
+    {
+      "_id": "6w4y9s2nSemG3XGxn",
+      "name": "help",
+      "fname": "help",
+      "t": "c",
+      "msgs": 0,
+      "u": {
+        "_id": "y6q3zuFr4WBffmZTh",
+        "username": "simon.scholl"
+      },
+      "customFields": {},
+      "ts": "2017-12-06T11:59:00.851Z",
+      "ro": false,
+      "sysMes": true,
+      "_updatedAt": "2017-12-30T00:00:36.478Z",
+      "archived": true
+    },
+    {
+      "_id": "GENERAL",
+      "ts": "2017-05-16T22:34:47.611Z",
+      "t": "c",
+      "name": "hilfe",
+      "msgs": 646,
+      "default": true,
+      "_updatedAt": "2017-12-30T00:00:36.478Z",
+      "lm": "2017-12-03T21:17:10.031Z",
+      "fname": "hilfe",
+      "username": "frank.arbeiter"
+    },
+    {
+      "_id": "FENpEsWG25DvD6tr5",
+      "name": "hobby-naehen",
+      "t": "c",
+      "msgs": 1,
+      "u": {
+        "_id": "y6q3zuFr4WBffmZTh",
+        "username": "simon.scholl"
+      },
+      "customFields": {},
+      "ts": "2017-04-04T20:54:22.273Z",
+      "ro": false,
+      "sysMes": true,
+      "_updatedAt": "2017-12-06T12:03:08.091Z",
+      "username": "simon.scholl"
+    },
+    {
+      "_id": "R922K3SENqBMueQ8M",
+      "name": "sport",
+      "t": "c",
+      "msgs": 2,
+      "u": {
+        "_id": "y6q3zuFr4WBffmZTh",
+        "username": "simon.scholl"
+      },
+      "customFields": {},
+      "ts": "2017-04-04T20:53:58.031Z",
+      "ro": false,
+      "sysMes": true,
+      "_updatedAt": "2017-12-29T11:39:06.677Z",
+      "username": "simon.scholl"
+    },
+    {
+      "_id": "WYxAfmD29FZAZxnqu",
+      "name": "sport-frisbee",
+      "t": "c",
+      "msgs": 1,
+      "u": {
+        "_id": "y6q3zuFr4WBffmZTh",
+        "username": "simon.scholl"
+      },
+      "customFields": {},
+      "ts": "2017-04-04T20:54:05.528Z",
+      "ro": false,
+      "sysMes": true,
+      "_updatedAt": "2017-12-06T12:03:08.091Z",
+      "username": "simon.scholl"
+    },
+    {
+      "_id": "eBCTGpBBtkShHCj6k",
+      "name": "sport-volleyball",
+      "fname": "sport-volleyball",
+      "t": "c",
+      "msgs": 2,
+      "u": {
+        "_id": "y6q3zuFr4WBffmZTh",
+        "username": "simon.scholl"
+      },
+      "customFields": {},
+      "ts": "2017-12-06T12:02:40.247Z",
+      "ro": false,
+      "sysMes": true,
+      "_updatedAt": "2017-12-29T11:38:11.888Z",
+      "username": "simon.scholl"
+    }
+  ],
+  "count": 14,
+  "offset": 0,
+  "total": 14,
+  "success": true,
+  "developerWarning": "[WARNING]: The \"usernames\" field has been removed for performance reasons. Please use the \"*.members\" endpoint to get a list of members/users in a room."
+}

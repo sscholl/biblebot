@@ -4,8 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.ApplicationContext;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication(scanBasePackages = {"org.sscholl.bible.common", "org.sscholl.bible.rest", "org.sscholl.bible.biblebot", "org.sscholl.bible.biblereadingplan", "org.sscholl.bible.adapter",})
+@EnableScheduling
 public class Application extends SpringBootServletInitializer {
 
     public static void main(String[] args) {

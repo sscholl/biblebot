@@ -1,44 +1,50 @@
 package org.sscholl.bible.biblereadingplan.model;
 
-import javax.persistence.CascadeType;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
 /**
  * This class represents an instantiation of a reading plan, indicated by the start day.
  */
+@Entity
+@Table
 public class ReadingPlanInstance {
 
-    @OneToOne
-    private ReadingPlan readingPlan;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-    private Date startTime;
-
-    private String channel;
+    private Date startDate;
 
     /**
-     * Ordered list of all days that will be processed by
+     * channel name inclusive "#", e.g.: #general
+     */
+    private String channel;
+
+    @OneToOne
+    private Plan plan;
+
+    /**
+     * Ordered list of all days that will be processed.
      */
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "readingPlanInstance")
     private List<ReadingPlanInstanceDay> days;
 
-    public ReadingPlan getReadingPlan() {
-        return readingPlan;
+    public Plan getPlan() {
+        return plan;
     }
 
-    public void setReadingPlan(ReadingPlan readingPlan) {
-        this.readingPlan = readingPlan;
+    public void setPlan(Plan plan) {
+        this.plan = plan;
     }
 
-    public Date getStartTime() {
-        return startTime;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
     public List<ReadingPlanInstanceDay> getDays() {
@@ -55,5 +61,13 @@ public class ReadingPlanInstance {
 
     public void setChannel(String channel) {
         this.channel = channel;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

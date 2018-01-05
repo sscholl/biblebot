@@ -1,19 +1,26 @@
 package org.sscholl.bible.biblereadingplan.model;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by Simon
  */
+@Entity
+@Table
 public class ReadingPlanInstanceDay {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private Boolean isPosted;
+    /**
+     * depends on readingPlanInstance date and number of day. Set on update of readingPlanInstance.
+     */
+    private Date scheduledDate;
 
     @ManyToOne
-    @JoinColumn(name = "readingPlanInstanceId")
     private ReadingPlanInstance readingPlanInstance;
 
     @OneToOne
@@ -49,5 +56,24 @@ public class ReadingPlanInstanceDay {
 
     public void setPosted(Boolean posted) {
         isPosted = posted;
+    }
+
+    public Date getScheduledDate() {
+        return scheduledDate;
+    }
+
+    public void setScheduledDate(Date scheduledDate) {
+        this.scheduledDate = scheduledDate;
+    }
+
+    @Override
+    public String toString() {
+        return "ReadingPlanInstanceDay{" +
+                "id=" + id +
+                ", isPosted=" + isPosted +
+                ", scheduledDate=" + scheduledDate +
+                ", readingPlanInstance=" + readingPlanInstance +
+                ", day=" + day +
+                '}';
     }
 }

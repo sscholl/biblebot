@@ -1,7 +1,5 @@
 package org.sscholl.bible.biblereadingplan.model;
 
-import org.sscholl.bible.common.model.Passage;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -17,8 +15,7 @@ public class ReadingPlanDay {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "readingPlanId")
-    private ReadingPlan readingPlan;
+    private Plan plan;
 
     /**
      * Some days will not have anything to be read. In this case, this variable is set to true.
@@ -29,7 +26,7 @@ public class ReadingPlanDay {
     /**
      * E.g.: Ps1 and Ps2
      */
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "day")
     private List<Passage> passages;
 
     /**
@@ -45,12 +42,12 @@ public class ReadingPlanDay {
         this.id = id;
     }
 
-    public ReadingPlan getReadingPlan() {
-        return readingPlan;
+    public Plan getPlan() {
+        return plan;
     }
 
-    public void setReadingPlan(ReadingPlan readingPlan) {
-        this.readingPlan = readingPlan;
+    public void setPlan(Plan plan) {
+        this.plan = plan;
     }
 
     public boolean isFree() {

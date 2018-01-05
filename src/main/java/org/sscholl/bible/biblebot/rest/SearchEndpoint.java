@@ -2,10 +2,10 @@ package org.sscholl.bible.biblebot.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.sscholl.bible.biblebot.service.QueryParserService;
 import org.sscholl.bible.common.model.dto.BookDTO;
 import org.sscholl.bible.common.model.dto.PassageDTO;
 import org.sscholl.bible.common.service.BibleCsvRepository;
+import org.sscholl.bible.common.service.QueryParserService;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

@@ -12,6 +12,7 @@
         </layout>
     </appender>
 
+    <!--<logger name="org.hibernate.sql" level="debug"/>-->
     <logger name="org.sscholl" level="debug"/>
     <root level="WARN">
         <appender-ref ref="STDOUT"/>
