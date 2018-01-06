@@ -34,6 +34,10 @@ public class RocketChatPostService {
     public boolean post(PlanInstanceDay instanceDay) {
         PlanDay day = instanceDay.getDay();
 
+        if (day.isFree() && (day.getText() == null || "".equals(day.getText()))) {
+            return true;
+        }
+
         PostMessageRequest postMessageRequest = new PostMessageRequest();
         postMessageRequest.setChannel(instanceDay.getPlanInstance().getChannel());
         postMessageRequest.setAlias(day.getPlan().getName());
@@ -41,7 +45,7 @@ public class RocketChatPostService {
         postMessageRequest.setText(day.getText());
         postMessageRequest.setAttachments(new LinkedList<>());
         for (Passage passage : day.getPassages()) {
-            BibleDTO bibleDTO = bibleCsvRepository.findBible(passage.getBibleKey());
+            BibleDTO bibleDTO = bibleCsvRepository.findBible(day.getPlan().getBibleKey());
             BookDTO bookDTO = bibleDTO.getBook(passage.getBookNumber());
             ChapterDTO chapterDTO = bookDTO.getChapter(passage.getChapterNumber());
             List<VerseDTO> verses = new LinkedList<>();

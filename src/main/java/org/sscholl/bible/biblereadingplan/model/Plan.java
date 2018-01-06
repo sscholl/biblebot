@@ -25,6 +25,7 @@ public class Plan {
      * Ordered list of all days that will be processed by
      */
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "plan")
+    @OrderColumn
     private List<PlanDay> days;
 
     public Integer getId() {
@@ -59,4 +60,13 @@ public class Plan {
         this.bibleKey = bibleKey;
     }
 
+    @Override
+    public String toString() {
+        return "Plan{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", bibleKey='" + bibleKey + '\'' +
+                ", days=" + days.size() +
+                '}';
+    }
 }

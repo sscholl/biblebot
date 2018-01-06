@@ -18,16 +18,16 @@ import java.util.Date;
 public class PlanInstanceDayRepositoryTest {
 
     @Autowired
-    private ReadingPlanRepository planRepository;
+    private PlanRepository planRepository;
 
     @Autowired
-    private ReadingPlanDayRepository planDayRepository;
+    private PlanDayRepository planDayRepository;
 
     @Autowired
-    private ReadingPlanInstanceRepository planInstanceRepository;
+    private PlanInstanceRepository planInstanceRepository;
 
     @Autowired
-    private ReadingPlanInstanceDayRepository planInstanceDayRepository;
+    private PlanInstanceDayRepository planInstanceDayRepository;
 
     @Before
     public void setUp() {

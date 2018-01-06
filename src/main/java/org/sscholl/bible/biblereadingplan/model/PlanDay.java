@@ -27,11 +27,13 @@ public class PlanDay {
      * E.g.: Ps1 and Ps2
      */
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "day")
+    @OrderColumn
     private List<Passage> passages;
 
     /**
      * E.g.: "Today we will start the the psalms."
      */
+    @Lob
     private String text;
 
     public Integer getId() {
@@ -72,5 +74,16 @@ public class PlanDay {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    @Override
+    public String toString() {
+        return "PlanDay{" +
+                "id=" + id +
+                ", plan=" + plan +
+                ", isFree=" + isFree +
+                ", passages=" + passages +
+                ", text='" + text + '\'' +
+                '}';
     }
 }

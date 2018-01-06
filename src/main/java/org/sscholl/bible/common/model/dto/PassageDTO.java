@@ -1,7 +1,7 @@
 package org.sscholl.bible.common.model.dto;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.Collection;
+import java.util.TreeMap;
 
 /**
  * Created by Simon on 02.10.2017.
@@ -14,7 +14,7 @@ public class PassageDTO {
     private BibleDTO bibleDTO;
     private BookDTO bookDTO;
     private ChapterDTO chapterDTO;
-    private List<VerseDTO> verses = new LinkedList<>();
+    private TreeMap<Integer, VerseDTO> verses = new TreeMap<>();
 
     public Integer getId() {
         return id;
@@ -64,8 +64,30 @@ public class PassageDTO {
         this.chapterDTO = chapterDTO;
     }
 
-    public List<VerseDTO> getVerses() {
-        return verses;
+    public Collection<VerseDTO> getVerses() {
+        return verses.values();
+    }
+
+    public VerseDTO getFirstVerse() {
+        if (verses.firstEntry() != null) {
+            return verses.firstEntry().getValue();
+        }
+        return null;
+    }
+
+    public VerseDTO getLastVerse() {
+        if (verses.lastEntry() != null) {
+            return verses.lastEntry().getValue();
+        }
+        return null;
+    }
+
+    public VerseDTO getVerse(int number) {
+        return verses.get(number);
+    }
+
+    public void addVerse(VerseDTO verseDTO) {
+        verses.put(verseDTO.getNumber(), verseDTO);
     }
 
     @Override

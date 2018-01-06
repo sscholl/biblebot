@@ -6,7 +6,7 @@ import org.sscholl.bible.biblereadingplan.model.PlanInstance;
 /**
  * Created by Simon
  */
-public interface ReadingPlanInstanceRepository extends JpaRepository<PlanInstance, Integer> {
+public interface PlanInstanceRepository extends JpaRepository<PlanInstance, Integer> {
 
 
 }

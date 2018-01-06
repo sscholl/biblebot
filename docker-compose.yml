@@ -5,7 +5,6 @@ version: '3'
 services:
   rocketchat:
     image: rocket.chat
-    restart: unless-stopped
     #    volumes:
     #  - ./uploads:/app/uploads
     environment:
@@ -22,7 +21,6 @@ services:
 
   mongo:
     image: mongo
-    restart: unless-stopped
     volumes:
      - /data/db
      - /dump
@@ -31,6 +29,9 @@ services:
   biblebot:
     build: .
     environment:
+      - SPRING_DATASOURCE_USERNAME=biblebot
+      - SPRING_DATASOURCE_PASSWORD=password
+      - SPRING_DATASOURCE_URL=jdbc:mysql://biblebotdb:3306/biblebot?autoReconnect=true&characterEncoding=utf8&useSSL=false
       - BIBLEBOT_INTEGRATION_ACTIVE=true
       - BIBLEBOT_INTEGRATION_HOST=biblebot
       - BIBLEBOT_INTEGRATION_PORT=8081
@@ -40,6 +41,17 @@ services:
       - BIBLEBOT_API_PASSWORD=password
     links:
       - rocketchat
+      - biblebotdb
 
     ports:
       - 127.0.0.1:8081:8081
+
+  biblebotdb:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: z6Q6y3uNN7k2teQZ20bs
+      MYSQL_DATABASE: biblebot
+      MYSQL_USER: biblebot
+      MYSQL_PASSWORD: password
+    ports:
+      - 127.0.0.1:3306:3306

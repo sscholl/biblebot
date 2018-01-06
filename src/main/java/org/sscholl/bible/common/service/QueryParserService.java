@@ -144,7 +144,7 @@ public class QueryParserService {
                             passageDTO.setBibleDTO(bibleDTO);
                             passageDTO.setBookDTO(bookDTO);
                             passageDTO.setChapterDTO(chapterDTO);
-                            passageDTO.getVerses().addAll(verses);
+                            verses.forEach(passageDTO::addVerse);
                             passageDTOS.add(passageDTO);
                         }
                     }

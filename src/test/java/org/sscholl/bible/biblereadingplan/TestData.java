@@ -3,6 +3,7 @@ package org.sscholl.bible.biblereadingplan;
 import org.sscholl.bible.biblereadingplan.model.*;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.LinkedList;
 
 public class TestData {
@@ -34,15 +35,14 @@ public class TestData {
         planInstance = new PlanInstance();
         planInstance.setChannel("#general");
         planInstance.setPlan(plan);
-        planInstance.setDays(new LinkedList<>());
+        planInstance.setDays(new HashSet<>());
         planInstance.setStartDate(new Date());
     }
 
     public static PlanDay createDays() {
         // set up day
         Passage passage = new Passage();
-        passage.setTitle("Mose 1:1-4");
-        passage.setBibleKey("elb");
+        passage.setTitle("1. Mose 1:1-4");
         passage.setBookNumber(1);
         passage.setChapterNumber(1);
         passage.setVerseStart(1);

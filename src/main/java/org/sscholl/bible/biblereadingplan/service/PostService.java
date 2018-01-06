@@ -6,8 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.sscholl.bible.biblereadingplan.model.PlanInstanceDay;
-import org.sscholl.bible.biblereadingplan.repository.ReadingPlanInstanceDayRepository;
+import org.sscholl.bible.biblereadingplan.repository.PlanInstanceDayRepository;
 
+import javax.transaction.Transactional;
 import java.util.Date;
 
 @Component
@@ -19,19 +20,24 @@ public class PostService {
     private RocketChatPostService rocketChatPostService;
 
     @Autowired
-    private ReadingPlanInstanceDayRepository readingPlanInstanceDayRepository;
+    private ValidateService validateService;
+
+    @Autowired
+    private PlanInstanceDayRepository planInstanceDayRepository;
 
     /**
      * Process all instance days that are not processed already, but are due
      */
-    //@Scheduled(cron = "0 /5 * * * ?")
-    @Scheduled(cron = "*/10 * * * * *")
+    @Scheduled(cron = "0 */1 * * * *")
+    @Transactional
     public void process() {
-        for (PlanInstanceDay day : readingPlanInstanceDayRepository
+        for (PlanInstanceDay instanceDay : planInstanceDayRepository
                 .findAllByIsPostedIsFalseAndScheduledDateBeforeOrderByScheduledDateAsc(new Date())) {
-            if (rocketChatPostService.post(day)) {
-                day.setPosted(true);
-                readingPlanInstanceDayRepository.save(day);
+            validateService.setDefaultValues(instanceDay.getDay());
+            validateService.setDefaultValues(instanceDay);
+            if (rocketChatPostService.post(instanceDay)) {
+                instanceDay.setPosted(true);
+                planInstanceDayRepository.save(instanceDay);
             } else {
                 LOGGER.error("Could not post message.");
             }
@@ -46,11 +52,11 @@ public class PostService {
         this.rocketChatPostService = rocketChatPostService;
     }
 
-    public ReadingPlanInstanceDayRepository getReadingPlanInstanceDayRepository() {
-        return readingPlanInstanceDayRepository;
+    public PlanInstanceDayRepository getPlanInstanceDayRepository() {
+        return planInstanceDayRepository;
     }
 
-    public void setReadingPlanInstanceDayRepository(ReadingPlanInstanceDayRepository readingPlanInstanceDayRepository) {
-        this.readingPlanInstanceDayRepository = readingPlanInstanceDayRepository;
+    public void setPlanInstanceDayRepository(PlanInstanceDayRepository planInstanceDayRepository) {
+        this.planInstanceDayRepository = planInstanceDayRepository;
     }
 }

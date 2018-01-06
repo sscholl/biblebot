@@ -1,8 +1,7 @@
 package org.sscholl.bible.common.model.dto;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Created by Simon on 01.10.2017.
@@ -10,9 +9,9 @@ import java.util.Map;
 public class ChapterDTO {
 
     private Integer id;
-    private int number;
+    private Integer number;
     private BookDTO bookDTO;
-    private Map<Integer, VerseDTO> verses = new HashMap<>();
+    private TreeMap<Integer, VerseDTO> verses = new TreeMap<>();
 
     public ChapterDTO() {
     }
@@ -26,7 +25,7 @@ public class ChapterDTO {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -48,6 +47,20 @@ public class ChapterDTO {
 
     public Collection<VerseDTO> getVerses() {
         return verses.values();
+    }
+
+    public VerseDTO getFirstVerse() {
+        if (verses.firstEntry() != null) {
+            return verses.firstEntry().getValue();
+        }
+        return null;
+    }
+
+    public VerseDTO getLastVerse() {
+        if (verses.lastEntry() != null) {
+            return verses.lastEntry().getValue();
+        }
+        return null;
     }
 
     public VerseDTO getVerse(int number) {

@@ -14,7 +14,7 @@ import javax.ws.rs.ext.ContextResolver;
 import javax.ws.rs.ext.Provider;
 
 @Configuration
-@ApplicationPath("/")
+@ApplicationPath("/biblebot")
 public class JerseyConfig extends ResourceConfig {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(JerseyConfig.class);

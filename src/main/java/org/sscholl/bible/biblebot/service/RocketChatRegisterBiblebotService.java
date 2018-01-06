@@ -59,7 +59,7 @@ public class RocketChatRegisterBiblebotService implements ApplicationListener<Ap
                     integrationCreateRequest.setToken(UUID.randomUUID().toString().replace("-", ""));
                     integrationCreateRequest.setEmoji(":book:");
                     integrationCreateRequest.setUrls(new ArrayList<>());
-                    integrationCreateRequest.getUrls().add("http://" + integrationHost + ":" + integrationPort + "/chat");
+                    integrationCreateRequest.getUrls().add("http://" + integrationHost + ":" + integrationPort + "/biblebot/chat");
                     integrationCreateRequest.setScriptEnabled(false);
                     rocketChatService.postMessage(integrationCreateRequest);
                 } else {

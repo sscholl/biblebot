@@ -14,11 +14,10 @@ public class Passage {
     private Integer id;
     private String title;
 
-    private String bibleKey;
-    private int bookNumber;
-    private int chapterNumber;
-    private int verseStart;
-    private int verseEnd;
+    private Integer bookNumber;
+    private Integer chapterNumber;
+    private Integer verseStart;
+    private Integer verseEnd;
 
     @ManyToOne
     private PlanDay day;
@@ -39,43 +38,35 @@ public class Passage {
         this.title = title;
     }
 
-    public String getBibleKey() {
-        return bibleKey;
-    }
-
-    public void setBibleKey(String bibleKey) {
-        this.bibleKey = bibleKey;
-    }
-
-    public int getBookNumber() {
+    public Integer getBookNumber() {
         return bookNumber;
     }
 
-    public void setBookNumber(int bookNumber) {
+    public void setBookNumber(Integer bookNumber) {
         this.bookNumber = bookNumber;
     }
 
-    public int getChapterNumber() {
+    public Integer getChapterNumber() {
         return chapterNumber;
     }
 
-    public void setChapterNumber(int chapterNumber) {
+    public void setChapterNumber(Integer chapterNumber) {
         this.chapterNumber = chapterNumber;
     }
 
-    public int getVerseStart() {
+    public Integer getVerseStart() {
         return verseStart;
     }
 
-    public void setVerseStart(int verseStart) {
+    public void setVerseStart(Integer verseStart) {
         this.verseStart = verseStart;
     }
 
-    public int getVerseEnd() {
+    public Integer getVerseEnd() {
         return verseEnd;
     }
 
-    public void setVerseEnd(int verseEnd) {
+    public void setVerseEnd(Integer verseEnd) {
         this.verseEnd = verseEnd;
     }
 
@@ -92,7 +83,6 @@ public class Passage {
         return "Passage{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", bibleKey='" + bibleKey + '\'' +
                 ", bookNumber=" + bookNumber +
                 ", chapterNumber=" + chapterNumber +
                 ", verseStart=" + verseStart +

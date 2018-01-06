@@ -23,7 +23,7 @@ public class PlanInstanceDay {
     @ManyToOne
     private PlanInstance planInstance;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     private PlanDay day;
 
     public Integer getId() {

@@ -9,7 +9,7 @@ import java.util.Date;
 /**
  * Created by Simon
  */
-public interface ReadingPlanInstanceDayRepository extends JpaRepository<PlanInstanceDay, Integer> {
+public interface PlanInstanceDayRepository extends JpaRepository<PlanInstanceDay, Integer> {
 
     Collection<PlanInstanceDay> findAllByIsPostedIsFalse();
 

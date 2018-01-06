@@ -2,7 +2,7 @@ package org.sscholl.bible.biblereadingplan.model;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 /**
  * This class represents an instantiation of a reading plan, indicated by the start day.
@@ -22,14 +22,14 @@ public class PlanInstance {
      */
     private String channel;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     private Plan plan;
 
     /**
      * Ordered list of all days that will be processed.
      */
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "planInstance")
-    private List<PlanInstanceDay> days;
+    private Set<PlanInstanceDay> days;
 
     public Plan getPlan() {
         return plan;
@@ -47,11 +47,11 @@ public class PlanInstance {
         this.startDate = startDate;
     }
 
-    public List<PlanInstanceDay> getDays() {
+    public Set<PlanInstanceDay> getDays() {
         return days;
     }
 
-    public void setDays(List<PlanInstanceDay> days) {
+    public void setDays(Set<PlanInstanceDay> days) {
         this.days = days;
     }
 
@@ -69,5 +69,16 @@ public class PlanInstance {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "PlanInstance{" +
+                "id=" + id +
+                ", startDate=" + startDate +
+                ", channel='" + channel + '\'' +
+                ", plan=" + plan +
+                ", days=" + days.size() +
+                '}';
     }
 }
