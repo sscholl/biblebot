@@ -73,9 +73,7 @@ public class RocketChatPostService {
                 attachment.setTitleLink("https://www.bibleserver.com/text/NGU/" + bookDTO.getGermanName() + chapterDTO.getNumber()
                         + ":" + passage.getVerseStart() + "-" + passage.getVerseEnd());
                 attachment.setColor("good");
-                if (postMessageRequest.getAttachments().size() > 0) {
-                    attachment.setCollapsed(true);
-                }
+                attachment.setCollapsed(true);
                 postMessageRequest.getAttachments().add(attachment);
             }
         }
