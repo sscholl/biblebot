@@ -2,7 +2,7 @@ FROM openjdk:8-jdk-alpine
 VOLUME /tmp
 #ARG JAR_FILE
 #ADD ${JAR_FILE} /app.jar
-ADD target/biblebot-0.0.1-SNAPSHOT.jar /app.jar
+ADD target/biblebot-0.1.0.jar /app.jar
 RUN mkdir /app && unzip -q /app.jar -d /app
 
 ENV BIBLEBOT_INTEGRATION_HOST ""
