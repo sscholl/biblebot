@@ -27,8 +27,10 @@ public class PostService {
 
     /**
      * Process all instance days that are not processed already, but are due
+     *
+     * “At minute 0 past every hour.”
      */
-    @Scheduled(cron = "0 */1 * * * *")
+    @Scheduled(cron = "0 0 */1 * * *")
     @Transactional
     public void process() {
         for (PlanInstanceDay instanceDay : planInstanceDayRepository

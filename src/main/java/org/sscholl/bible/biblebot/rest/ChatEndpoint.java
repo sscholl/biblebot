@@ -3,6 +3,7 @@ package org.sscholl.bible.biblebot.rest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.sscholl.bible.common.model.dto.PassageDTO;
 import org.sscholl.bible.common.service.QueryParserService;
@@ -27,6 +28,9 @@ public class ChatEndpoint {
 
     private final String botAlias = "Bible";
 
+    @Value("${biblebot.integration.name:admin}")
+    private final String botName = "biblebot";
+
     @Autowired
     private QueryParserService queryParserService;
 
@@ -36,7 +40,7 @@ public class ChatEndpoint {
     public MessageSentResponse post(MessageSentRequest messageSentRequest) {
         LOGGER.debug("messageSentRequest" + messageSentRequest);
 
-        if (botAlias.equals(messageSentRequest.getAlias())) {
+        if (botAlias.equals(messageSentRequest.getAlias()) || botName.equals(messageSentRequest.getUserName())) {
             LOGGER.debug("Not processing this message, because was sent by myself.");
             return null;
         }

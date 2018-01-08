@@ -39,9 +39,10 @@ public class ValidateService {
     @Autowired
     private BibleCsvRepository bibleCsvRepository;
 
-    //TODO: set to every hour
-    //    @Scheduled(cron = "0 0 /1 * * *")
-    @Scheduled(cron = "0 */1 * * * *")
+    /**
+     * “At minute 55 past every hour.”
+     */
+    @Scheduled(cron = "0 55 */1 * * *")
     @Transactional
     public void scheduleAll() {
         for (PlanInstance instance : planInstanceRepository.findAll()) {
