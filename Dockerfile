@@ -10,7 +10,7 @@ ARG skipTests=true
 # download dependencies and provide docker layer as cache for later builds
 COPY pom.xml mvnw /tmp/
 COPY .mvn /tmp/.mvn
-RUN cd /tmp && ./mvnw ${mvnArgs} dependency:go-offline
+RUN cd /tmp && chmod u+x ./mvnw && ./mvnw ${mvnArgs} dependency:go-offline
 
 # generate app by maven and clear maven and build folder
 COPY . /tmp
