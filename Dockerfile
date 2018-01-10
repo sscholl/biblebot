@@ -10,11 +10,11 @@ ARG skipTests=true
 # download dependencies and provide docker layer as cache for later builds
 COPY pom.xml mvnw /tmp/
 COPY .mvn /tmp/.mvn
-RUN cd /tmp && chmod u+x ./mvnw && ./mvnw ${mvnArgs} dependency:go-offline
+RUN cd /tmp && sh ./mvnw ${mvnArgs} dependency:go-offline
 
 # generate app by maven and clear maven and build folder
 COPY . /tmp
-RUN cd /tmp && ./mvnw clean install ${mvnArgs} -DskipTests=${skipTests}
+RUN cd /tmp && sh ./mvnw clean install ${mvnArgs} -DskipTests=${skipTests}
 RUN mv /tmp/target/*.jar /app.jar && rm /tmp -rf && rm /root/.m2 -rf
 
 # unzip app, because some spring boot apps have problems with resources when using jersey
