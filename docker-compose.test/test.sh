@@ -24,7 +24,6 @@ TOKEN=$(echo $RESPONSE | jq -r '.data.authToken')
 USER=$(echo $RESPONSE | jq -r '.data.userId')
 
 
-
 INTEGRATIONS=$(curl --silent -H "X-Auth-Token: $TOKEN" -H "X-User-Id: $USER" $HOST/api/v1/integrations.list -H "Content-type: application/json")
 echo $INTEGRATIONS
 
