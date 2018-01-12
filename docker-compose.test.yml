@@ -3,6 +3,13 @@ version: '3'
 # this docker-compose file is build only for test purposes
 
 services:
+
+  sut:
+    build: docker-compose.test
+    links:
+      - rocketchat
+      - biblebot
+
   rocketchat:
     image: rocket.chat
     #    volumes:
@@ -17,7 +24,8 @@ services:
     links:
       - mongo
     ports:
-      - 127.0.0.1:8080:8080
+    #TODO remove me
+      - 0.0.0.0:28080:8080
 
   mongo:
     image: mongo
@@ -45,9 +53,6 @@ services:
       - rocketchat
       - biblebotdb
 
-    ports:
-      - 127.0.0.1:8081:8081
-
   biblebotdb:
     image: mysql
     environment:
@@ -55,5 +60,3 @@ services:
       MYSQL_DATABASE: biblebot
       MYSQL_USER: biblebot
       MYSQL_PASSWORD: password
-    ports:
-      - 127.0.0.1:3306:3306
