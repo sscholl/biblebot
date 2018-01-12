@@ -29,9 +29,9 @@ services:
 
   mongo:
     image: mongo
-    volumes:
-     - /data/db
-     - /dump
+    #volumes:
+    # - /data/db
+    # - /dump
     command: mongod --smallfiles --oplogSize 128
 
   biblebot:
