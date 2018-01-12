@@ -1,0 +1,3 @@
+[submodule "src/main/resources/bibles"]
+	path = src/main/resources/bibles
+	url = git@github.com:getbible/Bibles.git

@@ -10,7 +10,7 @@ until $(curl --output /dev/null --silent --head --fail ${HOST}); do
     printf ".$TIME"
     sleep 1
     TIME=$[$TIME+1]
-    if [ ${TIME}  -ge 100 ]; then
+    if [ ${TIME}  -ge 300 ]; then
         echo "Host not reachable"
         echo "Tests failed!"
         exit 1
