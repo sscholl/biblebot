@@ -17,19 +17,39 @@ until $(curl --output /dev/null --silent --head --fail ${HOST}); do
     fi
 done
 
-RESPONSE=$(curl --silent $HOST/api/v1/login -d "username=admin&password=password")
-echo $RESPONSE
+echo "login on ${HOST}"
+TIME=0
+isSuccess=false
+until ${isSuccess} ; do
+    printf ".$TIME"
+    sleep 1
+    TIME=$[$TIME+1]
+    if [ ${TIME}  -ge 300 ]; then
+        echo "Host not reachable"
+        echo "Tests failed!"
+        exit 1
+    fi
 
-TOKEN=$(echo $RESPONSE | jq -r '.data.authToken')
-USER=$(echo $RESPONSE | jq -r '.data.userId')
+    RESPONSE=$(curl --silent ${HOST}/api/v1/login -d "username=admin&password=password")
+    echo ${RESPONSE}
+    SUCCESS=$(echo ${RESPONSE} | jq -r '.data.success')
+    TOKEN=$(echo ${RESPONSE} | jq -r '.data.authToken')
+    USER=$(echo ${RESPONSE} | jq -r '.data.userId')
+    
+    if [ ${SUCCESS} -e "success" ]; then
+        isSuccess=true
+    fi
+done
 
 
-INTEGRATIONS=$(curl --silent -H "X-Auth-Token: $TOKEN" -H "X-User-Id: $USER" $HOST/api/v1/integrations.list -H "Content-type: application/json")
-echo $INTEGRATIONS
 
-POST=$(curl --silent -H "X-Auth-Token: $TOKEN" -H "X-User-Id: $USER" $HOST/api/v1/chat.postMessage \
+
+INTEGRATIONS=$(curl --silent -H "X-Auth-Token: $TOKEN" -H "X-User-Id: $USER" ${HOST}/api/v1/integrations.list -H "Content-type: application/json")
+echo ${INTEGRATIONS}
+
+POST=$(curl --silent -H "X-Auth-Token: $TOKEN" -H "X-User-Id: $USER" ${HOST}/api/v1/chat.postMessage \
      -d '{ "channel": "#general", "text": "Psalm 1" }' -H "Content-type:application/json")
-echo $POST
+echo ${POST}
 
 #if curl web | grep -q '<b>Visits:</b> '; then
 #  echo "Tests passed!"
