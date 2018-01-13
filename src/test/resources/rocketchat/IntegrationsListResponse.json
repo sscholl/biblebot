@@ -1,0 +1,34 @@
+{
+  "integrations": [
+    {
+      "_id": "szeMtmex8bWdJwfNF",
+      "type": "webhook-outgoing",
+      "event": "sendMessage",
+      "enabled": true,
+      "name": "biblebot",
+      "channel": [
+        "all_public_channels",
+        "all_private_groups",
+        "all_direct_messages"
+      ],
+      "username": "rocket.cat",
+      "urls": [
+        "http://biblebot:8081/biblebot/chat"
+      ],
+      "scriptEnabled": false,
+      "token": "836fd77949a348ccb8ff5fc1c16884e4",
+      "emoji": ":book:",
+      "userId": "rocket.cat",
+      "_createdAt": "2018-01-13T13:44:12.317Z",
+      "_createdBy": {
+        "username": "admin",
+        "_id": "2EZzFFZx8Y8bDnmv8"
+      },
+      "_updatedAt": "2018-01-13T13:44:12.317Z"
+    }
+  ],
+  "offset": 0,
+  "items": 1,
+  "total": 1,
+  "success": true
+}

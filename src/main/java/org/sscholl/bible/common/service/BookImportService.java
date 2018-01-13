@@ -48,6 +48,8 @@ public class BookImportService {
 
                 bookDTO.setShortcut(object.getString("book_ref"));
                 JSONArray shortcuts = object.getJSONArray("shortcuts");
+                bookDTO.getShortcuts().add(bookDTO.getName().toLowerCase());
+                bookDTO.getShortcuts().add(bookDTO.getGermanName().toLowerCase());
                 for (int j = 0; j < shortcuts.length(); j++) {
                     bookDTO.getShortcuts().add(shortcuts.getString(j));
                 }
@@ -69,6 +71,12 @@ public class BookImportService {
                     }
                 } else {
                     bookDTO.setNumbered(false);
+                }
+
+                for (String shortcut : bookDTO.getShortcuts()) {
+                    if (shortcut.length() < 2) {
+                        throw new IllegalArgumentException("Shortcut " + shortcut + " can not be shorter than 2 chars.");
+                    }
                 }
             }
         }

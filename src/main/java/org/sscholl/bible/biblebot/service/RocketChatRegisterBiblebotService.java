@@ -8,6 +8,7 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 import org.sscholl.bible.adapter.rocketchat.service.RocketChatService;
+import org.sscholl.bible.biblebot.rest.SearchEndpoint;
 import org.sscholl.rocketchat.api.IntegrationCreateRequest;
 import org.sscholl.rocketchat.api.IntegrationsResponse;
 
@@ -26,6 +27,9 @@ public class RocketChatRegisterBiblebotService implements ApplicationListener<Ap
     private static final Logger LOGGER = LoggerFactory.getLogger(RocketChatRegisterBiblebotService.class);
     @Autowired
     RocketChatService rocketChatService;
+
+    @Autowired
+    SearchEndpoint searchEndpoint;
 
     @Value("${biblebot.integration.active:false}")
     private boolean integrationActive = true;
@@ -53,6 +57,7 @@ public class RocketChatRegisterBiblebotService implements ApplicationListener<Ap
                     integrationCreateRequest.setType("webhook-outgoing");
                     integrationCreateRequest.setEvent("sendMessage");
                     integrationCreateRequest.setEnabled(true);
+                    integrationCreateRequest.setTriggerWords(searchEndpoint.keywords());
                     integrationCreateRequest.setName(integrationName);
                     integrationCreateRequest.setChannel("all_public_channels,all_private_groups,all_direct_messages");
                     integrationCreateRequest.setUsername("rocket.cat");
@@ -61,7 +66,7 @@ public class RocketChatRegisterBiblebotService implements ApplicationListener<Ap
                     integrationCreateRequest.setUrls(new ArrayList<>());
                     integrationCreateRequest.getUrls().add("http://" + integrationHost + ":" + integrationPort + "/biblebot/chat");
                     integrationCreateRequest.setScriptEnabled(false);
-                    rocketChatService.postMessage(integrationCreateRequest);
+                    rocketChatService.createIntegration(integrationCreateRequest);
                 } else {
                     LOGGER.info("integration " + integrationName + " already existing.");
                 }

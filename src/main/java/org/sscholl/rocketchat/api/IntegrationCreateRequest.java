@@ -30,6 +30,8 @@ public class IntegrationCreateRequest {
     private String name;
     @JsonProperty("channel")
     private String channel;
+    @JsonProperty("triggerWords")
+    private String triggerWords;
     @JsonProperty("username")
     private String username;
     @JsonProperty("token")
@@ -91,6 +93,16 @@ public class IntegrationCreateRequest {
     @JsonProperty("channel")
     public void setChannel(String channel) {
         this.channel = channel;
+    }
+
+    @JsonProperty("triggerWords")
+    public String getTriggerWords() {
+        return triggerWords;
+    }
+
+    @JsonProperty("triggerWords")
+    public void setTriggerWords(String triggerWords) {
+        this.triggerWords = triggerWords;
     }
 
     @JsonProperty("username")
@@ -161,6 +173,7 @@ public class IntegrationCreateRequest {
                 ", enabled=" + enabled +
                 ", name='" + name + '\'' +
                 ", channel='" + channel + '\'' +
+                ", triggerWords='" + triggerWords + '\'' +
                 ", username='" + username + '\'' +
                 ", token='" + token + '\'' +
                 ", emoji='" + emoji + '\'' +

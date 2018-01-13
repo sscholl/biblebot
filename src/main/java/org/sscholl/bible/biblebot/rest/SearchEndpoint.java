@@ -1,5 +1,6 @@
 package org.sscholl.bible.biblebot.rest;
 
+import org.apache.commons.text.WordUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.sscholl.bible.common.model.dto.BookDTO;
@@ -40,10 +41,17 @@ public class SearchEndpoint {
     @Produces(MediaType.TEXT_PLAIN + ";charset=utf-8")
     public String keywords() {
         StringBuilder response = new StringBuilder();
-        response.append("b:,bible:,");
+        response.append("b:,bible:,bibel:");
+        response.append("!b ,!bible ,!bibel ");
         for (BookDTO bookDTO : bibleCsvRepository.findBible(bibleCsvRepository.getDefaultBible()).getBooks()) {
             for (String shortcut : bookDTO.getShortcuts()) {
-                response.append(shortcut).append(",");
+                response.append(",").append(shortcut);
+            }
+        }
+        for (BookDTO bookDTO : bibleCsvRepository.findBible(bibleCsvRepository.getDefaultBible()).getBooks()) {
+            for (String shortcut : bookDTO.getShortcuts()) {
+                response.append(",").append(WordUtils.capitalize(shortcut));
+
             }
         }
         return response.toString();

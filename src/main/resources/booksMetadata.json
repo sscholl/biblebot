@@ -568,7 +568,6 @@
       "book_name": "Zechariah",
       "book_ref": "Zech",
       "shortcuts": [
-        "zech",
         "zec",
         "zc",
         "sacharja",
@@ -600,7 +599,7 @@
         "matt",
         "mt",
         "matthäus",
-        "Matth"
+        "matth"
       ],
       "isNumbered": false,
       "testament": "N"
@@ -903,7 +902,6 @@
       "book_ref": "Re",
       "shortcuts": [
         "rev",
-        "re",
         "the revelation",
         "apocalypse",
         "offenbarung",

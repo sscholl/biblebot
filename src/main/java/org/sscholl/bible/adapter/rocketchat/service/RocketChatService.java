@@ -128,14 +128,14 @@ public class RocketChatService {
     }
 
     /**
-     * curl -H "X-Auth-Token: $TOKEN" -H "X-User-Id: $USER" $HOST/api/v1/chat.postMessage \
+     * curl -H "X-Auth-Token: $TOKEN" -H "X-User-Id: $USER" $HOST/api/v1/chat.createIntegration \
      * -d '{ "channel": "#general", "text": "This is a test!" }' -H "Content-type:application/json"
      *
      * @param postMessageRequest json object
      * @return json object
      */
     public PostMessageResponse postMessage(PostMessageRequest postMessageRequest) {
-        Invocation.Builder invocationBuilder = getInvocationBuilder(webTarget.path("chat.postMessage"));
+        Invocation.Builder invocationBuilder = getInvocationBuilder(webTarget.path("chat.createIntegration"));
 
         Response response = invocationBuilder.post(Entity.json(postMessageRequest));
         LOGGER.debug("Response      : " + response.toString());
@@ -183,7 +183,7 @@ public class RocketChatService {
      * @param integrationCreateRequest json object
      * @return json object
      */
-    public IntegrationCreateResponse postMessage(IntegrationCreateRequest integrationCreateRequest) {
+    public IntegrationCreateResponse createIntegration(IntegrationCreateRequest integrationCreateRequest) {
         Invocation.Builder invocationBuilder = getInvocationBuilder(webTarget.path("integrations.create"));
 
         Response response = invocationBuilder.post(Entity.json(integrationCreateRequest));
