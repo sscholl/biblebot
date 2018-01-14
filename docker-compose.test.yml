@@ -42,7 +42,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:mysql://biblebotdb:3306/biblebot?autoReconnect=true&characterEncoding=utf8&useSSL=false
       - BIBLEBOT_INTEGRATION_ACTIVE=true
       - BIBLEBOT_INTEGRATION_HOST=biblebot
-      - BIBLEBOT_INTEGRATION_PORT=8081
+      - BIBLEBOT_INTEGRATION_PORT=8080
       - BIBLEBOT_API_HOST=rocketchat
       - BIBLEBOT_API_PORT=8080
       - BIBLEBOT_API_USER=admin

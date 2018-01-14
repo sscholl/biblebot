@@ -2,12 +2,12 @@
 # Purpose: This script shows the functionality of the REST API of RocketChat
 
 
-HOST=http://biblebot:8081
+HOST=biblebot
+PORT=8080
 
-echo "wait until ${HOST} is reachable"
-echo $(curl --output /dev/null --silent --head --fail ${HOST})
+echo "wait until ${HOST}:${PORT} is reachable"
 TIME=0
-until $(curl --output /dev/null --silent --head --fail ${HOST}); do
+until $(nc -z ${HOST} ${PORT}); do
     printf "."
     sleep 1
     TIME=$[$TIME+1]
