@@ -66,7 +66,7 @@ until ${isSuccess} ; do
     printf "."
     sleep 1
     TIME=$[$TIME+1]
-    if [ ${TIME}  -ge 60 ]; then
+    if [ ${TIME}  -ge 300 ]; then
         echo "Did not find the integration"
         echo "Tests failed!"
         exit 1
@@ -106,7 +106,7 @@ until ${isSuccess} ; do
     printf "."
     sleep 1
     TIME=$[$TIME+1]
-    if [ ${TIME}  -ge 3 ]; then
+    if [ ${TIME}  -ge 300 ]; then
         echo "Did not find the answer of biblebot"
         echo "Tests failed!"
         exit 1
