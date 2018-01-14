@@ -31,7 +31,7 @@ public class IntegrationCreateRequest {
     @JsonProperty("channel")
     private String channel;
     @JsonProperty("triggerWords")
-    private String triggerWords;
+    private List<String> triggerWords;
     @JsonProperty("username")
     private String username;
     @JsonProperty("token")
@@ -96,12 +96,12 @@ public class IntegrationCreateRequest {
     }
 
     @JsonProperty("triggerWords")
-    public String getTriggerWords() {
+    public List<String> getTriggerWords() {
         return triggerWords;
     }
 
     @JsonProperty("triggerWords")
-    public void setTriggerWords(String triggerWords) {
+    public void setTriggerWords(List<String> triggerWords) {
         this.triggerWords = triggerWords;
     }
 

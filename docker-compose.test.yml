@@ -47,14 +47,14 @@ services:
       - BIBLEBOT_API_PORT=8080
       - BIBLEBOT_API_USER=admin
       - BIBLEBOT_API_PASSWORD=password
-      - BIBELREADINGPLAN_POSTSERVICE_CRON=0 * * * * *
-      - BIBELREADINGPLAN_VALIDATESERVICE_CRON=0 * * * * *
+      - BIBLEREADINGPLAN_POSTSERVICE_CRON=0 * * * * *
+      - BIBLEREADINGPLAN_VALIDATESERVICE_CRON=0 * * * * *
     links:
       - rocketchat
       - biblebotdb
 
   biblebotdb:
-    image: mysql
+    image: mariadb
     environment:
       MYSQL_ROOT_PASSWORD: unusedpassword
       MYSQL_DATABASE: biblebot

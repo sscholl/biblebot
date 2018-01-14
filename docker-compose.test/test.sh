@@ -49,7 +49,7 @@ until ${isSuccess} ; do
     printf "."
     sleep 1
     TIME=$[$TIME+1]
-    if [ ${TIME}  -ge 20 ]; then
+    if [ ${TIME}  -ge 5 ]; then
         echo "Did not find the integration"
         echo "Tests failed!"
         exit 1
@@ -60,11 +60,8 @@ until ${isSuccess} ; do
     SUCCESS_STATUS=$(echo ${INTEGRATIONS} | jq -r '.success')
     if [ "${SUCCESS_STATUS}" == "true" ]; then
         echo "request successful"
-        for row in $(echo "${INTEGRATIONS}" | jq -r '.integrations[] | @base64'); do
-            _jq() {
-                echo ${row} | base64 --decode | jq -r ${1}
-            }
-            INTEGRATION_NAME=$(_jq '.name')
+        for row in $(echo "${INTEGRATIONS}" | jq -r ".integrations[] | .name")   ; do
+            INTEGRATION_NAME=$row
             echo "found ${INTEGRATION_NAME}"
             if [ "biblebot" == "${INTEGRATION_NAME}" ]; then
                 echo "Found integration biblebot"
@@ -84,6 +81,32 @@ if [ "${SUCCESS_STATUS}" != "true" ]; then
     echo "Tests failed!"
     exit 1
 fi
+
+echo "wait for biblebot answer on ${HOST}"
+TIME=0
+isSuccess=false
+until ${isSuccess} ; do
+    printf "."
+    sleep 1
+    TIME=$[$TIME+1]
+    if [ ${TIME}  -ge 3 ]; then
+        echo "Did not find the answer of biblebot"
+        echo "Tests failed!"
+        exit 1
+    fi
+
+    MESSAGES=$(curl --silent -H "X-Auth-Token: $TOKEN" -H "X-User-Id: $USER" ${HOST}/api/v1/channels.history?roomId=GENERAL -H "Content-type: application/json")
+    echo ${MESSAGES}
+    SUCCESS_STATUS=$(echo ${MESSAGES} | jq -r '.success')
+    if [ "${SUCCESS_STATUS}" == "true" ]; then
+        echo "request successful"
+        echo "$MESSAGES"
+        if [[ "${MESSAGES}" == *"Glückselig der Mann, der nicht wandelt im Rate der Gottlosen, und nicht steht auf dem Wege der Sünder, und nicht sitzt auf dem Sitze  der Spötter,"* ]]; then
+            echo "Found correct text"
+            isSuccess=true
+        fi
+    fi
+done
 
 echo "All tests passed."
 exit 0

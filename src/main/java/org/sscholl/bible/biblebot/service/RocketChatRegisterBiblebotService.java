@@ -13,6 +13,7 @@ import org.sscholl.rocketchat.api.IntegrationCreateRequest;
 import org.sscholl.rocketchat.api.IntegrationsResponse;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.UUID;
 
 /**
@@ -57,7 +58,7 @@ public class RocketChatRegisterBiblebotService implements ApplicationListener<Ap
                     integrationCreateRequest.setType("webhook-outgoing");
                     integrationCreateRequest.setEvent("sendMessage");
                     integrationCreateRequest.setEnabled(true);
-                    integrationCreateRequest.setTriggerWords(searchEndpoint.keywords());
+                    integrationCreateRequest.setTriggerWords(Arrays.asList(searchEndpoint.keywords().split(",")));
                     integrationCreateRequest.setName(integrationName);
                     integrationCreateRequest.setChannel("all_public_channels,all_private_groups,all_direct_messages");
                     integrationCreateRequest.setUsername("rocket.cat");

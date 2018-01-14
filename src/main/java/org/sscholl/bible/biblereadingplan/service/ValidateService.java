@@ -42,7 +42,7 @@ public class ValidateService {
     /**
      * “At minute 55 past every hour.”
      */
-    @Scheduled(cron = "${bibelreadingplan.validateservice.cron:0 55 */1 * * *}")
+    @Scheduled(cron = "${biblereadingplan.validateservice.cron:0 55 */1 * * *}")
     @Transactional
     public void scheduleAll() {
         for (PlanInstance instance : planInstanceRepository.findAll()) {

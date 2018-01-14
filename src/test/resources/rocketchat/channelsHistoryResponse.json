@@ -1,0 +1,84 @@
+{
+  "messages": [
+    {
+      "_id": "qoNmBoZ2cykBWuyrJ",
+      "alias": "Bible",
+      "msg": "",
+      "attachments": [
+        {
+          "title": "Psalm 1",
+          "title_link": "https://www.bibleserver.com/text/NGU/psalm 1",
+          "text": "*1* Glückselig der Mann, der nicht wandelt im Rate der Gottlosen, und nicht steht auf dem Wege der Sünder, und nicht sitzt auf dem Sitze der Spötter, *2* sondern seine Lust hat am Gesetz Jehovas und über sein Gesetz sinnt Tag und Nacht! *3* Und er ist wie ein Baum, gepflanzt an Wasserbächen, der seine Frucht bringt zu seiner Zeit, und dessen Blatt nicht verwelkt; und alles, was er tut, gelingt. *4* Nicht so die Gesetzlosen, sondern sie sind wie die Spreu, die der Wind dahintreibt. *5* Darum werden die Gesetzlosen nicht bestehen im Gericht, noch die Sünder in der Gemeinde der Gerechten. *6* Denn Jehova kennt den Weg der Gerechten; aber der Gesetzlosen Weg wird vergehen. _Elberfelder (1905)_",
+          "color": "good",
+          "footer": "Elberfelder (1905)",
+          "mrkdwn_in": [
+            "text",
+            "pretext"
+          ]
+        }
+      ],
+      "parseUrls": false,
+      "bot": {
+        "i": "QZZsuKvWethyHNSkW"
+      },
+      "groupable": false,
+      "emoji": ":book:",
+      "ts": "2018-01-14T00:25:44.507Z",
+      "u": {
+        "_id": "rocket.cat",
+        "username": "rocket.cat",
+        "name": "Rocket.Cat"
+      },
+      "rid": "GENERAL",
+      "mentions": [],
+      "channels": [],
+      "_updatedAt": "2018-01-14T00:25:44.507Z"
+    },
+    {
+      "_id": "354JZnsuRCGosFMcg",
+      "t": "uj",
+      "rid": "GENERAL",
+      "ts": "2018-01-14T00:25:44.498Z",
+      "msg": "rocket.cat",
+      "u": {
+        "_id": "rocket.cat",
+        "username": "rocket.cat"
+      },
+      "groupable": false,
+      "_updatedAt": "2018-01-14T00:25:44.502Z"
+    },
+    {
+      "_id": "R7F22Lx8uYzBQGmfj",
+      "alias": "",
+      "msg": "Psalm 1",
+      "attachments": null,
+      "parseUrls": true,
+      "bot": null,
+      "groupable": false,
+      "ts": "2018-01-14T00:25:44.260Z",
+      "u": {
+        "_id": "uQSXEuRzaFH4r9xvk",
+        "username": "admin",
+        "name": "Administrator"
+      },
+      "rid": "GENERAL",
+      "mentions": [],
+      "channels": [],
+      "_updatedAt": "2018-01-14T00:25:44.262Z"
+    },
+    {
+      "_id": "ncWBbGBN6ZDhhn2nh",
+      "t": "uj",
+      "rid": "GENERAL",
+      "ts": "2018-01-14T00:25:44.250Z",
+      "msg": "admin",
+      "u": {
+        "_id": "uQSXEuRzaFH4r9xvk",
+        "username": "admin"
+      },
+      "groupable": false,
+      "_updatedAt": "2018-01-14T00:25:44.256Z"
+    }
+  ],
+  "success": true
+}
