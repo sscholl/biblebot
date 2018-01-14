@@ -1,6 +1,23 @@
 #!/bin/bash
 # Purpose: This script shows the functionality of the REST API of RocketChat
 
+
+HOST=http://biblebot:8080
+
+echo "wait until ${HOST} is reachable"
+echo $(curl --output /dev/null --silent --head --fail ${HOST})
+TIME=0
+until $(curl --output /dev/null --silent --head --fail ${HOST}); do
+    printf "."
+    sleep 1
+    TIME=$[$TIME+1]
+    if [ ${TIME}  -ge 300 ]; then
+        echo "Host not reachable"
+        echo "Tests failed!"
+        exit 1
+    fi
+done
+
 HOST=http://rocketchat:8080
 
 echo "wait until ${HOST} is reachable"
@@ -49,7 +66,7 @@ until ${isSuccess} ; do
     printf "."
     sleep 1
     TIME=$[$TIME+1]
-    if [ ${TIME}  -ge 5 ]; then
+    if [ ${TIME}  -ge 60 ]; then
         echo "Did not find the integration"
         echo "Tests failed!"
         exit 1
