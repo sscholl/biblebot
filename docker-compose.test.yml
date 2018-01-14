@@ -4,11 +4,11 @@ version: '3'
 
 services:
 
-  sut2:
+  sut:
     build: docker-compose.test
     links:
       - rocketchat
-    #  - biblebot
+      - biblebot
 
   rocketchat:
     image: rocket.chat
@@ -34,7 +34,7 @@ services:
     # - /dump
     command: mongod --smallfiles --oplogSize 128
 
-  sut:
+  biblebot:
     build: .
     environment:
       - SPRING_DATASOURCE_USERNAME=biblebot
