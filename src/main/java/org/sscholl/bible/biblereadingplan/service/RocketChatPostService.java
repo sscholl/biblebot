@@ -67,8 +67,7 @@ public class RocketChatPostService {
                                 .map(verse -> "*" + verse.getNumber() + "* " + verse.getText())
                                 .reduce((s, s2) -> s + " " + s2)
                                 .orElse("")
-                                + "\n\n"
-                                + "_" + bibleDTO.getName() + "_"
+                                + " _" + bibleDTO.getName() + "_"
                 );
                 attachment.setTitleLink("https://www.bibleserver.com/text/NGU/" + bookDTO.getGermanName() + chapterDTO.getNumber()
                         + ":" + passage.getVerseStart() + "-" + passage.getVerseEnd());

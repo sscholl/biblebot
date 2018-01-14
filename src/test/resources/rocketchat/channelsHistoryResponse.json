@@ -1,14 +1,14 @@
 {
   "messages": [
     {
-      "_id": "qoNmBoZ2cykBWuyrJ",
+      "_id": "ype8mzEi9oAa9w37N",
       "alias": "Bible",
       "msg": "",
       "attachments": [
         {
           "title": "Psalm 1",
           "title_link": "https://www.bibleserver.com/text/NGU/psalm 1",
-          "text": "*1* Glückselig der Mann, der nicht wandelt im Rate der Gottlosen, und nicht steht auf dem Wege der Sünder, und nicht sitzt auf dem Sitze der Spötter, *2* sondern seine Lust hat am Gesetz Jehovas und über sein Gesetz sinnt Tag und Nacht! *3* Und er ist wie ein Baum, gepflanzt an Wasserbächen, der seine Frucht bringt zu seiner Zeit, und dessen Blatt nicht verwelkt; und alles, was er tut, gelingt. *4* Nicht so die Gesetzlosen, sondern sie sind wie die Spreu, die der Wind dahintreibt. *5* Darum werden die Gesetzlosen nicht bestehen im Gericht, noch die Sünder in der Gemeinde der Gerechten. *6* Denn Jehova kennt den Weg der Gerechten; aber der Gesetzlosen Weg wird vergehen. _Elberfelder (1905)_",
+          "text": "*1* Glückselig der Mann, der nicht wandelt im Rate der Gottlosen, und nicht steht auf dem Wege der Sünder, und nicht sitzt auf dem Sitze  der Spötter, *2* sondern seine Lust hat am Gesetz Jehovas und über sein Gesetz sinnt Tag und Nacht! *3* Und er ist  wie ein Baum, gepflanzt an Wasserbächen, der seine Frucht bringt zu seiner Zeit, und dessen Blatt nicht verwelkt; und alles, was er tut, gelingt. *4* Nicht so die Gesetzlosen, sondern sie sind wie die Spreu, die der Wind dahintreibt. *5* Darum werden die Gesetzlosen nicht bestehen im Gericht, noch die Sünder in der Gemeinde der Gerechten. *6* Denn Jehova kennt  den Weg der Gerechten; aber der Gesetzlosen Weg wird vergehen. _Elberfelder (1905)_",
           "color": "good",
           "footer": "Elberfelder (1905)",
           "mrkdwn_in": [
@@ -19,11 +19,11 @@
       ],
       "parseUrls": false,
       "bot": {
-        "i": "QZZsuKvWethyHNSkW"
+        "i": "xwmgyEmrbds2jqvWA"
       },
       "groupable": false,
       "emoji": ":book:",
-      "ts": "2018-01-14T00:25:44.507Z",
+      "ts": "2018-01-14T23:00:35.246Z",
       "u": {
         "_id": "rocket.cat",
         "username": "rocket.cat",
@@ -32,52 +32,133 @@
       "rid": "GENERAL",
       "mentions": [],
       "channels": [],
-      "_updatedAt": "2018-01-14T00:25:44.507Z"
+      "_updatedAt": "2018-01-14T23:00:35.246Z"
     },
     {
-      "_id": "354JZnsuRCGosFMcg",
-      "t": "uj",
-      "rid": "GENERAL",
-      "ts": "2018-01-14T00:25:44.498Z",
-      "msg": "rocket.cat",
-      "u": {
-        "_id": "rocket.cat",
-        "username": "rocket.cat"
-      },
-      "groupable": false,
-      "_updatedAt": "2018-01-14T00:25:44.502Z"
-    },
-    {
-      "_id": "R7F22Lx8uYzBQGmfj",
+      "_id": "czDcpnqXDCQWfEsQA",
       "alias": "",
       "msg": "Psalm 1",
       "attachments": null,
       "parseUrls": true,
       "bot": null,
       "groupable": false,
-      "ts": "2018-01-14T00:25:44.260Z",
+      "ts": "2018-01-14T23:00:35.203Z",
       "u": {
-        "_id": "uQSXEuRzaFH4r9xvk",
+        "_id": "qSB3FPR39bNmk5369",
         "username": "admin",
         "name": "Administrator"
       },
       "rid": "GENERAL",
       "mentions": [],
       "channels": [],
-      "_updatedAt": "2018-01-14T00:25:44.262Z"
+      "_updatedAt": "2018-01-14T23:00:35.204Z"
     },
     {
-      "_id": "ncWBbGBN6ZDhhn2nh",
+      "_id": "JSsF5SRyQ5nuuMWSY",
+      "alias": "Bibelleseplan Test",
+      "msg": "",
+      "attachments": [
+        {
+          "color": "good",
+          "text": "*1* Dem Vorsänger, nach Schoschannim. Von den Söhnen Korahs; ein Maskil, ein Lied der Lieblichkeiten.  Es wallt mein Herz von gutem Worte. Ich sage: Meine Gedichte dem Könige! Meine Zunge  sei der Griffel eines fertigen  Schreibers!\n\n_Elberfelder (1905)_",
+          "collapsed": true,
+          "title": "Ps 45 1:1",
+          "title_link": "https://www.bibleserver.com/text/NGU/Psalm45:1-1"
+        }
+      ],
+      "parseUrls": false,
+      "bot": null,
+      "groupable": false,
+      "emoji": ":book:",
+      "ts": "2018-01-14T22:56:56.189Z",
+      "u": {
+        "_id": "qSB3FPR39bNmk5369",
+        "username": "admin",
+        "name": "Administrator"
+      },
+      "rid": "GENERAL",
+      "mentions": [],
+      "channels": [],
+      "_updatedAt": "2018-01-14T22:56:56.189Z"
+    },
+    {
+      "_id": "gwpehyZ5TXRDWvMGc",
+      "alias": "Bible",
+      "msg": "",
+      "attachments": [
+        {
+          "title": "Psalm 1",
+          "title_link": "https://www.bibleserver.com/text/NGU/psalm 1",
+          "text": "*1* Glückselig der Mann, der nicht wandelt im Rate der Gottlosen, und nicht steht auf dem Wege der Sünder, und nicht sitzt auf dem Sitze  der Spötter, *2* sondern seine Lust hat am Gesetz Jehovas und über sein Gesetz sinnt Tag und Nacht! *3* Und er ist  wie ein Baum, gepflanzt an Wasserbächen, der seine Frucht bringt zu seiner Zeit, und dessen Blatt nicht verwelkt; und alles, was er tut, gelingt. *4* Nicht so die Gesetzlosen, sondern sie sind wie die Spreu, die der Wind dahintreibt. *5* Darum werden die Gesetzlosen nicht bestehen im Gericht, noch die Sünder in der Gemeinde der Gerechten. *6* Denn Jehova kennt  den Weg der Gerechten; aber der Gesetzlosen Weg wird vergehen. _Elberfelder (1905)_",
+          "color": "good",
+          "footer": "Elberfelder (1905)",
+          "mrkdwn_in": [
+            "text",
+            "pretext"
+          ]
+        }
+      ],
+      "parseUrls": false,
+      "bot": {
+        "i": "xwmgyEmrbds2jqvWA"
+      },
+      "groupable": false,
+      "emoji": ":book:",
+      "ts": "2018-01-14T22:56:54.895Z",
+      "u": {
+        "_id": "rocket.cat",
+        "username": "rocket.cat",
+        "name": "Rocket.Cat"
+      },
+      "rid": "GENERAL",
+      "mentions": [],
+      "channels": [],
+      "_updatedAt": "2018-01-14T22:56:54.895Z"
+    },
+    {
+      "_id": "any5J6QGtgZcviHxK",
       "t": "uj",
       "rid": "GENERAL",
-      "ts": "2018-01-14T00:25:44.250Z",
+      "ts": "2018-01-14T22:56:54.885Z",
+      "msg": "rocket.cat",
+      "u": {
+        "_id": "rocket.cat",
+        "username": "rocket.cat"
+      },
+      "groupable": false,
+      "_updatedAt": "2018-01-14T22:56:54.890Z"
+    },
+    {
+      "_id": "G75fQnQmsCjvip7qs",
+      "alias": "",
+      "msg": "Psalm 1",
+      "attachments": null,
+      "parseUrls": true,
+      "bot": null,
+      "groupable": false,
+      "ts": "2018-01-14T22:56:54.703Z",
+      "u": {
+        "_id": "qSB3FPR39bNmk5369",
+        "username": "admin",
+        "name": "Administrator"
+      },
+      "rid": "GENERAL",
+      "mentions": [],
+      "channels": [],
+      "_updatedAt": "2018-01-14T22:56:54.706Z"
+    },
+    {
+      "_id": "vsJuMsgNtBv4HZ8ZC",
+      "t": "uj",
+      "rid": "GENERAL",
+      "ts": "2018-01-14T22:56:54.691Z",
       "msg": "admin",
       "u": {
-        "_id": "uQSXEuRzaFH4r9xvk",
+        "_id": "qSB3FPR39bNmk5369",
         "username": "admin"
       },
       "groupable": false,
-      "_updatedAt": "2018-01-14T00:25:44.256Z"
+      "_updatedAt": "2018-01-14T22:56:54.698Z"
     }
   ],
   "success": true

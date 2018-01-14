@@ -40,7 +40,6 @@ services:
       - BIBLEBOT_API_USER=admin
       - BIBLEBOT_API_PASSWORD=password
       - BIBLEREADINGPLAN_POSTSERVICE_CRON=0 * * * * *
-      - BIBLEREADINGPLAN_VALIDATESERVICE_CRON=0 * * * * *
     links:
       - rocketchat
       - biblebotdb

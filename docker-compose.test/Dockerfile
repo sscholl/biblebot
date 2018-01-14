@@ -1,6 +1,6 @@
 FROM ubuntu:trusty
 
-RUN apt-get update && apt-get install -yq curl jq  && apt-get clean
+RUN apt-get update && apt-get install -yq curl jq mysql-client  && apt-get clean
 
 WORKDIR /app
 

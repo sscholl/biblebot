@@ -3,7 +3,6 @@ package org.sscholl.bible.biblereadingplan.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.sscholl.bible.biblereadingplan.model.Passage;
 import org.sscholl.bible.biblereadingplan.model.PlanDay;
@@ -42,7 +41,6 @@ public class ValidateService {
     /**
      * “At minute 55 past every hour.”
      */
-    @Scheduled(cron = "${biblereadingplan.validateservice.cron:0 55 */1 * * *}")
     @Transactional
     public void scheduleAll() {
         for (PlanInstance instance : planInstanceRepository.findAll()) {

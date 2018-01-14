@@ -125,5 +125,37 @@ until ${isSuccess} ; do
     fi
 done
 
+
+
+
+
+mysql --host="biblebotdb" --user="biblebot" --password="password" --database="biblebot" --execute="    INSERT INTO biblebot.plan (id, bible_key, name) VALUES (1, 'elb', 'Bibelleseplan Test');    INSERT INTO biblebot.plan_instance (id, channel, start_date, plan_id) VALUES (1, '#general', '2017-12-30 03:00:00', 1);    INSERT INTO biblebot.plan_day (id, is_free, text, plan_id, days_order) VALUES (1, false, null, 1, 0);    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('Ps 45 1:1', 1, 0);"
+
+echo "wait for biblereadingplan answer on ${HOST}"
+TIME=0
+isSuccess=false
+until ${isSuccess} ; do
+    printf "."
+    sleep 1
+    TIME=$[$TIME+1]
+    if [ ${TIME}  -ge 300 ]; then
+        echo "Did not find the answer of biblereadingplan"
+        echo "Tests failed!"
+        exit 1
+    fi
+
+    MESSAGES=$(curl --silent -H "X-Auth-Token: $TOKEN" -H "X-User-Id: $USER" ${HOST}/api/v1/channels.history?roomId=GENERAL -H "Content-type: application/json")
+    echo ${MESSAGES}
+    SUCCESS_STATUS=$(echo ${MESSAGES} | jq -r '.success')
+    if [ "${SUCCESS_STATUS}" == "true" ]; then
+        echo "request successful"
+        echo "$MESSAGES"
+        if [[ "${MESSAGES}" == *"Dem Vorsänger, nach Schoschannim. Von den Söhnen Korahs; ein Maskil, ein Lied der Lieblichkeiten."* ]]; then
+            echo "Found correct text"
+            isSuccess=true
+        fi
+    fi
+done
+
 echo "All tests passed."
 exit 0

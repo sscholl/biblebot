@@ -33,6 +33,7 @@ public class PostService {
     @Scheduled(cron = "${biblereadingplan.postservice.cron:0 0 */1 * * *}")
     @Transactional
     public void process() {
+        validateService.scheduleAll();
         for (PlanInstanceDay instanceDay : planInstanceDayRepository
                 .findAllByIsPostedIsFalseAndScheduledDateBeforeOrderByScheduledDateAsc(new Date())) {
             validateService.setDefaultValues(instanceDay.getDay());
