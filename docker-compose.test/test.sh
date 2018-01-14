@@ -2,7 +2,7 @@
 # Purpose: This script shows the functionality of the REST API of RocketChat
 
 
-HOST=http://biblebot:8080
+HOST=http://biblebot:8081
 
 echo "wait until ${HOST} is reachable"
 echo $(curl --output /dev/null --silent --head --fail ${HOST})
