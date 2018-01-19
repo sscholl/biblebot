@@ -28,4 +28,4 @@ ENV BIBLEBOT_API_HOST ""
 ENV BIBLEBOT_API_PORT ""
 
 #ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
-ENTRYPOINT java -cp /app org.springframework.boot.loader.JarLauncher --server.port=${BIBLEBOT_INTEGRATION_PORT} -Djava.security.egd=file:/dev/./urandom
+CMD java -cp /app org.springframework.boot.loader.JarLauncher --server.port=${BIBLEBOT_INTEGRATION_PORT} -Djava.security.egd=file:/dev/./urandom
