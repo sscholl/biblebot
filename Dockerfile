@@ -15,10 +15,16 @@ RUN cd /tmp && sh ./mvnw ${mvnArgs} dependency:go-offline
 # generate app by maven and clear maven and build folder
 COPY . /tmp
 RUN cd /tmp && sh ./mvnw clean install ${mvnArgs} -DskipTests=${skipTests}
-RUN mv /tmp/target/*.jar /app.jar && rm /tmp/* -rf && rm /root/.m2 -rf
+RUN mv /tmp/target/*.jar /app.jar \
+    && rm /tmp/* -rf \
+    && rm /tmp/.git* -rf \
+    && rm /tmp/.mvn -rf \
+    && rm /root/.m2 -rf
 
 # unzip app, because some spring boot apps have problems with resources when using jersey
-RUN mkdir /app && unzip -q /app.jar -d /app
+RUN mkdir /app \
+    && unzip -q /app.jar -d /app \
+    && rm /app.jar
 
 ########################################################
 # custom environment variables
