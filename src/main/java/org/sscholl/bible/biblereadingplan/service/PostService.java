@@ -30,7 +30,7 @@ public class PostService {
      *
      * “At minute 0 past every hour.”
      */
-    @Scheduled(cron = "${biblereadingplan.postservice.cron:0 0 */1 * * *}")
+    @Scheduled(cron = "${biblereadingplan.postservice.cron:0 0 * * * *}")
     @Transactional
     public void process() {
         validateService.scheduleAll();
