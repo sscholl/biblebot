@@ -1,5 +1,6 @@
 INSERT INTO biblebot.plan (id, bible_key, name) VALUES (1, 'elb', 'Bibelleseplan Test');
-INSERT INTO biblebot.plan_instance (id, channel, start_date, plan_id) VALUES (1, '#test-bibelleseplan', '2017-12-30 03:00:00', 1);
+INSERT INTO biblebot.plan_instance (id, channel, start_date, plan_id) VALUES (1, '#test-bibelleseplan', '2017-12-30 11:00:00', 1);
+INSERT INTO biblebot.plan_instance (id, channel, start_date, plan_id) VALUES (2, '#test-bibelleseplan2', '2018-01-01 03:00:00', 1);
 
 INSERT INTO biblebot.plan_day (id, is_free, plan_id, days_order) VALUES (1, true, 1, 0);
 INSERT INTO biblebot.plan_day (id, is_free, plan_id, days_order) VALUES (2, true, 1, 1);
