@@ -38,6 +38,7 @@ services:
   biblebot:
     build: .
     environment:
+      - SPRING_JPA_HIBERNATE_DDL-AUTO=create
       - SPRING_DATASOURCE_USERNAME=biblebot
       - SPRING_DATASOURCE_PASSWORD=password
       - SPRING_DATASOURCE_URL=jdbc:mysql://biblebotdb:3306/biblebot?autoReconnect=true&characterEncoding=utf8&useSSL=false
