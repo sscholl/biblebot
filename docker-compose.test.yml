@@ -38,6 +38,7 @@ services:
   biblebot:
     build: .
     environment:
+      - SPRING_DDL=create
       - SPRING_JPA_HIBERNATE_DDL-AUTO=create
       - SPRING_DATASOURCE_USERNAME=biblebot
       - SPRING_DATASOURCE_PASSWORD=password
