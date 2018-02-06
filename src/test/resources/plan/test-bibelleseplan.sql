@@ -133,14 +133,105 @@ INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('Johannes 1
 INSERT INTO biblebot.plan_day (id, is_free, text, plan_id, days_order) VALUES (35, false, null, 1, 34);
 INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('Psalm 9',  35, 0);
 
+# KW 6
+
+INSERT INTO biblebot.plan_day (id, is_free, text, plan_id, days_order) VALUES (36, false, null, 1, 35);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('1. Mose 36',  36, 0);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('Johannes 19',  36, 1);
+
+INSERT INTO biblebot.plan_day (id, is_free, text, plan_id, days_order) VALUES (37, false, null, 1, 36);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('1. Mose 37',  37, 0);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('Johannes 20',  37, 1);
+
+INSERT INTO biblebot.plan_day (id, is_free, text, plan_id, days_order) VALUES (38, false, null, 1, 37);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('1. Mose 38',  38, 0);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('Johannes 21',  38, 1);
+
+INSERT INTO biblebot.plan_day (id, is_free, text, plan_id, days_order) VALUES (39, false, null, 1, 38);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('1. Mose 39',  39, 0);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('1. Mose 40',  39, 1);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('1. Mose 41',  39, 2);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('1. Korinther 1:1-17',  39, 3);
+
+INSERT INTO biblebot.plan_day (id, is_free, text, plan_id, days_order) VALUES (40, false, null, 1, 39);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('1. Mose 42',  40, 0);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('1. Mose 43',  40, 1);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('1. Korinther 1:18-999',  40, 2);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('1. Korinther 2',  40, 3);
+
+INSERT INTO biblebot.plan_day (id, is_free, text, plan_id, days_order) VALUES (41, false, null, 1, 40);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('1. Mose 44',  41, 0);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('1. Mose 45',  41, 1);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('1. Mose 46',  41, 2);
+
+INSERT INTO biblebot.plan_day (id, is_free, text, plan_id, days_order) VALUES (42, false, null, 1, 41);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('Psalm 10',  42, 0);
+
+# KW 7
+
+INSERT INTO biblebot.plan_day (id, is_free, text, plan_id, days_order) VALUES (43, false, null, 1, 42);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('1. Mose 47',  43, 0);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('1. Mose 48',  43, 1);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('1. Korinther 3',  43, 2);
+
+INSERT INTO biblebot.plan_day (id, is_free, text, plan_id, days_order) VALUES (44, false, null, 1, 43);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('1. Mose 49',  44, 0);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('1. Mose 50',  44, 1);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('1. Korinther 4',  44, 2);
+
+INSERT INTO biblebot.plan_day (id, is_free, text, plan_id, days_order) VALUES (45, false, null, 1, 44);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('2. Mose 1',  45, 0);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('2. Mose 2',  45, 1);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('1. Korinther 5',  45, 2);
+
+INSERT INTO biblebot.plan_day (id, is_free, text, plan_id, days_order) VALUES (46, false, null, 1, 45);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('2. Mose 3',  46, 0);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('2. Mose 4',  46, 1);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('1. Korinther 6',  46, 2);
+
+INSERT INTO biblebot.plan_day (id, is_free, text, plan_id, days_order) VALUES (47, false, null, 1, 46);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('2. Mose 5',  47, 0);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('2. Mose 6',  47, 1);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('1. Korinther 7',  47, 2);
+
+INSERT INTO biblebot.plan_day (id, is_free, text, plan_id, days_order) VALUES (48, false, null, 1, 47);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('2. Mose 7',  48, 0);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('2. Mose 8',  48, 1);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('2. Mose 9',  48, 2);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('2. Mose 10',  48, 3);
+
+INSERT INTO biblebot.plan_day (id, is_free, text, plan_id, days_order) VALUES (49, false, null, 1, 48);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('Psalm 11',  49, 0);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('Psalm 12',  49, 1);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('Psalm 13',  49, 2);
+
+# KW 8
+
+INSERT INTO biblebot.plan_day (id, is_free, plan_id, days_order) VALUES (50, true, 1, 49);
+
+INSERT INTO biblebot.plan_day (id, is_free, plan_id, days_order) VALUES (51, true, 1, 50);
+
+INSERT INTO biblebot.plan_day (id, is_free, plan_id, days_order) VALUES (52, true, 1, 51);
 
 
+INSERT INTO biblebot.plan_day (id, is_free, text, plan_id, days_order) VALUES (53, false, null, 1, 52);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('2. Mose 11',  53, 0);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('2. Mose 12',  53, 1);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('1. Korinther 8',  53, 2);
 
+INSERT INTO biblebot.plan_day (id, is_free, text, plan_id, days_order) VALUES (54, false, null, 1, 53);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('2. Mose 13',  54, 0);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('2. Mose 14',  54, 1);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('1. Korinther 9',  54, 2);
 
-#
-# INSERT INTO biblebot.plan_day (id, is_free, text, plan_id, days_order) VALUES (XXXXX, false, null, 1, YYYYYYY);
-# INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('1. Mose 11',  XXXXX, 0);
-# INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('Johannes 6',  XXXXX, 1);
-#
-#
-# INSERT INTO biblebot.plan_day (id, is_free, plan_id, days_order) VALUES (XXXXX, true, 1, YYYYYYY);
+INSERT INTO biblebot.plan_day (id, is_free, text, plan_id, days_order) VALUES (55, false, null, 1, 54);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('2. Mose 15',  55, 0);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('1. Korinther 10',  55, 1);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('1. Korinther 11',  55, 2);
+
+INSERT INTO biblebot.plan_day (id, is_free, text, plan_id, days_order) VALUES (56, false, null, 1, 55);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('Psalm 14',  56, 0);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('Psalm 15',  56, 1);
+    INSERT INTO biblebot.passage (title, day_id, passages_order) VALUES ('Psalm 16',  56, 2);
+
+# KW 9
