@@ -69,7 +69,7 @@ public class RocketChatPostService {
                                 .orElse("")
                                 + " _" + bibleDTO.getName() + "_"
                 );
-                attachment.setTitleLink("https://www.bibleserver.com/text/NGU/" + bookDTO.getGermanName() + chapterDTO.getNumber()
+                attachment.setTitleLink("https://www.bibleserver.com/text/NeÜ/" + bookDTO.getGermanName() + chapterDTO.getNumber()
                         + ":" + passage.getVerseStart() + "-" + passage.getVerseEnd());
                 attachment.setColor("good");
                 attachment.setCollapsed(true);
