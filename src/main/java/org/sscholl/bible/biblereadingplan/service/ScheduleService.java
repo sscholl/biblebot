@@ -8,8 +8,6 @@ import org.sscholl.bible.biblereadingplan.model.Passage;
 import org.sscholl.bible.biblereadingplan.model.PlanDay;
 import org.sscholl.bible.biblereadingplan.model.PlanInstance;
 import org.sscholl.bible.biblereadingplan.model.PlanInstanceDay;
-import org.sscholl.bible.biblereadingplan.repository.PlanDayRepository;
-import org.sscholl.bible.biblereadingplan.repository.PlanInstanceDayRepository;
 import org.sscholl.bible.biblereadingplan.repository.PlanInstanceRepository;
 import org.sscholl.bible.common.model.dto.*;
 import org.sscholl.bible.common.service.BibleCsvRepository;
@@ -19,18 +17,12 @@ import javax.transaction.Transactional;
 import java.util.*;
 
 @Component
-public class ValidateService {
+public class ScheduleService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ValidateService.class);
-
-    @Autowired
-    private PlanDayRepository planDayRepository;
+    private static final Logger LOGGER = LoggerFactory.getLogger(ScheduleService.class);
 
     @Autowired
     private PlanInstanceRepository planInstanceRepository;
-
-    @Autowired
-    private PlanInstanceDayRepository planInstanceDayRepository;
 
     @Autowired
     private QueryParserService queryParserService;
@@ -45,10 +37,10 @@ public class ValidateService {
     public void scheduleAll() {
         for (PlanInstance instance : planInstanceRepository.findAll()) {
             scheduleDays(instance);
+            planInstanceRepository.save(instance);
         }
     }
 
-    @Transactional
     public void scheduleDays(PlanInstance instance) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(instance.getStartDate());
@@ -76,10 +68,8 @@ public class ValidateService {
             // add one day for next instanceDay
             cal.add(Calendar.DATE, 1);
         }
-        planInstanceRepository.save(instance);
     }
 
-    @Transactional
     public void setDefaultValues(PlanDay day) {
         BibleDTO bibleDTO = bibleCsvRepository.findBible(day.getPlan().getBibleKey());
         for (Passage passage : day.getPassages()) {
@@ -132,19 +122,6 @@ public class ValidateService {
                 passage.setTitle(bookDTO.getGermanName() + " " + chapterDTO.getNumber() + ":"
                         + passage.getVerseStart() + "-" + passage.getVerseEnd());
             }
-        }
-        planDayRepository.save(day);
-    }
-
-    @Transactional
-    public void setDefaultValues(PlanInstanceDay instanceDay) {
-        if (instanceDay.getPosted() == null) {
-            instanceDay.setPosted(false);
-            planInstanceDayRepository.save(instanceDay);
-        }
-
-        if (instanceDay.getScheduledDate() == null) {
-            scheduleDays(instanceDay.getPlanInstance());
         }
     }
 }

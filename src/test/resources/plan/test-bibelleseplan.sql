@@ -1,4 +1,4 @@
-INSERT INTO biblebot.plan (id, bible_key, name) VALUES (1, 'elb', 'Bibelleseplan Test');
+INSERT INTO biblebot.plan (id, bible_key, name) VALUES (1, 'elb', 'Bibelleseplan');
 INSERT INTO biblebot.plan_instance (id, channel, start_date, plan_id) VALUES (1, '#test-bibelleseplan', '2017-12-30 11:00:00', 1);
 INSERT INTO biblebot.plan_instance (id, channel, start_date, plan_id) VALUES (2, '#test-bibelleseplan2', '2018-01-01 03:00:00', 1);
 

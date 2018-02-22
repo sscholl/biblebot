@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.sscholl.bible.biblereadingplan.model.PlanInstanceDay;
+import org.sscholl.bible.biblereadingplan.repository.PlanDayRepository;
 import org.sscholl.bible.biblereadingplan.repository.PlanInstanceDayRepository;
 
 import javax.transaction.Transactional;
@@ -20,24 +21,25 @@ public class PostService {
     private RocketChatPostService rocketChatPostService;
 
     @Autowired
-    private ValidateService validateService;
+    private ScheduleService scheduleService;
+
+    @Autowired
+    private PlanDayRepository planDayRepository;
 
     @Autowired
     private PlanInstanceDayRepository planInstanceDayRepository;
 
     /**
      * Process all instance days that are not processed already, but are due
-     *
      * “At minute 0 past every hour.”
      */
     @Scheduled(cron = "${biblereadingplan.postservice.cron:0 0 * * * *}")
     @Transactional
     public void process() {
-        validateService.scheduleAll();
-        for (PlanInstanceDay instanceDay : planInstanceDayRepository
-                .findAllByIsPostedIsFalseAndScheduledDateBeforeOrderByScheduledDateAsc(new Date())) {
-            validateService.setDefaultValues(instanceDay.getDay());
-            validateService.setDefaultValues(instanceDay);
+        scheduleService.scheduleAll();
+        for (PlanInstanceDay instanceDay : planInstanceDayRepository.findAllByIsPostedIsFalseAndScheduledDateBeforeOrderByScheduledDateAsc(new Date())) {
+            scheduleService.setDefaultValues(instanceDay.getDay());
+            planDayRepository.save(instanceDay.getDay());
             if (rocketChatPostService.post(instanceDay)) {
                 instanceDay.setPosted(true);
                 planInstanceDayRepository.save(instanceDay);

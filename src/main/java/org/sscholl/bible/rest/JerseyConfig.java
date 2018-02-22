@@ -24,6 +24,7 @@ public class JerseyConfig extends ResourceConfig {
         LOGGER.info("register endpoints");
         packages("org.sscholl.bible.common.rest");
         packages("org.sscholl.bible.biblebot.rest");
+        packages("org.sscholl.bible.biblereadingplan.rest");
         // register jackson for json
         register(new ObjectMapperContextResolver(objectMapper));
         register(new JerseyEndpointLoggingListener());
