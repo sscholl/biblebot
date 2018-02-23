@@ -8,6 +8,7 @@ import org.springframework.batch.core.configuration.annotation.JobBuilderFactory
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.item.ItemProcessor;
+import org.springframework.batch.item.database.JpaItemWriter;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
@@ -22,6 +23,7 @@ import org.sscholl.bible.biblereadingplan.batch.dto.PlanDayCsvEntry;
 import org.sscholl.bible.biblereadingplan.model.Passage;
 import org.sscholl.bible.biblereadingplan.model.Plan;
 import org.sscholl.bible.biblereadingplan.model.PlanDay;
+import org.sscholl.bible.biblereadingplan.repository.PlanDayRepository;
 import org.sscholl.bible.biblereadingplan.repository.PlanRepository;
 import org.sscholl.bible.biblereadingplan.service.ScheduleService;
 
@@ -49,6 +51,9 @@ public class ImportPlan {
 
     @Autowired
     PlanRepository planRepository;
+
+    @Autowired
+    PlanDayRepository planDayRepository;
 
     Plan plan;
 
@@ -82,7 +87,7 @@ public class ImportPlan {
 
                 PlanDay planDay;
                 int index = planDayCsvEntry.getDayNumber() - 1;
-                if (plan.getDays().size() < planDayCsvEntry.getDayNumber()) {
+                if (plan.getDays().size() <= index) {
                     Assert.isTrue(plan.getDays().size() == index, "dayNumber must increment value");
                     planDay = new PlanDay();
                     planDay.setPlan(plan);
@@ -124,6 +129,13 @@ public class ImportPlan {
     }
 
     @Bean
+    public JpaItemWriter<PlanDay> writer() {
+        JpaItemWriter<PlanDay> writer = new JpaItemWriter<>();
+        writer.setEntityManagerFactory(entityManagerFactory);
+        return writer;
+    }
+
+    @Bean
     public Job importPlanJob() {
         return jobBuilderFactory.get("importPlanJob")
                 .incrementer(new RunIdIncrementer())
@@ -151,13 +163,15 @@ public class ImportPlan {
                 .<PlanDayCsvEntry, PlanDay>chunk(1)
                 .reader(reader())
                 .processor(processor())
+                .writer(items -> {/* do nothing save in savePlanStep */})
+//                .writer(items -> items.forEach(i -> planDayRepository.saveAndFlush(i)))
                 .build();
     }
 
     @Bean
     public Step savePlanStep() {
         return stepBuilderFactory.get("savePlanStep").tasklet((contribution, chunkContext) -> {
-            planRepository.save(plan);
+            planRepository.saveAndFlush(plan);
             return RepeatStatus.FINISHED;
         }).build();
     }
