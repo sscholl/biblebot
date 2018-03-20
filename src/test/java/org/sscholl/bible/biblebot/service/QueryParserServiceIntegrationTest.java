@@ -39,7 +39,7 @@ public class QueryParserServiceIntegrationTest {
         LOG.debug("Regex: " + regex);
 
         // then
-        assertThat("Regex seems not valid: " + regex.toString(), regex.toString().length(), allOf(greaterThan(100), lessThan(200)));
+        assertThat("Regex seems not valid: " + regex.toString(), regex.toString().length(), allOf(greaterThan(100), lessThan(1000)));
     }
 
     @Test
@@ -122,6 +122,25 @@ public class QueryParserServiceIntegrationTest {
         // then
         assertThat("No bibleDTO found.", bibleDTO, notNullValue());
         assertThat("Wrong bibleDTO found.", bibleDTO.getName(), equalTo("Luther (1912)"));
+    }
+
+    @Test
+    public void findBibleNeue() {
+        String[] queries = {
+                "Ps 1 (NeÜ)",
+                "Ps 1 (neue)",
+                "Ps 1 NeÜ",
+                "Ps 1 aus der Neue evangelistische Übersetzung",
+                "Ps 1 (bibel.heute)",
+        };
+        for (String query : queries) {
+            // when
+            BibleDTO bibleDTO = queryParserService.findBible(query);
+
+            // then
+            assertThat("No bibleDTO found.", bibleDTO, notNullValue());
+            assertThat("Wrong bibleDTO found.", bibleDTO.getName(), equalTo("Neue evangelistische Übersetzung"));
+        }
     }
 
     @Test

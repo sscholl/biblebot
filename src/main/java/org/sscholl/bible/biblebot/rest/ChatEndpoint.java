@@ -62,7 +62,7 @@ public class ChatEndpoint {
                 attachment.setTitle(passageDTO.getTitle());
                 attachment.setText(
                         passageDTO.getVerses().stream().map(verse -> "*" + verse.getNumber() + "* " + verse.getText()).reduce((s, s2) -> s + " " + s2).orElse("")
-                                + " _" + passageDTO.getBibleDTO().getName() + "_"
+                                + " _(" + passageDTO.getBibleDTO().getName() + ")_"
                 );
                 attachment.setTitleLink("https://www.bibleserver.com/text/NeÜ/" + passageDTO.getQuery());
                 //TODO: attachment.setFallback(attachment.getTitle() + ": " + attachment.getText());

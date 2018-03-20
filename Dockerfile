@@ -14,8 +14,8 @@ RUN cd /tmp && sh ./mvnw ${mvnArgs} dependency:go-offline
 
 # generate app by maven and clear maven and build folder
 COPY . /tmp
-RUN cd /tmp && sh ./mvnw clean install ${mvnArgs} -DskipTests=${skipTests}
-RUN mv /tmp/target/*.jar /app.jar \
+RUN cd /tmp && rm -rf target/ && sh ./mvnw clean install ${mvnArgs} -DskipTests=${skipTests} \
+    && mv /tmp/target/*.jar /app.jar \
     && rm /tmp/* -rf \
     && rm /tmp/.git* -rf \
     && rm /tmp/.mvn -rf \

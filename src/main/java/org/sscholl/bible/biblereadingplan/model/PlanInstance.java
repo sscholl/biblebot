@@ -77,7 +77,6 @@ public class PlanInstance {
                 "id=" + id +
                 ", startDate=" + startDate +
                 ", channel='" + channel + '\'' +
-                ", plan=" + plan +
                 ", days=" + days.size() +
                 '}';
     }

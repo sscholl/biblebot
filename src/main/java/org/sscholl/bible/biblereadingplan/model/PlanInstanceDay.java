@@ -72,8 +72,6 @@ public class PlanInstanceDay {
                 "id=" + id +
                 ", isPosted=" + isPosted +
                 ", scheduledDate=" + scheduledDate +
-                ", planInstance=" + planInstance +
-                ", day=" + day +
                 '}';
     }
 }

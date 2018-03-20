@@ -10,7 +10,7 @@ import org.sscholl.bible.biblereadingplan.TestData;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = {Application.class})
-public class PostServiceTest {
+public class PostServiceTestManual {
 
     @Autowired
     private static PostService service = new PostService();

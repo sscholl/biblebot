@@ -38,8 +38,11 @@ public class QueryParserService {
                     .map(BibleDTO::getShortcuts)
                     .reduce((strings, strings2) -> Stream.concat(strings.stream(), strings2.stream()).collect(Collectors.toSet()))
                     .orElse(new HashSet<>());
+            shortcutsBible.forEach(s -> s = s.replace(".", "\\."));
 
-            regexBibles = Pattern.compile(" (" + shortcutsBible.stream().reduce((s, s2) -> s + "|" + s2).orElse("") + ") ");
+            regexBibles = Pattern.compile(
+                    "\\b(" + shortcutsBible.stream().reduce((s, s2) -> s + "|" + s2).orElse("") + ")\\b",
+                    Pattern.CASE_INSENSITIVE);
         }
         return regexBibles;
     }
@@ -56,7 +59,7 @@ public class QueryParserService {
 
             regexPassages = Pattern.compile("([a-zA-Z0-9])?("
                     + shortcutsBooks.stream().reduce((s, s2) -> s + "|" + s2).orElse("")
-                    + ")\\.?\\s*(\\d{1,3})(?:\\s*[\\:\\s|\\,\\s]\\s*(\\d{1,3})(?:\\s*[\\-\\s]\\s*(\\d{1,3}))?)?");
+                    + ")\\.?\\s*(\\d{1,3})(?:\\s*[:\\s|,\\s]\\s*(\\d{1,3})(?:\\s*[\\-\\s]\\s*(\\d{1,3}))?)?", Pattern.CASE_INSENSITIVE);
         }
         return regexPassages;
     }
