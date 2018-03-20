@@ -35,7 +35,7 @@ public class BibleCsvRepository {
     }
 
     public String getDefaultBible() {
-        return "elb";
+        return "neue";
     }
 
     public BibleDTO findBible(String idOrShortcut) {

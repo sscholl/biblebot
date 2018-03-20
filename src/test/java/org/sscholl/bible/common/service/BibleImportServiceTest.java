@@ -33,7 +33,7 @@ public class BibleImportServiceTest {
     @Test
     public void loadBibleConfig() {
         Set<BibleDTO> bibleDTOS = bibleImportService.loadBibleConfig();
-        Assert.assertEquals(6, bibleDTOS.size());
+        Assert.assertEquals(7, bibleDTOS.size());
         for (BibleDTO bibleDTO : bibleDTOS) {
             System.out.println(bibleDTO);
             int chaptersCount = 0;

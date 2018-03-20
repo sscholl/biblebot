@@ -70,7 +70,16 @@ public class BibleImportService {
                 for (int j = 0; j < shortcuts.length(); j++) {
                     bibleDTO.getShortcuts().add(shortcuts.getString(j));
                 }
-                bibleDTO.setFileName("bibles/" + bibleDTO.getLanguage() + "__" + bibleDTO.getName().replace(" ", "_") + "__" + bibleDTO.getKey() + "__" + bibleDTO.getDirection() + ".txt");
+                bibleDTO.setFileName(
+                        "bibles/"
+                                + bibleDTO.getLanguage()
+                                + "__"
+                                + bibleDTO.getName().replace(" ", "_").replace("Ü", "Ue")
+                                + "__"
+                                + bibleDTO.getKey()
+                                + "__"
+                                + bibleDTO.getDirection()
+                                + ".txt");
 
                 bibleDTOS.add(bibleDTO);
 //                    LOG.debug(bibleDTO);

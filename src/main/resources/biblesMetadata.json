@@ -1,5 +1,20 @@
 [
   {
+    "key": "neue",
+    "language": "German",
+    "name": "Neue evangelistische Übersetzung",
+    "shortcuts": [
+      "nbh",
+      "neue",
+      "neü",
+      "bibel.heute",
+      "neue bibel.heute",
+      "neue.bibel.heute",
+      "neue evangelistische übersetzung"
+    ],
+    "direction": "LTR"
+  },
+  {
     "key": "elberfelder",
     "language": "German",
     "name": "Elberfelder (1871)",
