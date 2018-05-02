@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 import org.sscholl.bible.adapter.rocketchat.service.RocketChatService;
 import org.sscholl.bible.biblereadingplan.model.Passage;
 import org.sscholl.bible.biblereadingplan.model.PlanDay;
@@ -42,7 +43,11 @@ public class RocketChatPostService {
         postMessageRequest.setChannel(instanceDay.getPlanInstance().getChannel());
         postMessageRequest.setAlias(day.getPlan().getName());
         postMessageRequest.setEmoji(":book:");
-        postMessageRequest.setText(day.getText());
+        if (StringUtils.isEmpty(day.getText()) && day.getPassages() != null && !day.getPassages().isEmpty()) {
+            postMessageRequest.setText("Heutige Bibelstellen: ");
+        } else {
+            postMessageRequest.setText(day.getText());
+        }
         postMessageRequest.setAttachments(new LinkedList<>());
         for (Passage passage : day.getPassages()) {
             BibleDTO bibleDTO = bibleCsvRepository.findBible(day.getPlan().getBibleKey());
@@ -74,6 +79,8 @@ public class RocketChatPostService {
                 attachment.setColor("good");
                 attachment.setCollapsed(true);
                 postMessageRequest.getAttachments().add(attachment);
+
+                postMessageRequest.setText(postMessageRequest.getText().concat(attachment.getText()));
             }
         }
 
